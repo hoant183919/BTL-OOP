@@ -1,0 +1,122 @@
+[
+    {
+        "kinhDo": "Hùng Vương thứ nhất định đô ở Phong Châu (nay là huyện Bạch Hạc, tỉnh Phú Thọ)",
+        "tenTrieuDai": "Hồng Bàng thị",
+        "id": 1
+    },
+    {
+        "kinhDo": "Phong Khê (nay là thành Cổ Loa, huyện Đông Anh, Hà Nội)",
+        "tenTrieuDai": "Nhà Thục",
+        "id": 2
+    },
+    {
+        "kinhDo": "Cung điện Phiên Ngung (thành phố Quảng Châu, tỉnh Quảng Đông, Trung Quốc)",
+        "tenTrieuDai": "Nhà Triệu",
+        "id": 3
+    },
+    {
+        "kinhDo": "Huyện Mê Linh, Hà Nội",
+        "tenTrieuDai": "Họ Trưng",
+        "id": 4
+    },
+    {
+        "kinhDo": "Long Uyên (nay thuộc quận Long Biên, Hà Nội hoặc Bắc Ninh)",
+        "tenTrieuDai": "Nhà Tiền Lý",
+        "id": 5
+    },
+    {
+        "kinhDo": "Long Uyên (nay thuộc quận Long Biên, Hà Nội hoặc Bắc Ninh)... sau dời sang Vũ Ninh (nay là huyện Quế Võ, tỉnh Bắc Ninh)",
+        "tenTrieuDai": "Họ Triệu",
+        "id": 6
+    },
+    {
+        "kinhDo": "Vạn An (nay thuộc huyện Nam Đàn, Nghệ An)",
+        "tenTrieuDai": "Họ Mai",
+        "id": 7
+    },
+    {
+        "kinhDo": "Tống Bình (nay thuộc Hà Nội)",
+        "tenTrieuDai": "Họ Phùng",
+        "id": 8
+    },
+    {
+        "kinhDo": "Đại La (nay thuộc Hà Nội)",
+        "tenTrieuDai": "Họ Khúc",
+        "id": 9
+    },
+    {
+        "kinhDo": "Dương Đình Nghệ đóng đô ở Đại La (nay thuộc Hà Nội)",
+        "tenTrieuDai": "Họ Dương",
+        "id": 10
+    },
+    {
+        "kinhDo": "Đại La (nay thuộc Hà Nội)",
+        "tenTrieuDai": "Họ Kiều",
+        "id": 11
+    },
+    {
+        "kinhDo": "Cổ Loa (huyện Đông Anh, Hà Nội)",
+        "tenTrieuDai": "Nhà Ngô",
+        "id": 12
+    },
+    {
+        "kinhDo": "Hoa Lư (nay thuộc tỉnh Ninh Bình)",
+        "tenTrieuDai": "Nhà Đinh",
+        "id": 13
+    },
+    {
+        "kinhDo": "Hoa Lư (nay thuộc tỉnh Ninh Bình)",
+        "tenTrieuDai": "Nhà Tiền Lê",
+        "id": 14
+    },
+    {
+        "kinhDo": "Thăng Long (Hà Nội)",
+        "tenTrieuDai": "Nhà Lý",
+        "id": 15
+    },
+    {
+        "kinhDo": "Thăng Long (Hà Nội)",
+        "tenTrieuDai": "Nhà Trần",
+        "id": 16
+    },
+    {
+        "kinhDo": "Tây Đô (huyện Vĩnh Lộc, Thanh Hoá)",
+        "tenTrieuDai": "Nhà Hồ",
+        "id": 17
+    },
+    {
+        "kinhDo": "Mô Độ (huyện Yên Mô - Ninh Bình",
+        "tenTrieuDai": "Nhà Hậu Trần",
+        "id": 18
+    },
+    {
+        "kinhDo": "Đông Kinh (Hà Nội)",
+        "tenTrieuDai": "Nhà Hậu Lê",
+        "id": 19
+    },
+    {
+        "kinhDo": "Đông Kinh (Hà Nội)",
+        "tenTrieuDai": "Nhà Mạc",
+        "id": 20
+    },
+    {
+        "kinhDo": "Đông Kinh (Hà Nội)",
+        "tenTrieuDai": "Chúa Trịnh",
+        "id": 21
+    },
+    {
+        "kinhDo": "Phú Xuân (thành phố Huế - tỉnh Thừa Thiên Huế)",
+        "tenTrieuDai": "Chúa Nguyễn",
+        "id": 22
+    },
+    {
+        "kinhDo": "Quy Nhơn (thị xã An Nhơn, Bình Định)",
+        "tenTrieuDai": "Nhà Tây Sơn",
+        "id": 23
+    },
+    {
+        "kinhDo": "Huế (thành phố Huế - tỉnh Thừa Thiên Huế)",
+        "tenTrieuDai": "Nhà Nguyễn",
+        "id": 24
+    }
+]

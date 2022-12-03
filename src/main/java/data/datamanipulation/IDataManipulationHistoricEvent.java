@@ -5,6 +5,6 @@ import entity.HistoricEvent;
 import java.util.List;
 
 public interface IDataManipulationHistoricEvent {
-    public void insertDataHistoricEvents(List<HistoricEvent> historicEvents);
-    public List<HistoricEvent> getDataHistoricEvents();
+    public void insertDataHistoricEvents(String url, List<HistoricEvent> historicEvents);
+    public List<HistoricEvent> getDataHistoricEvents(String url);
 }

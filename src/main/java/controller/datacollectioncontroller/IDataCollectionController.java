@@ -12,7 +12,7 @@ import static javafx.css.StyleOrigin.USER_AGENT;
 
 public interface IDataCollectionController {
     public List<CulturalFestival> collectionDataCulturalFestival();
-    public List<HistoricalDynasty> collectionDataHistoricalDynasty();
+    public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException;
     public List<HistoricalFigure> collectionDataHistoricalFigure();
     public List<HistoricalSite> collectionDataHistoricalSite();
     public List<HistoricEvent> collectionDataHistoricEvent();

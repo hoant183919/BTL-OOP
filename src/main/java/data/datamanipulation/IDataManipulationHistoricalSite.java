@@ -5,6 +5,6 @@ import entity.HistoricalSite;
 import java.util.List;
 
 public interface IDataManipulationHistoricalSite {
-    public void insertDataHistoricalSites(List<HistoricalSite> historicalSites);
-    public List<HistoricalSite> getDataHistoricalSites();
+    public void insertDataHistoricalSites(String url, List<HistoricalSite> historicalSites);
+    public List<HistoricalSite> getDataHistoricalSites(String url);
 }
