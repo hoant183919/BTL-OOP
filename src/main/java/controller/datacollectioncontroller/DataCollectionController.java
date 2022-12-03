@@ -1,5 +1,6 @@
 package controller.datacollectioncontroller;
 
+import controller.datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionNghienCuuLichSuController;
 import controller.datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionNguoiKeSuController;
 import controller.datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikipediaController;
 import data.datamanipulation.*;
@@ -16,6 +17,7 @@ public class DataCollectionController {
         HashMap<String, IDataCollectionController> dataCollectionControllers = new HashMap<>();
         dataCollectionControllers.put(RESERVE_DATA_NGUOIKESU_PATH, new DataCollectionNguoiKeSuController());
         dataCollectionControllers.put(RESERVE_DATA_WIKIPEDIA_PATH, new DataCollectionWikipediaController());
+        dataCollectionControllers.put(RESERVE_DATA_NGHIENCUULICHSU_PATH, new DataCollectionNghienCuuLichSuController());
         for (Map.Entry<String, IDataCollectionController> entry : dataCollectionControllers.entrySet()) {
             if(entry.getValue()!=null) {
                 if(entry.getValue().collectionDataCulturalFestival()!=null) {
