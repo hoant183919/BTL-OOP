@@ -1,6 +1,7 @@
-package main.java.data.datamanipulation;
+package data.datamanipulation;
 
-import main.java.entity.HistoricalDynasty;
+
+import entity.HistoricalDynasty;
 
 import java.util.List;
 

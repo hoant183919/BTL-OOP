@@ -1,6 +1,6 @@
-package main.java.data.datamanipulation;
+package data.datamanipulation;
 
-import main.java.entity.HistoricalFigure;
+import entity.HistoricalFigure;
 
 import java.util.List;
 

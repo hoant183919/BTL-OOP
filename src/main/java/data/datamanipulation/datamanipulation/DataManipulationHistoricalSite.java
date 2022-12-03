@@ -1,7 +1,7 @@
-package main.java.data.datamanipulation.datamanipulation;
+package data.datamanipulation.datamanipulation;
 
-import main.java.data.datamanipulation.IDataManipulationHistoricalSite;
-import main.java.entity.HistoricalSite;
+import data.datamanipulation.IDataManipulationHistoricalSite;
+import entity.HistoricalSite;
 
 import java.util.List;
 

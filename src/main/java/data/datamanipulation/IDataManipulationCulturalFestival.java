@@ -1,6 +1,6 @@
-package main.java.data.datamanipulation;
+package data.datamanipulation;
 
-import main.java.entity.CulturalFestival;
+import entity.CulturalFestival;
 
 import java.util.List;
 

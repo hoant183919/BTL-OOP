@@ -1,6 +1,6 @@
-package main.java.data.datamanipulation;
+package data.datamanipulation;
 
-import main.java.entity.HistoricalSite;
+import entity.HistoricalSite;
 
 import java.util.List;
 

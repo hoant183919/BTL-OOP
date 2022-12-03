@@ -1,6 +1,6 @@
-package main.java.data.datamanipulation;
+package data.datamanipulation;
 
-import main.java.entity.HistoricEvent;
+import entity.HistoricEvent;
 
 import java.util.List;
 
