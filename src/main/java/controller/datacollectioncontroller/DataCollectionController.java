@@ -5,9 +5,11 @@ import controller.datacollectioncontroller.datacollectioncontrollerimpl.DataColl
 import controller.datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikipediaController;
 import data.datamanipulation.*;
 import data.datamanipulation.datamanipulation.*;
+import entity.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static utils.configs.ConfigResource.*;
@@ -19,26 +21,31 @@ public class DataCollectionController {
         dataCollectionControllers.put(RESERVE_DATA_WIKIPEDIA_PATH, new DataCollectionWikipediaController());
         dataCollectionControllers.put(RESERVE_DATA_NGHIENCUULICHSU_PATH, new DataCollectionNghienCuuLichSuController());
         for (Map.Entry<String, IDataCollectionController> entry : dataCollectionControllers.entrySet()) {
-            if(entry.getValue()!=null) {
-                if(entry.getValue().collectionDataCulturalFestival()!=null) {
+            if (entry.getValue() != null) {
+                List<CulturalFestival> culturalFestivals = entry.getValue().collectionDataCulturalFestival();
+                if (culturalFestivals != null) {
                     IDataManipulationCulturalFestival dataManipulationCulturalFestival = new DataManipulationCulturalFestival();
-                    dataManipulationCulturalFestival.insertDataCulturalFestivals(entry.getKey() + NAME_FILE[0], entry.getValue().collectionDataCulturalFestival());
+                    dataManipulationCulturalFestival.insertDataCulturalFestivals(entry.getKey() + NAME_FILE[0], culturalFestivals);
                 }
-                if(entry.getValue().collectionDataHistoricalDynasty()!=null) {
+                List<HistoricalDynasty> historicalDynasties = entry.getValue().collectionDataHistoricalDynasty();
+                if (historicalDynasties != null) {
                     IDataManipulationHistoricalDynasty dataManipulationHistoricalDynasty = new DataManipulationHistoricalDynasty();
-                    dataManipulationHistoricalDynasty.insertDataHistoricalDynasties(entry.getKey() + NAME_FILE[1], entry.getValue().collectionDataHistoricalDynasty());
+                    dataManipulationHistoricalDynasty.insertDataHistoricalDynasties(entry.getKey() + NAME_FILE[1], historicalDynasties);
                 }
-                if(entry.getValue().collectionDataHistoricalFigure()!=null) {
+                List<HistoricalFigure> historicalFigures = entry.getValue().collectionDataHistoricalFigure();
+                if (historicalFigures != null) {
                     IDataManipulationHistoricalFigure dataManipulationHistoricalFigure = new DataManipulationHistoricalFigure();
-                    dataManipulationHistoricalFigure.insertDataHistoricalFigures(entry.getKey() + NAME_FILE[2], entry.getValue().collectionDataHistoricalFigure());
+                    dataManipulationHistoricalFigure.insertDataHistoricalFigures(entry.getKey() + NAME_FILE[2], historicalFigures);
                 }
-                if(entry.getValue().collectionDataHistoricalSite()!=null) {
+                List<HistoricalSite> historicalSites = entry.getValue().collectionDataHistoricalSite();
+                if (historicalSites != null) {
                     IDataManipulationHistoricalSite dataManipulationHistoricalSite = new DataManipulationHistoricalSite();
-                    dataManipulationHistoricalSite.insertDataHistoricalSites(entry.getKey() + NAME_FILE[3], entry.getValue().collectionDataHistoricalSite());
+                    dataManipulationHistoricalSite.insertDataHistoricalSites(entry.getKey() + NAME_FILE[3], historicalSites);
                 }
-                if(entry.getValue().collectionDataHistoricEvent()!=null) {
+                List<HistoricEvent> historicEvents = entry.getValue().collectionDataHistoricEvent();
+                if (historicEvents != null) {
                     IDataManipulationHistoricEvent dataManipulationHistoricEvent = new DataManipulationHistoricEvent();
-                    dataManipulationHistoricEvent.insertDataHistoricEvents(entry.getKey() + NAME_FILE[4], entry.getValue().collectionDataHistoricEvent());
+                    dataManipulationHistoricEvent.insertDataHistoricEvents(entry.getKey() + NAME_FILE[4], historicEvents);
                 }
             }
         }

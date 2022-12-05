@@ -11,11 +11,11 @@ import java.util.List;
 import static javafx.css.StyleOrigin.USER_AGENT;
 
 public interface IDataCollectionController {
-    public List<CulturalFestival> collectionDataCulturalFestival();
+    public List<CulturalFestival> collectionDataCulturalFestival() throws IOException;
     public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException;
-    public List<HistoricalFigure> collectionDataHistoricalFigure();
-    public List<HistoricalSite> collectionDataHistoricalSite();
-    public List<HistoricEvent> collectionDataHistoricEvent();
+    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException;
+    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException;
+    public List<HistoricEvent> collectionDataHistoricEvent() throws IOException;
 
     public default Document getDocument(String url) throws IOException {
         return SSLHelper.getConnection(url).userAgent(String.valueOf(USER_AGENT)).get();
