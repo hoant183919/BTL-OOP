@@ -8,9 +8,20 @@ public class HistoricalDynasty extends BaseEntity{
     public HistoricalDynasty(int id) {
         super(id);
     }
-    private String tenTrieuDai;
-    private String thoiGianBatDau;
-    private String thoiGianKetThuc;
+    private String tenTrieuDai; // dynastyName;
+    private String thoiGianBatDau; // startTime
+    private String thoiGianKetThuc; // endTime
+    private String thoiKy; // period
+    private String kinhDo; // capital
+    private String moTa; // description
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
 
     public String getTenTrieuDai() {
         return tenTrieuDai;
@@ -19,9 +30,6 @@ public class HistoricalDynasty extends BaseEntity{
     public String getKinhDo() {
         return kinhDo;
     }
-
-    private String thoiKy;
-    private String kinhDo;
 
     public void setTenTrieuDai(String tenTrieuDai) {
         this.tenTrieuDai = tenTrieuDai;
@@ -32,7 +40,6 @@ public class HistoricalDynasty extends BaseEntity{
     }
 
     private List<Dominator> danhSachNguoiDungDau;
-    private String moTa;
 
     @Override
     public JSONObject toJSONObject(){
@@ -40,6 +47,7 @@ public class HistoricalDynasty extends BaseEntity{
         jsonObject.put("id", getId());
         jsonObject.put("tenTrieuDai", getTenTrieuDai());
         jsonObject.put("kinhDo", getKinhDo());
+        jsonObject.put("moTa", getMoTa());
         return jsonObject;
     }
 }
