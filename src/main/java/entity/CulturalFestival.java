@@ -6,12 +6,10 @@ public class CulturalFestival extends BaseEntity{
     public CulturalFestival(int id) {
         super(id);
     }
-    private String ten; // festivalName
     private String thoiDiemToChucLanDau; // timeFirstOrganize
     private String diaDiem; // location
     private String quyMoLeHoi;
     private String thoiGian; // time
-    private String moTa; // description
     private String ghiChu; // note
 
     public String getGhiChu() {
@@ -20,14 +18,6 @@ public class CulturalFestival extends BaseEntity{
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
     }
 
     public String getThoiDiemToChucLanDau() {
@@ -60,14 +50,6 @@ public class CulturalFestival extends BaseEntity{
 
     public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
-    }
-
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
     }
 
     @Override

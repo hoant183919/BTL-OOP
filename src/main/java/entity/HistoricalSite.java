@@ -7,32 +7,11 @@ public class HistoricalSite extends BaseEntity{
         super(id);
     }
 
-    private String tenDiTich; // siteName
     private String diaDiem; // location
     private String namCN; // yearOfRecognition
     private String loaiDiTich; //typeSite
     private String ghiChu; // note
     private String mieuTa; // depiction
-    private String moTa; // description
-
-    public HistoricalSite(int id, String tenDiTich, String diaDiem, String namCN, String loaiDiTich, String ghiChu, String mieuTa, String moTa) {
-        super(id);
-        this.tenDiTich = tenDiTich;
-        this.diaDiem = diaDiem;
-        this.namCN = namCN;
-        this.loaiDiTich = loaiDiTich;
-        this.ghiChu = ghiChu;
-        this.mieuTa = mieuTa;
-        this.moTa = moTa;
-    }
-
-    public String getTenDiTich() {
-        return tenDiTich;
-    }
-
-    public void setTenDiTich(String tenDiTich) {
-        this.tenDiTich = tenDiTich;
-    }
 
     public String getDiaDiem() {
         return diaDiem;
@@ -74,18 +53,10 @@ public class HistoricalSite extends BaseEntity{
         this.mieuTa = mieuTa;
     }
 
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
-    }
-
     public JSONObject toJSONObject(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", getId());
-        jsonObject.put("ten", getTenDiTich());
+        jsonObject.put("ten", getTen());
         jsonObject.put("diaDiem", getDiaDiem());
         jsonObject.put("namCN", getNamCN());
         jsonObject.put("ghiChu", getGhiChu());

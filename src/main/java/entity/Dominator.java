@@ -3,7 +3,6 @@ package entity;
 import org.json.simple.JSONObject;
 
 public class Dominator extends HistoricalFigure{
-    private String ten; // figureName
     private String vaiTro; // role
     private String mieuHieu;
     private String thuyHieu;
@@ -11,7 +10,6 @@ public class Dominator extends HistoricalFigure{
     private String tenHuy;
     private String theThu;
     private String triVi;
-    private String moTa; // description
     private String tenChuHan; // kanjiName
     private String namSinhMat; // dateOfBirthAndPassed
 
@@ -33,14 +31,6 @@ public class Dominator extends HistoricalFigure{
 
     public Dominator(int id) {
         super(id);
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
     }
 
     public String getVaiTro() {
@@ -97,14 +87,6 @@ public class Dominator extends HistoricalFigure{
 
     public void setTriVi(String triVi) {
         this.triVi = triVi;
-    }
-
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
     }
 
     @Override

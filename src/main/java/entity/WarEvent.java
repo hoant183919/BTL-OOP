@@ -7,21 +7,11 @@ public class WarEvent extends HistoricEvent {
         super(id);
     }
 
-    private String tenSuKien; // eventName
     private String thoiGian; // time
     private String thoiKy; // period
     private String lucLuong; // force
     private String doiPhuong; // competitor
     private String ketQua; // result
-    private String moTa; // description
-
-    public String getTenSuKien() {
-        return tenSuKien;
-    }
-
-    public void setTenSuKien(String tenSuKien) {
-        this.tenSuKien = tenSuKien;
-    }
 
     public String getThoiGian() {
         return thoiGian;
@@ -63,19 +53,11 @@ public class WarEvent extends HistoricEvent {
         this.ketQua = ketQua;
     }
 
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
-    }
-
     @Override
     public JSONObject toJSONObject() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", getId());
-        jsonObject.put("tenSuKien", getTenSuKien());
+        jsonObject.put("ten", getTen());
         jsonObject.put("thoiGian", getThoiGian());
         jsonObject.put("thoiKy", getThoiKy());
         jsonObject.put("lucLuong", getLucLuong());
