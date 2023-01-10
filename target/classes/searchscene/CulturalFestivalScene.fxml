@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.CulturalFestivalSceneController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="1026.0">
+         <children>
+            <ToolBar prefHeight="42.0" prefWidth="1029.0">
+              <items>
+                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Back" />
+              </items>
+            </ToolBar>
+            <Label layoutX="35.0" layoutY="69.0" prefHeight="35.0" prefWidth="75.0" text="Nguon: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="nguonLabel" layoutX="110.0" layoutY="69.0" prefHeight="35.0" prefWidth="354.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Line endX="922.0" layoutX="101.0" layoutY="620.0" startX="-100.0" />
+            <Label layoutX="35.0" layoutY="116.0" prefHeight="33.0" prefWidth="64.0" text="ID: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="162.0" prefHeight="33.0" prefWidth="64.0" text="Ten: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="215.0" prefHeight="33.0" prefWidth="100.0" text="Thoi gian:  ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="272.0" prefHeight="33.0" prefWidth="92.0" text="Dia diem: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="326.0" prefHeight="42.0" prefWidth="251.0" text="Thoi diem to chuc lan dau:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="384.0" prefHeight="30.0" prefWidth="64.0" text="Mo ta:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="516.0" prefHeight="34.0" prefWidth="85.0" text="Ghi chu:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="idLabel" layoutX="67.0" layoutY="115.0" prefHeight="35.0" prefWidth="354.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="tenLabel" layoutX="85.0" layoutY="161.0" prefHeight="35.0" prefWidth="354.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="thoiGianLabel" layoutX="135.0" layoutY="214.0" prefHeight="35.0" prefWidth="422.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="diaDiemLabel" layoutX="127.0" layoutY="271.0" prefHeight="35.0" prefWidth="445.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="thoiDiemToChucLanDauLabel" layoutX="269.0" layoutY="330.0" prefHeight="35.0" prefWidth="427.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="moTaLabel" layoutX="110.0" layoutY="382.0" prefHeight="129.0" prefWidth="911.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="ghiChuLabel" layoutX="120.0" layoutY="516.0" prefHeight="90.0" prefWidth="895.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
