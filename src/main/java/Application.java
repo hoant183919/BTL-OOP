@@ -21,6 +21,7 @@ public class Application {
 //        for (HistoricalSite historicalSite: historicalSites){
 //            System.out.println(historicalSite.getTen());
 //        }
+        System.out.println("Hello");
     }
 
 }

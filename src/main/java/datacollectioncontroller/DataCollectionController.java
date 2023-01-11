@@ -17,6 +17,11 @@ import java.util.StringTokenizer;
 import static utils.configs.ConfigResource.*;
 
 public class DataCollectionController {
+
+    /**
+     * Thu thập toàn bộ dữ liệu
+     * @throws IOException
+     */
     public void collectData() throws IOException {
         HashMap<String, IDataCollectionController> dataCollectionControllers = new HashMap<>();
         dataCollectionControllers.put(RESERVE_DATA_NGUOIKESU_PATH, new DataCollectionNguoiKeSuController());
@@ -57,6 +62,12 @@ public class DataCollectionController {
         }
     }
 
+    /**
+     * Thu thập dữ liệu từng trang web
+     * @param url: đường đẫn đến nơi lưu trữ dữ liệu. Trong file ConfigResource
+     * @param dataCollectionController: controller của trang web cần thu thập dữ liệu
+     * @throws IOException
+     */
     public void collectData(String url, IDataCollectionController dataCollectionController) throws IOException {
         try {
             List<CulturalFestival> culturalFestivals = dataCollectionController.collectionDataCulturalFestival();
@@ -89,6 +100,10 @@ public class DataCollectionController {
         }
     }
 
+    /**
+     * Tìm mối quan hệ giữa các model trong cùng 1 trang web
+     * @param lists
+     */
     public void getRelationship(List<List<BaseEntity>> lists) {
         for (int i = 0; i < lists.size(); i++) {
             List<BaseEntity> baseEntities = lists.get(i);

@@ -1,6 +1,6 @@
 package views.datacollectionscene;
 
-import controller.datacollectioncontroller.DataCollectionController;
+import datacollectioncontroller.DataCollectionController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import utils.HistoricType;
+import utils.configs.ConfigResource;
 
 import java.io.IOException;
 
@@ -42,7 +43,7 @@ public class DataCollectionSceneController {
     @FXML
     public void startDataCollecting(ActionEvent event) throws IOException {
         DataCollectionController dataCollectionController = new DataCollectionController();
-        dataCollectionController.collectData(historicType);
+        dataCollectionController.collectData();
         statusLabel.setText("Completed");
 
     }
