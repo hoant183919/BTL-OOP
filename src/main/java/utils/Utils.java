@@ -1,5 +1,6 @@
 package utils;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -7,10 +8,32 @@ import utils.configs.ConfigHtml;
 import utils.configs.SSLHelper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import static javafx.css.StyleOrigin.USER_AGENT;
 
 public class Utils {
+
+    private static String[] VietnameseSigns =
+            {
+                    "aAeEoOuUiIdDyY",
+                    "áàạảãâấầậẩẫăắằặẳẵ",
+                    "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+                    "éèẹẻẽêếềệểễ",
+                    "ÉÈẸẺẼÊẾỀỆỂỄ",
+                    "óòọỏõôốồộổỗơớờợởỡ",
+                    "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+                    "úùụủũưứừựửữ",
+                    "ÚÙỤỦŨƯỨỪỰỬỮ",
+                    "íìịỉĩ",
+                    "ÍÌỊỈĨ",
+                    "đ",
+                    "Đ",
+                    "ýỳỵỷỹ",
+                    "ÝỲỴỶỸ"
+            };
 
     public static String removeComments(String s) {
         if (s == null) return "";
@@ -22,12 +45,35 @@ public class Utils {
         return (s.substring(0, start) + removeComments(s.substring(end + 1))).replace("\u2013", "-").replace("\u2014", "-");
     }
 
-    public static boolean isNumeric(String c){
+    public static boolean isNumeric(String c) {
         try {
             Integer.parseInt(c);
             return true;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static String removeSign4VietnameseString(String str) {
+        for (int i = 1; i < VietnameseSigns.length; i++) {
+            for (int j = 0; j < VietnameseSigns[i].length(); j++)
+                str = str.replace(VietnameseSigns[i].charAt(j), VietnameseSigns[0].charAt(i - 1));
+        }
+        return str;
+    }
+
+    public static String removepunctuation(String str) {
+        return str.replaceAll("\\p{Punct}", "");
+    }
+
+    public static List<String> getSentenceHasInfo(StringTokenizer stringTokenizer, String info) {
+        List<String> infos = new ArrayList<>();
+        while (stringTokenizer.hasMoreTokens()) {
+            String str = stringTokenizer.nextToken();
+            if (str.contains(info)) {
+                infos.add(str);
+            }
+        }
+        return infos;
     }
 }

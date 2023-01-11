@@ -1,6 +1,6 @@
-package controller.datacollectioncontroller.datacollectioncontrollerimpl;
+package datacollectioncontroller.datacollectioncontrollerimpl;
 
-import controller.datacollectioncontroller.IDataCollectionController;
+import datacollectioncontroller.IDataCollectionController;
 import entity.*;
 
 import java.io.IOException;

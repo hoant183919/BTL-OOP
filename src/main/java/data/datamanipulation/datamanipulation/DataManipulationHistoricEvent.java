@@ -2,9 +2,15 @@ package data.datamanipulation.datamanipulation;
 
 import data.datamanipulation.IDataManipulationHistoricEvent;
 import entity.HistoricEvent;
+import entity.HistoricalFigure;
 import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import utils.configs.ConfigResource;
 
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataManipulationHistoricEvent implements IDataManipulationHistoricEvent {
@@ -25,6 +31,24 @@ public class DataManipulationHistoricEvent implements IDataManipulationHistoricE
 
     @Override
     public List<HistoricEvent> getDataHistoricEvents(String url) {
-        return null;
+        url += ConfigResource.NAME_FILE[4];
+        List<HistoricEvent> historicEvents = new ArrayList<>();
+        JSONParser parser = new JSONParser();
+        try {
+            Reader reader = new FileReader(url);
+            JSONArray jsonArray = (JSONArray) parser.parse(reader);
+            int k = 0;
+            while (k < jsonArray.size()) {
+                JSONObject jsonObject = (JSONObject) jsonArray.get(k);
+                HistoricEvent historicEvent = new HistoricEvent(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
+                historicEvent.setMoTa((String) jsonObject.get("moTa"));
+                historicEvent.setTen((String) jsonObject.get("ten"));
+                historicEvents.add(historicEvent);
+                k++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return historicEvents;
     }
 }
