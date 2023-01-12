@@ -37,13 +37,9 @@ public class SplashSceneController {
     // Switch to DataSummary Scene
     @FXML
     public void switchToDataSummaryScene(ActionEvent event) throws Exception {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/datasummaryscene/DataSummaryScene.fxml"));
-        Parent root = fxmlLoader.load();
+        Parent root = FXMLLoader.load(getClass().getResource(("/datasummaryscene/DataSummaryScene.fxml")));
         scene = new Scene(root);
-        DataSummarySceneController dataSummarySceneController = fxmlLoader.getController();
-        dataSummarySceneController.setWikipediaLabel();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
 
