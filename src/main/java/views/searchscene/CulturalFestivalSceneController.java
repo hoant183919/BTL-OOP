@@ -1,9 +1,13 @@
 package views.searchscene;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class CulturalFestivalSceneController extends BaseSceneController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CulturalFestivalSceneController extends BaseSceneController implements  Initializable{
     @FXML
     Label tenLabel;
     @FXML
@@ -15,4 +19,9 @@ public class CulturalFestivalSceneController extends BaseSceneController {
     @FXML
     Label ghiChuLabel;
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

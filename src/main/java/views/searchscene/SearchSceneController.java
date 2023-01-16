@@ -42,7 +42,6 @@ public class SearchSceneController {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
 
     }
@@ -90,7 +89,7 @@ public class SearchSceneController {
     }
 
     @FXML
-    public TextField contentSearch;
+    TextField contentSearch;
 
 
 

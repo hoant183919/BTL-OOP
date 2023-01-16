@@ -58,6 +58,4 @@ public class DataCollectionSceneController {
         stage.show();
     }
 
-
-
 }
