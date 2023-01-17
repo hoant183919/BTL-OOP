@@ -45,6 +45,7 @@ public class DataSummary {
                 culturalFestival.setThoiGian(object.getString("thoiGian"));
                 culturalFestival.setThoiDiemToChucLanDau(object.getString("thoiDiemToChucLanDau"));
                 culturalFestival.setMoTa(object.get("moTa").toString());
+                culturalFestival.setGhiChu(object.getString("ghiChu"));
                 objectList.add(culturalFestival);
             }
         }
@@ -88,7 +89,6 @@ public class DataSummary {
                 historicalSite.setTen(object.getString("ten"));
                 historicalSite.setDiaDiem(object.getString("diaDiem"));
                 historicalSite.setNamCN(object.get("namCN").toString());
-                historicalSite.setGhiChu(object.get("ghiChu").toString());
                 historicalSite.setMieuTa(object.getString("mieuTa"));
                 objectList.add(historicalSite);
             }

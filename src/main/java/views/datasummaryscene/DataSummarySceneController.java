@@ -84,8 +84,6 @@ public class DataSummarySceneController implements Initializable {
     @FXML
     TableColumn<HistoricalSite, String> namCNHistoricalSiteColumn;
     @FXML
-    TableColumn<HistoricalSite, String> ghiChuHistoricalSiteColumn;
-    @FXML
     TableColumn<HistoricalSite, String> mieuTaHistoricalSiteColumn;
 
     // Khai bao Historic Event TableView
@@ -147,8 +145,11 @@ public class DataSummarySceneController implements Initializable {
         thoiGianCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("thoiGian"));
         diaDiemCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("diaDiem"));
         thoiDiemToChucLanDauCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("thoiDiemToChucLanDau"));
-        //moTaCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("moTa"));
+        moTaCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("moTa"));
+
+
         try {
+
             culturalFestivalTableView.setItems(dataSummary.culturalFestivalDataSummary(culturalFestivalData));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -174,7 +175,6 @@ public class DataSummarySceneController implements Initializable {
         tenHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("ten"));
         diaDiemHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("diaDiem"));
         namCNHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("namCN"));
-        ghiChuHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("ghiChu"));
         mieuTaHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("mieuTa"));
         try {
             historicalSiteTableView.setItems(dataSummary.historicalSiteDataSummary(historicalSiteData));
