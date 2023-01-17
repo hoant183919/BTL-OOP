@@ -15,7 +15,4 @@ public class HistoricalDynastySceneController extends BaseSceneController {
     Label kinhDoLabel;
 
 
-
-    SearchSceneController searchSceneController = new SearchSceneController();
-
 }

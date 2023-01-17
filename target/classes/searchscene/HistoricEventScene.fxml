@@ -14,7 +14,7 @@
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
-                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Back" />
+                <Button mnemonicParsing="false" onAction="#backToSplashScene" text="Back" />
               </items>
             </ToolBar>
             <Label layoutX="35.0" layoutY="85.0" prefHeight="35.0" prefWidth="75.0" text="Nguon: ">
@@ -27,53 +27,83 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Line endX="914.0" layoutX="110.0" layoutY="490.0" startX="-100.0" />
-            <Label layoutX="35.0" layoutY="136.0" prefHeight="35.0" prefWidth="36.0" text="ID: ">
+            <Line endX="914.0" layoutX="106.0" layoutY="673.0" startX="-100.0" />
+            <Label layoutX="35.0" layoutY="130.0" prefHeight="35.0" prefWidth="40.0" text="ID: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" layoutX="73.0" layoutY="136.0" prefHeight="35.0" prefWidth="95.0">
+            <Label fx:id="idLabel" layoutX="75.0" layoutY="130.0" prefHeight="35.0" prefWidth="95.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="179.0" prefHeight="35.0" prefWidth="117.0" text="Ten su kien: ">
+            <Label layoutX="35.0" layoutY="173.0" prefHeight="35.0" prefWidth="126.0" text="Ten su kien: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenSuKienLabel" layoutX="152.0" layoutY="179.0" prefHeight="35.0" prefWidth="549.0">
+            <Label fx:id="tenSuKienLabel" layoutX="161.0" layoutY="173.0" prefHeight="35.0" prefWidth="519.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="224.0" prefHeight="35.0" prefWidth="101.0" text="Thoi gian: ">
+            <Label layoutX="35.0" layoutY="217.0" prefHeight="35.0" prefWidth="104.0" text="Thoi gian: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="thoiGianLabel" layoutX="136.0" layoutY="224.0" prefHeight="35.0" prefWidth="549.0">
+            <Label fx:id="thoiGianLabel" layoutX="139.0" layoutY="217.0" prefHeight="35.0" prefWidth="519.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="276.0" prefHeight="35.0" prefWidth="101.0" text="Dia diem: ">
+            <Label layoutX="35.0" layoutY="266.0" prefHeight="35.0" prefWidth="80.0" text="Thoi ky: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="diaDiemLabel" layoutX="136.0" layoutY="276.0" prefHeight="35.0" prefWidth="793.0">
+            <Label fx:id="thoiKyLabel" layoutX="115.0" layoutY="266.0" prefHeight="35.0" prefWidth="519.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="327.0" prefHeight="35.0" prefWidth="79.0" text="Mo ta: ">
+            <Label layoutX="33.0" layoutY="310.0" prefHeight="35.0" prefWidth="106.0" text="Luc luong: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="moTaLabel" layoutX="110.0" layoutY="327.0" prefHeight="148.0" prefWidth="900.0">
+            <Label fx:id="lucLuongLabel" layoutX="134.0" layoutY="313.0" prefHeight="67.0" prefWidth="889.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="394.0" prefHeight="35.0" prefWidth="132.0" text="Doi phuong: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="doiPhuongLabel" layoutX="161.0" layoutY="394.0" prefHeight="67.0" prefWidth="862.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="479.0" prefHeight="35.0" prefWidth="72.0" text="Mo ta: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="moTalabel" layoutX="99.0" layoutY="479.0" prefHeight="105.0" prefWidth="919.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="602.0" prefHeight="35.0" prefWidth="88.0" text="Ket qua: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="ketQuaLabel" layoutX="115.0" layoutY="604.0" prefHeight="55.0" prefWidth="909.0">
                <font>
                   <Font size="20.0" />
                </font>

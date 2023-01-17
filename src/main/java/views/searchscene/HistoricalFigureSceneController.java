@@ -5,20 +5,28 @@ import javafx.scene.control.Label;
 
 public class HistoricalFigureSceneController extends BaseSceneController {
     @FXML
-    Label tenThatLabel;
+    Label tenLabel;
     @FXML
-    Label tenHieuLabel;
+    Label tenHuyLabel;
     @FXML
-    Label namSinhLabel;
+    Label tenChuHanLabel;
     @FXML
-    Label namMatLabel;
+    Label namSinhMatLabel;
     @FXML
-    Label chucVuLabel;
+    Label mieuHieuLabel;
     @FXML
-    Label thoiDiemLenNgoiLabel;
+    Label thuyHieuLabel;
     @FXML
-    Label thoiGianTaiChucLabel;
+    Label nienHieuLabel;
     @FXML
-    Label nguoiThanLabel;
+    Label vaiTroLabel;
+    @FXML
+    Label theThuLabel;
+    @FXML
+    Label triViLabel;
+
+
+
+
 
 }

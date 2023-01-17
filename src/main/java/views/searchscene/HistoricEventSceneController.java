@@ -9,7 +9,11 @@ public class HistoricEventSceneController extends BaseSceneController {
     @FXML
     Label thoiGianLabel;
     @FXML
-    Label diaDiemLabel;
+    Label thoiKyLabel;
     @FXML
-    Label moTaLabel;
+    Label lucLuongLabel;
+    @FXML
+    Label doiPhuongLabel;
+    @FXML
+    Label ketQuaLabel;
 }

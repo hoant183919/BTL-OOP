@@ -1,13 +1,12 @@
 package views.searchscene;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class CulturalFestivalSceneController extends BaseSceneController implements  Initializable{
+
+public class CulturalFestivalSceneController extends BaseSceneController{
     @FXML
     Label tenLabel;
     @FXML
@@ -18,10 +17,20 @@ public class CulturalFestivalSceneController extends BaseSceneController impleme
     Label thoiDiemToChucLanDauLabel;
     @FXML
     Label ghiChuLabel;
+    @FXML
+    TextField keySearch;
+
+    @FXML
+    public void setWikipediaSearch() {
+
+    }
+    @FXML
+    public void setNguoiKeSuSearch() {
+    }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void search(javafx.event.ActionEvent event) {
 
     }
 }

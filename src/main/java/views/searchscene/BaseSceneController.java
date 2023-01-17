@@ -18,13 +18,15 @@ public class BaseSceneController {
     Label idLabel;
     @FXML
     Label moTaLabel;
+
+    // Back to Splash Scene
     @FXML
-    public void backToSearchScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(("/searchscene/SearchScene.fxml")));
-        Scene splashScene = new Scene(root);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(splashScene);
+    public void backToSplashScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(("/SplashScene.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
         stage.show();
     }
-
 }
+
