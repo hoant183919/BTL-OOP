@@ -7,15 +7,13 @@ import data.datamanipulation.*;
 import data.datamanipulation.datamanipulation.*;
 import entity.*;
 import utils.HistoricType;
-import utils.Utils;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 
-import static utils.configs.ConfigResource.*;
+import static utils.configs.ConfigResourceData.*;
 
 public class DataCollectionController {
 
@@ -108,43 +106,5 @@ public class DataCollectionController {
      * @param lists
      */
     public void getRelationship(List<List<BaseEntity>> lists) {
-        for (int i = 0; i < lists.size(); i++) {
-            List<BaseEntity> baseEntities = lists.get(i);
-            int k = 0;
-            while (k < baseEntities.size()) {
-                BaseEntity baseEntity = baseEntities.get(k);
-                System.out.println(baseEntity.getTen() + " --- ");
-                for (int j = 0; j < lists.size(); j++) {
-                    List<BaseEntity> baseEntitiesSearch = lists.get(j);
-                    if (baseEntity.getMoTa() != null) {
-                        int l = 0;
-                        while (l < baseEntitiesSearch.size()) {
-                            BaseEntity baseEntitySearch = baseEntitiesSearch.get(l);
-                            if (!baseEntity.getTen().equals(baseEntitySearch.getTen())) {
-                                if (Utils.removeSign4VietnameseString(baseEntity.getMoTa()).toLowerCase().contains(Utils.removeSign4VietnameseString(baseEntitySearch.getTen()).toLowerCase())) {
-                                    StringTokenizer stringTokenizer = new StringTokenizer(baseEntity.getMoTa(), ".");
-                                    List<String> infos = Utils.getSentenceHasInfo(stringTokenizer, baseEntitySearch.getTen());
-                                    if (infos.size() != 0) {
-                                        System.out.print(baseEntitySearch.getTen() + " - ");
-                                        int p = 0;
-                                        while (p < infos.size()) {
-                                            if (infos.get(p) != null && !infos.get(p).equals(""))
-                                                System.out.print(infos.get(p) + "  ");
-                                            p++;
-                                        }
-                                    }
-                                    System.out.println();
-                                }
-                            }
-                            l++;
-                        }
-                    }
-                }
-                System.out.println();
-                System.out.println("***********************");
-                System.out.println();
-                k++;
-            }
-        }
     }
 }

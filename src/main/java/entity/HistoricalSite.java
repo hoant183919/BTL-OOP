@@ -2,7 +2,9 @@ package entity;
 
 import org.json.simple.JSONObject;
 
-public class HistoricalSite extends BaseEntity{
+import java.util.List;
+
+public class HistoricalSite extends HistoricObject{
     public HistoricalSite(int id) {
         super(id);
     }
@@ -62,6 +64,11 @@ public class HistoricalSite extends BaseEntity{
         jsonObject.put("ghiChu", getGhiChu());
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("mieuTa", getMieuTa());
+        jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
+        jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
+        jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());
+        jsonObject.put("diTichLienQuan", getRelatedToHistoricalSites());
+        jsonObject.put("suKienLienQuan", getRelatedToHistoricEvents());
         return jsonObject;
     }
 }

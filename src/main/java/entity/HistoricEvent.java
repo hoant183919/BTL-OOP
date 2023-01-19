@@ -2,7 +2,7 @@ package entity;
 
 import java.awt.*;
 
-public class HistoricEvent extends BaseEntity {
+public class HistoricEvent extends HistoricObject {
     public HistoricEvent(int id) {
         super(id);
     }

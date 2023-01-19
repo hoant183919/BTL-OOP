@@ -1,6 +1,7 @@
 package views.datacollectionscene;
 
-import datacollectioncontroller.DataCollectionController;
+import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionNguoiKeSuController;
+import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikipediaController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import utils.HistoricType;
-import utils.configs.ConfigResource;
+import utils.configs.ConfigResourceFXML;
 
 import java.io.IOException;
 
-public class DataCollectionSceneController {
+public class DataCollectionSceneController implements Runnable{
     private Stage stage;
     private Scene scene;
     private HistoricType historicType;
@@ -42,8 +43,9 @@ public class DataCollectionSceneController {
     // Start Data Collecting
     @FXML
     public void startDataCollecting(ActionEvent event) throws IOException {
-        DataCollectionController dataCollectionController = new DataCollectionController();
-        dataCollectionController.collectData(historicType);
+        DataCollectionSceneController dataCollectionSceneController = new DataCollectionSceneController();
+        Thread thread = new Thread(dataCollectionSceneController);
+        thread.start();
         statusLabel.setText("Completed");
 
     }
@@ -51,11 +53,25 @@ public class DataCollectionSceneController {
     // Switch to Splash Scene
     @FXML
     public void backToSplashScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(("/SplashScene.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPALSH_SCENE_PATH));
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
+    @Override
+    public void run() {
+        try {
+            // với wikipedia
+            DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+            dataCollectionWikipediaController.collectData();
+
+            //với nguoikesu
+            DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
+            dataCollectionNguoiKeSuController.collectData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

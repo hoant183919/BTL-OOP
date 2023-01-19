@@ -64,6 +64,11 @@ public class WarEvent extends HistoricEvent {
         jsonObject.put("doiPhuong", getDoiPhuong());
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("ketQua", getKetQua());
+        jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
+        jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
+        jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());
+        jsonObject.put("diTichLienQuan", getRelatedToHistoricalSites());
+        jsonObject.put("suKienLienQuan", getRelatedToHistoricEvents());
         return jsonObject;
     }
 }

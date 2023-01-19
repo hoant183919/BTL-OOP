@@ -4,7 +4,7 @@ import org.json.simple.JSONObject;
 
 import java.util.List;
 
-public class HistoricalDynasty extends BaseEntity{
+public class HistoricalDynasty extends HistoricObject{
     public HistoricalDynasty(int id) {
         super(id);
     }
@@ -21,7 +21,29 @@ public class HistoricalDynasty extends BaseEntity{
         this.kinhDo = kinhDo;
     }
 
-    private List<Dominator> danhSachNguoiDungDau;
+    public String getThoiGianBatDau() {
+        return thoiGianBatDau;
+    }
+
+    public void setThoiGianBatDau(String thoiGianBatDau) {
+        this.thoiGianBatDau = thoiGianBatDau;
+    }
+
+    public String getThoiGianKetThuc() {
+        return thoiGianKetThuc;
+    }
+
+    public void setThoiGianKetThuc(String thoiGianKetThuc) {
+        this.thoiGianKetThuc = thoiGianKetThuc;
+    }
+
+    public String getThoiKy() {
+        return thoiKy;
+    }
+
+    public void setThoiKy(String thoiKy) {
+        this.thoiKy = thoiKy;
+    }
 
     @Override
     public JSONObject toJSONObject(){
@@ -30,6 +52,11 @@ public class HistoricalDynasty extends BaseEntity{
         jsonObject.put("ten", getTen());
         jsonObject.put("kinhDo", getKinhDo());
         jsonObject.put("moTa", getMoTa());
+        jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
+        jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
+        jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());
+        jsonObject.put("diTichLienQuan", getRelatedToHistoricalSites());
+        jsonObject.put("suKienLienQuan", getRelatedToHistoricEvents());
         return jsonObject;
     }
 }

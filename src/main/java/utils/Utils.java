@@ -76,4 +76,23 @@ public class Utils {
         }
         return infos;
     }
+
+    public static boolean checkStringContainString(String str, String strSearch){
+        if (Utils.removeSign4VietnameseString(str).toLowerCase().contains(Utils.removeSign4VietnameseString(strSearch).toLowerCase())) {
+            StringTokenizer stringTokenizer = new StringTokenizer(str, ".");
+            List<String> infos = Utils.getSentenceHasInfo(stringTokenizer, strSearch);
+            if (infos.size() != 0) {
+                System.out.print(strSearch + " - ");
+                int p = 0;
+                while (p < infos.size()) {
+                    if (infos.get(p) != null && !infos.get(p).equals(""))
+                        System.out.print(infos.get(p) + "  ");
+                    p++;
+                }
+            }
+            System.out.println();
+            return true;
+        }
+        return false;
+    }
 }

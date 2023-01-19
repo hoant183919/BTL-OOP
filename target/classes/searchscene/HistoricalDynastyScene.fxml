@@ -9,7 +9,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.HistoricalDynastySceneController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2500.0" prefWidth="1026.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3000.0" prefWidth="1026.0">
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
@@ -61,7 +61,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="101.0" layoutY="336.0" prefHeight="1500.0" prefWidth="917.0" wrapText="true">
+            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="101.0" layoutY="336.0" prefHeight="2000.0" prefWidth="917.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

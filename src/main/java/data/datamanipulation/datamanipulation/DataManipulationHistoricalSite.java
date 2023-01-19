@@ -1,11 +1,10 @@
 package data.datamanipulation.datamanipulation;
 
 import data.datamanipulation.IDataManipulationHistoricalSite;
-import entity.HistoricalFigure;
 import entity.HistoricalSite;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import utils.configs.ConfigResource;
+import utils.configs.ConfigResourceData;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,7 +16,7 @@ public class DataManipulationHistoricalSite implements IDataManipulationHistoric
     @Override
     public void insertDataHistoricalSites(String url, List<HistoricalSite> historicalSites) {
         JSONArray jsonArrayHistoricalSites = new JSONArray();
-        for (HistoricalSite historicalSite : historicalSites){
+        for (HistoricalSite historicalSite : historicalSites) {
             jsonArrayHistoricalSites.add(historicalSite.toJSONObject());
         }
         try {
@@ -31,7 +30,7 @@ public class DataManipulationHistoricalSite implements IDataManipulationHistoric
 
     @Override
     public List<HistoricalSite> getDataHistoricalSites(String url) {
-        url += ConfigResource.NAME_FILE[3];
+        url += ConfigResourceData.NAME_FILE[3];
         List<HistoricalSite> historicalSites = new ArrayList<>();
         JSONParser parser = new JSONParser();
         try {
@@ -43,6 +42,11 @@ public class DataManipulationHistoricalSite implements IDataManipulationHistoric
                 HistoricalSite historicalSite = new HistoricalSite(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
                 historicalSite.setMoTa((String) jsonObject.get("moTa"));
                 historicalSite.setTen((String) jsonObject.get("ten"));
+                historicalSite.setDiaDiem((String) jsonObject.get("diaDiem"));
+                historicalSite.setNamCN((String) jsonObject.get("namCN"));
+                historicalSite.setLoaiDiTich((String) jsonObject.get("loaiDiTich"));
+                historicalSite.setMieuTa((String) jsonObject.get("mieuTa"));
+                historicalSite.setGhiChu((String) jsonObject.get("ghiChu"));
                 historicalSites.add(historicalSite);
                 k++;
             }

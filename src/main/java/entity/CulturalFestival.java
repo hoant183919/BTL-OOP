@@ -2,13 +2,14 @@ package entity;
 
 import org.json.simple.JSONObject;
 
-public class CulturalFestival extends BaseEntity{
+import java.util.List;
+
+public class CulturalFestival extends HistoricObject{
     public CulturalFestival(int id) {
         super(id);
     }
     private String thoiDiemToChucLanDau; // timeFirstOrganize
     private String diaDiem; // location
-    private String quyMoLeHoi;
     private String thoiGian; // time
     private String ghiChu; // note
 
@@ -36,14 +37,6 @@ public class CulturalFestival extends BaseEntity{
         this.diaDiem = diaDiem;
     }
 
-    public String getQuyMoLeHoi() {
-        return quyMoLeHoi;
-    }
-
-    public void setQuyMoLeHoi(String quyMoLeHoi) {
-        this.quyMoLeHoi = quyMoLeHoi;
-    }
-
     public String getThoiGian() {
         return thoiGian;
     }
@@ -62,6 +55,11 @@ public class CulturalFestival extends BaseEntity{
         jsonObject.put("thoiDiemToChucLanDau", getThoiDiemToChucLanDau());
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("ghiChu", getGhiChu());
+        jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
+        jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
+        jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());
+        jsonObject.put("diTichLienQuan", getRelatedToHistoricalSites());
+        jsonObject.put("suKienLienQuan", getRelatedToHistoricEvents());
         return jsonObject;
     }
 }

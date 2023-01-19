@@ -6,7 +6,7 @@ import entity.CulturalFestival;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import utils.configs.ConfigResource;
+import utils.configs.ConfigResourceData;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class DataManipulationCulturalFestival implements IDataManipulationCultur
 
     @Override
     public List<CulturalFestival> getDataCulturalFestivals(String url) {
-        url += ConfigResource.NAME_FILE[0];
+        url += ConfigResourceData.NAME_FILE[0];
         List<CulturalFestival> culturalFestivals = new ArrayList<>();
         JSONParser parser = new JSONParser();
         try {
@@ -38,11 +38,19 @@ public class DataManipulationCulturalFestival implements IDataManipulationCultur
             JSONArray jsonArray = (JSONArray) parser.parse(reader);
             int k = 0;
             while (k < jsonArray.size()) {
-                JSONObject jsonObject = (JSONObject) jsonArray.get(k);
-                CulturalFestival culturalFestival = new CulturalFestival(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
-                culturalFestival.setMoTa((String) jsonObject.get("moTa"));
-                culturalFestival.setTen((String) jsonObject.get("ten"));
-                culturalFestivals.add(culturalFestival);
+                try {
+                    JSONObject jsonObject = (JSONObject) jsonArray.get(k);
+                    CulturalFestival culturalFestival = new CulturalFestival(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
+                    culturalFestival.setMoTa((String) jsonObject.get("moTa"));
+                    culturalFestival.setTen((String) jsonObject.get("ten"));
+                    culturalFestival.setThoiDiemToChucLanDau((String) jsonObject.get("thoiDiemToChucLanDau"));
+                    culturalFestival.setDiaDiem((String) jsonObject.get("diaDiem"));
+                    culturalFestival.setThoiGian((String) jsonObject.get("thoiGian"));
+                    culturalFestival.setGhiChu((String) jsonObject.get("ghiChu"));
+                    culturalFestivals.add(culturalFestival);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
                 k++;
             }
         } catch (FileNotFoundException e) {

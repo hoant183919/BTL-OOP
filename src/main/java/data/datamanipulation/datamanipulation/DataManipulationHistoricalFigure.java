@@ -4,7 +4,7 @@ import data.datamanipulation.IDataManipulationHistoricalFigure;
 import entity.HistoricalFigure;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import utils.configs.ConfigResource;
+import utils.configs.ConfigResourceData;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -30,7 +30,7 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
 
     @Override
     public List<HistoricalFigure> getDataHistoricalFigures(String url) {
-        url += ConfigResource.NAME_FILE[2];
+        url += ConfigResourceData.NAME_FILE[2];
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         JSONParser parser = new JSONParser();
         try {

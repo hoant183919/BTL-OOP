@@ -9,7 +9,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.CulturalFestivalSceneController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="1026.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3000.0" prefWidth="1026.0">
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
@@ -51,12 +51,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="384.0" prefHeight="30.0" prefWidth="64.0" text="Mo ta:">
+            <Label layoutX="35.0" layoutY="581.0" prefHeight="30.0" prefWidth="64.0" text="Mo ta:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="30.0" layoutY="572.0" prefHeight="34.0" prefWidth="85.0" text="Ghi chu:">
+            <Label layoutX="30.0" layoutY="382.0" prefHeight="34.0" prefWidth="85.0" text="Ghi chu:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -86,12 +86,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="382.0" prefHeight="189.0" prefWidth="911.0" wrapText="true">
+            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="117.0" layoutY="581.0" prefHeight="2000.0" prefWidth="911.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="ghiChuLabel" alignment="TOP_LEFT" layoutX="118.0" layoutY="572.0" prefHeight="90.0" prefWidth="895.0" wrapText="true">
+            <Label fx:id="ghiChuLabel" alignment="TOP_LEFT" layoutX="118.0" layoutY="382.0" prefHeight="90.0" prefWidth="895.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

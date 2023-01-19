@@ -1,29 +1,159 @@
 package datacollectioncontroller;
 
-import common.exception.CulturalFestivalDataCollectionException;
-import common.exception.HistoricEventDataCollectionException;
-import common.exception.HistoricalFigureDataCollectionException;
+import data.datamanipulation.*;
+import data.datamanipulation.datamanipulation.*;
 import entity.*;
 import org.jsoup.nodes.Document;
+import utils.Utils;
+import utils.configs.ConfigResourceData;
 import utils.configs.SSLHelper;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javafx.css.StyleOrigin.USER_AGENT;
+import static utils.configs.ConfigResourceData.NAME_FILE;
 
-public interface IDataCollectionController {
-    public List<CulturalFestival> collectionDataCulturalFestival() throws IOException, CulturalFestivalDataCollectionException;
+public interface IDataCollectionController extends IDataCollectionCulturalFestivalController, IDataCollectionHistoricalDynastyController, IDataCollectionHistoricalFigureController, IDataCollectionHistoricalSiteController, IDataCollectionHistoricEventController {
 
-    public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException, HistoricEventDataCollectionException;
-
-    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException;
-
-    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException;
-
-    public List<HistoricEvent> collectionDataHistoricEvent() throws IOException;
-
+    /**
+     * Lấy document của trang web
+     *
+     * @param url
+     * @return
+     * @throws IOException
+     */
     public default Document getDocument(String url) throws IOException {
         return SSLHelper.getConnection(url).userAgent(String.valueOf(USER_AGENT)).get();
+    }
+
+    /**
+     * Tìm mối quan hệ giữa các model trong cùng 1 trang web
+     *
+     * @param list
+     */
+    public default void getRelationship(List<?> list, List<CulturalFestival> culturalFestivalsSearch, List<HistoricalDynasty> historicalDynastiesSearch, List<HistoricalFigure> historicalFiguresSearch, List<HistoricalSite> historicalSitesSearch, List<HistoricEvent> historicEventsSearch) throws IOException {
+        int k = 0;
+        while (k < list.size()) {
+            HistoricObject historicObject = (HistoricObject) list.get(k);
+            System.out.println(historicObject.getTen() + " --- ");
+            if (historicObject.getMoTa() != null) {
+                int l = 0;
+
+                List<CulturalFestival> culturalFestivals = culturalFestivalsSearch;
+                List<String> relatedToCulturalFestivals = new ArrayList<>();
+                while (l < culturalFestivals.size()) {
+                    CulturalFestival culturalFestival = culturalFestivals.get(l);
+                    if (!historicObject.getTen().equals(culturalFestival.getTen())) {
+                        if (Utils.checkStringContainString(historicObject.getMoTa(), culturalFestival.getTen())) {
+                            relatedToCulturalFestivals.add(culturalFestival.getTen());
+                        }
+                    }
+                    l++;
+                }
+                historicObject.setRelatedToCulturalFestivals(relatedToCulturalFestivals);
+
+                l = 0;
+
+                List<HistoricalFigure> historicalFigures = historicalFiguresSearch;
+                List<String> relatedToHistoricalFigures = new ArrayList<>();
+                while (l < historicalFigures.size()) {
+                    HistoricalFigure historicalFigure = historicalFigures.get(l);
+                    if (!historicObject.getTen().equals(historicalFigure.getTen())) {
+                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalFigure.getTen())) {
+                            relatedToHistoricalFigures.add(historicalFigure.getTen());
+                        }
+                    }
+                    l++;
+                }
+                historicObject.setRelatedToHistoricalFigures(relatedToHistoricalFigures);
+
+                l = 0;
+
+                List<HistoricalDynasty> historicalDynasties = historicalDynastiesSearch;
+                List<String> relatedToHistoricalDynasties = new ArrayList<>();
+                while (l < historicalDynasties.size()) {
+                    HistoricalDynasty historicalDynasty = historicalDynasties.get(l);
+                    if (!historicObject.getTen().equals(historicalDynasty.getTen())) {
+                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalDynasty.getTen())) {
+                            relatedToHistoricalDynasties.add(historicalDynasty.getTen());
+                        }
+                    }
+                    l++;
+                }
+                historicObject.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
+
+                l = 0;
+
+                List<HistoricalSite> historicalSites = historicalSitesSearch;
+                List<String> relatedToHistoricalSites = new ArrayList<>();
+                while (l < historicalSites.size()) {
+                    HistoricalSite historicalSite = historicalSites.get(l);
+                    if (!historicObject.getTen().equals(historicalSite.getTen())) {
+                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalSite.getTen())) {
+                            relatedToHistoricalSites.add(historicalSite.getTen());
+                        }
+                    }
+                    l++;
+                }
+                historicObject.setRelatedToHistoricalSites(relatedToHistoricalSites);
+
+                l = 0;
+
+                List<HistoricEvent> historicEvents = historicEventsSearch;
+                List<String> relatedToHistoricEvents = new ArrayList<>();
+                while (l < historicEvents.size()) {
+                    HistoricEvent historicEvent = historicEvents.get(l);
+                    if (!historicObject.getTen().equals(historicEvent.getTen())) {
+                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicEvent.getTen())) {
+                            relatedToHistoricEvents.add(historicEvent.getTen());
+                        }
+                    }
+                    l++;
+                }
+                historicObject.setRelatedToHistoricEvents(relatedToHistoricEvents);
+            }
+            k++;
+        }
+    }
+
+    public default void collectData() throws IOException {
+        try {
+            List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();
+            List<HistoricalDynasty> historicalDynasties = collectionDataHistoricalDynasty();
+            List<HistoricalFigure> historicalFigures = collectionDataHistoricalFigure();
+            List<HistoricalSite> historicalSites = collectionDataHistoricalSite();
+            List<HistoricEvent> historicEvents = collectionDataHistoricEvent();
+
+            getRelationship(culturalFestivals, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalDynasties, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalFigures, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalSites, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicEvents, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+
+            if (culturalFestivals != null) {
+                IDataManipulationCulturalFestival dataManipulationCulturalFestival = new DataManipulationCulturalFestival();
+                dataManipulationCulturalFestival.insertDataCulturalFestivals(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[0], culturalFestivals);
+            }
+            if (historicalDynasties != null) {
+                IDataManipulationHistoricalDynasty dataManipulationHistoricalDynasty = new DataManipulationHistoricalDynasty();
+                dataManipulationHistoricalDynasty.insertDataHistoricalDynasties(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[1], historicalDynasties);
+            }
+            if (historicalFigures != null) {
+                IDataManipulationHistoricalFigure dataManipulationHistoricalFigure = new DataManipulationHistoricalFigure();
+                dataManipulationHistoricalFigure.insertDataHistoricalFigures(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[2], historicalFigures);
+            }
+            if (historicalSites != null) {
+                IDataManipulationHistoricalSite dataManipulationHistoricalSite = new DataManipulationHistoricalSite();
+                dataManipulationHistoricalSite.insertDataHistoricalSites(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[3], historicalSites);
+            }
+            if (historicEvents != null) {
+                IDataManipulationHistoricEvent dataManipulationHistoricEvent = new DataManipulationHistoricEvent();
+                dataManipulationHistoricEvent.insertDataHistoricEvents(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[4], historicEvents);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
