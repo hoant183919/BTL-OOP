@@ -1,5 +1,6 @@
 package views.searchscene;
 
+import entity.HistoricalDynasty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,6 +14,13 @@ public class HistoricalDynastySceneController extends BaseSceneController {
     Label tenTrieuDaiLabel;
     @FXML
     Label kinhDoLabel;
+
+    public  void setHistoricalDynasty(HistoricalDynasty historicalDynasty) {
+        idLabel.setText(String.valueOf(historicalDynasty.getId()));
+        tenTrieuDaiLabel.setText(historicalDynasty.getTen());
+        kinhDoLabel.setText(historicalDynasty.getKinhDo());
+        moTaLabel.setText(historicalDynasty.getMoTa());
+    }
 
 
 }

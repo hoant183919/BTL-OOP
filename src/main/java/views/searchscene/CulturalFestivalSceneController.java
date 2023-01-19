@@ -1,5 +1,6 @@
 package views.searchscene;
 
+import entity.CulturalFestival;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,20 +18,15 @@ public class CulturalFestivalSceneController extends BaseSceneController{
     Label thoiDiemToChucLanDauLabel;
     @FXML
     Label ghiChuLabel;
-    @FXML
-    TextField keySearch;
 
-    @FXML
-    public void setWikipediaSearch() {
-
+    public void setCulturalFestival(CulturalFestival culturalFestival) {
+        idLabel.setText(String.valueOf(culturalFestival.getId()));
+        tenLabel.setText(culturalFestival.getTen());
+        thoiGianLabel.setText(culturalFestival.getThoiGian());
+        diaDiemLabel.setText(culturalFestival.getDiaDiem());
+        thoiDiemToChucLanDauLabel.setText(culturalFestival.getThoiDiemToChucLanDau());
+        ghiChuLabel.setText(culturalFestival.getGhiChu());
+        moTaLabel.setText(culturalFestival.getMoTa());
     }
-    @FXML
-    public void setNguoiKeSuSearch() {
-    }
 
-
-    @FXML
-    public void search(javafx.event.ActionEvent event) {
-
-    }
 }

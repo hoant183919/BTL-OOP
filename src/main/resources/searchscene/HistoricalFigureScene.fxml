@@ -5,16 +5,15 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.HistoricalFigureSceneController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="1026.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3000.0" prefWidth="1026.0">
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
-                <Button mnemonicParsing="false" onAction="#backToSplashScene" text="Back" />
+                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Back" />
               </items>
             </ToolBar>
             <Label layoutX="35.0" layoutY="85.0" prefHeight="35.0" prefWidth="75.0" text="Nguon: ">
@@ -22,12 +21,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenLabel" layoutX="85.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="tenLabel" alignment="TOP_LEFT" layoutX="85.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Line endX="922.0" layoutX="102.0" layoutY="692.0" startX="-100.0" />
             <Label layoutX="35.0" layoutY="135.0" prefHeight="35.0" prefWidth="40.0" text="ID:">
                <font>
                   <Font size="20.0" />
@@ -48,12 +46,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" layoutX="76.0" layoutY="135.0" prefHeight="35.0" prefWidth="108.0">
+            <Label fx:id="idLabel" alignment="TOP_LEFT" layoutX="76.0" layoutY="135.0" prefHeight="35.0" prefWidth="108.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenHuyLabel" layoutX="505.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="tenHuyLabel" alignment="TOP_LEFT" layoutX="505.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -63,7 +61,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenChuHanLabel" layoutX="157.0" layoutY="231.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="tenChuHanLabel" alignment="TOP_LEFT" layoutX="157.0" layoutY="231.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -73,7 +71,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="namSinhMatLabel" layoutX="184.0" layoutY="278.0" prefHeight="35.0" prefWidth="633.0">
+            <Label fx:id="namSinhMatLabel" alignment="TOP_LEFT" layoutX="184.0" layoutY="278.0" prefHeight="35.0" prefWidth="633.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -83,7 +81,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="mieuHieuLabel" layoutX="138.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="mieuHieuLabel" alignment="TOP_LEFT" layoutX="138.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -93,7 +91,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="thuyHieuLabel" layoutX="573.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="thuyHieuLabel" alignment="TOP_LEFT" layoutX="573.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -103,12 +101,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="nienHieuLabel" layoutX="138.0" layoutY="374.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="nienHieuLabel" alignment="TOP_LEFT" layoutX="138.0" layoutY="374.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="vaiTroLabel" layoutX="110.0" layoutY="422.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="vaiTroLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="422.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -118,7 +116,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="theThuLabel" layoutX="124.0" layoutY="469.0" prefHeight="35.0" prefWidth="391.0">
+            <Label fx:id="theThuLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="469.0" prefHeight="35.0" prefWidth="391.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -128,7 +126,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="moTaLabel" layoutX="110.0" layoutY="556.0" prefHeight="123.0" prefWidth="887.0">
+            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="556.0" prefHeight="2000.0" prefWidth="906.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -138,12 +136,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="triViLabel" layoutX="98.0" layoutY="513.0" prefHeight="35.0" prefWidth="391.0">
+            <Label fx:id="triViLabel" alignment="TOP_LEFT" layoutX="98.0" layoutY="513.0" prefHeight="35.0" prefWidth="391.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="nguonLabel" layoutX="124.0" layoutY="85.0" prefHeight="35.0" prefWidth="435.0">
+            <Label fx:id="nguonLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="85.0" prefHeight="35.0" prefWidth="435.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

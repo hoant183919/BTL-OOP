@@ -1,0 +1,9 @@
+package utils;
+
+public enum SearchType {
+    HISTORICAL_DYNASTY,
+    HISTORICAL_FIGURE,
+    HISTORIC_EVENT,
+    HISTORICAL_SITE,
+    CULTURAL_FESTIVAL
+}

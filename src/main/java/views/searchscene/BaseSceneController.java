@@ -19,10 +19,10 @@ public class BaseSceneController {
     @FXML
     Label moTaLabel;
 
-    // Back to Splash Scene
+    // Back to Search Scene
     @FXML
-    public void backToSplashScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(("/SplashScene.fxml")));
+    public void backToSearchScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(("/searchscene/SearchScene.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);

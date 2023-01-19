@@ -103,24 +103,24 @@ public class DataSummarySceneController implements Initializable {
     TableColumn<WarEvent, String> ketQuaHistoricEventColumn;
 
     String[] historicalDynastyData = {
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\wikipedia\\historicaldynasties.json",
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\nguoikesu\\historicaldynasties.json"
+            "src\\main\\java\\data\\reservedata\\wikipedia\\historicaldynasties.json",
+            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicaldynasties.json"
     };
     String[] culturalFestivalData = {
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\wikipedia\\culturalfestivals.json",
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\nguoikesu\\culturalfestivals.json"
+            "src\\main\\java\\data\\reservedata\\wikipedia\\culturalfestivals.json",
+            "src\\main\\java\\data\\reservedata\\nguoikesu\\culturalfestivals.json"
     };
     String[] historicalFigureData = {
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\wikipedia\\historicalfigures.json",
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\nguoikesu\\historicalfigures.json"
+            "src\\main\\java\\data\\reservedata\\wikipedia\\historicalfigures.json",
+            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicalfigures.json"
     };
     String[] historicalSiteData = {
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\wikipedia\\historicalsites.json",
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\nguoikesu\\historicalsites.json"
+            "src\\main\\java\\data\\reservedata\\wikipedia\\historicalsites.json",
+            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicalsites.json"
     };
     String[] historicEventData = {
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\wikipedia\\historicevents.json",
-            "D:\\BTL_NewVersion\\src\\main\\java\\data\\reservedata\\nguoikesu\\historicevents.json"
+            "src\\main\\java\\data\\reservedata\\wikipedia\\historicevents.json",
+            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicevents.json"
     };
 
 

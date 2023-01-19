@@ -30,7 +30,7 @@ public class DataCollectionSceneController {
     @FXML
     public void setHistoricType(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
-        System.out.println("Menu item: " + mi.getText());
+
         if(mi == wikipediaSource) {
             historicType = HistoricType.WIKIPEDIA;
         }
@@ -43,7 +43,7 @@ public class DataCollectionSceneController {
     @FXML
     public void startDataCollecting(ActionEvent event) throws IOException {
         DataCollectionController dataCollectionController = new DataCollectionController();
-        dataCollectionController.collectData();
+        dataCollectionController.collectData(historicType);
         statusLabel.setText("Completed");
 
     }

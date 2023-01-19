@@ -14,7 +14,7 @@ public class SearchHistoricalDynastyController extends SearchController {
         List<HistoricalDynasty> historicalDynasties = new ArrayList<>();
         List<HistoricalDynasty> allHistoricalDynasty = getAllHistoricalDynasty();
 
-        for (HistoricalDynasty historicalDynasty : historicalDynasties) {
+        for (HistoricalDynasty historicalDynasty : allHistoricalDynasty) {
             if (getSimilarityKeyWordInString(keyWord, historicalDynasty.getTen()) >= ConfigAccuracy.ACCURACY)
                 historicalDynasties.add(historicalDynasty);
         }

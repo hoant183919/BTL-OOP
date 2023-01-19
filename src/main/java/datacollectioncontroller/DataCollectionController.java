@@ -6,6 +6,7 @@ import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikip
 import data.datamanipulation.*;
 import data.datamanipulation.datamanipulation.*;
 import entity.*;
+import utils.HistoricType;
 import utils.Utils;
 
 import java.io.IOException;
@@ -22,11 +23,13 @@ public class DataCollectionController {
      * Thu thập toàn bộ dữ liệu
      * @throws IOException
      */
-    public void collectData() throws IOException {
+    public void collectData(HistoricType historicType) throws IOException {
         HashMap<String, IDataCollectionController> dataCollectionControllers = new HashMap<>();
-        dataCollectionControllers.put(RESERVE_DATA_NGUOIKESU_PATH, new DataCollectionNguoiKeSuController());
-        dataCollectionControllers.put(RESERVE_DATA_WIKIPEDIA_PATH, new DataCollectionWikipediaController());
-        dataCollectionControllers.put(RESERVE_DATA_NGHIENCUULICHSU_PATH, new DataCollectionNghienCuuLichSuController());
+        switch (historicType) {
+            case WIKIPEDIA: dataCollectionControllers.put(RESERVE_DATA_WIKIPEDIA_PATH, new DataCollectionWikipediaController());
+            case NGUOI_KE_SU: dataCollectionControllers.put(RESERVE_DATA_NGUOIKESU_PATH, new DataCollectionNguoiKeSuController());
+            case NGHIEN_CUU_LICH_SU: dataCollectionControllers.put(RESERVE_DATA_NGHIENCUULICHSU_PATH, new DataCollectionNghienCuuLichSuController());
+        }
         for (Map.Entry<String, IDataCollectionController> entry : dataCollectionControllers.entrySet()) {
             if (entry.getValue() != null) {
                 try {
