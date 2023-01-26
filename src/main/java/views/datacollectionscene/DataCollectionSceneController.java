@@ -15,7 +15,7 @@ import utils.configs.ConfigResourceFXML;
 
 import java.io.IOException;
 
-public class DataCollectionSceneController implements Runnable{
+public class DataCollectionSceneController {
     private Stage stage;
     private Scene scene;
     private HistoricType historicType;
@@ -25,30 +25,7 @@ public class DataCollectionSceneController implements Runnable{
     @FXML
     MenuItem nguoiKeSuSource;
     @FXML
-    Label statusLabel;
-
-    // Set up Data Source
-    @FXML
-    public void setHistoricType(ActionEvent event) {
-        MenuItem mi = (MenuItem) event.getSource();
-
-        if(mi == wikipediaSource) {
-            historicType = HistoricType.WIKIPEDIA;
-        }
-        else if(mi == nguoiKeSuSource) {
-            historicType = HistoricType.NGUOI_KE_SU;
-        }
-        statusLabel.setText("Ready");
-    }
-    // Start Data Collecting
-    @FXML
-    public void startDataCollecting(ActionEvent event) throws IOException {
-        DataCollectionSceneController dataCollectionSceneController = new DataCollectionSceneController();
-        Thread thread = new Thread(dataCollectionSceneController);
-        thread.start();
-        statusLabel.setText("Completed");
-
-    }
+    Label statusLabel = null;
 
     // Switch to Splash Scene
     @FXML
@@ -60,18 +37,44 @@ public class DataCollectionSceneController implements Runnable{
         stage.show();
     }
 
-    @Override
-    public void run() {
-        try {
-            // với wikipedia
-            DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
-            dataCollectionWikipediaController.collectData();
-
-            //với nguoikesu
-            DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
-            dataCollectionNguoiKeSuController.collectData();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    // Set up Data Source
+    @FXML
+    public void setHistoricType(ActionEvent event) {
+        MenuItem mi = (MenuItem) event.getSource();
+        if(mi == wikipediaSource) {
+            historicType = HistoricType.WIKIPEDIA;
         }
+        else if(mi == nguoiKeSuSource) {
+            historicType = HistoricType.NGUOI_KE_SU;
+        }
+        statusLabel.setText("Ready");
     }
+    // Start Data Collecting
+    @FXML
+    public void startDataCollecting(ActionEvent event) {
+        Thread thread = new Thread() {
+            public void run() {
+                try {
+                    // với wikipedia
+                    if(historicType == HistoricType.WIKIPEDIA) {
+                        DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+                        dataCollectionWikipediaController.collectData();
+                    }
+                    //với nguoikesu
+                    else if (historicType == HistoricType.NGUOI_KE_SU) {
+                        DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
+                        dataCollectionNguoiKeSuController.collectData();
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        thread.start();
+        if(thread.isAlive()) {
+            statusLabel.setText("Processing");
+        } else statusLabel.setText("Completed");
+
+    }
+
 }

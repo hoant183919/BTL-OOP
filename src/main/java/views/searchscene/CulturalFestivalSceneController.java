@@ -20,7 +20,6 @@ public class CulturalFestivalSceneController extends BaseSceneController{
     Label ghiChuLabel;
 
     public void setCulturalFestival(CulturalFestival culturalFestival) {
-        idLabel.setText(String.valueOf(culturalFestival.getId()));
         tenLabel.setText(culturalFestival.getTen());
         thoiGianLabel.setText(culturalFestival.getThoiGian());
         diaDiemLabel.setText(culturalFestival.getDiaDiem());

@@ -13,95 +13,75 @@
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
-                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Back" />
+                <Button mnemonicParsing="false" onAction="#backToSearchScene" prefHeight="25.0" prefWidth="50.0" text="Trở lại" />
               </items>
             </ToolBar>
-            <Label layoutX="35.0" layoutY="85.0" prefHeight="35.0" prefWidth="75.0" text="Nguon: ">
+            <Label layoutX="36.0" layoutY="68.0" prefHeight="35.0" prefWidth="126.0" text="Tên sự kiện:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="nguonLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="86.0" prefHeight="35.0" prefWidth="354.0">
+            <Label fx:id="tenSuKienLabel"  layoutX="155.0" layoutY="68.0" prefHeight="35.0" prefWidth="786.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="130.0" prefHeight="35.0" prefWidth="40.0" text="ID: ">
+            <Label layoutX="36.0" layoutY="122.0" prefHeight="35.0" prefWidth="104.0" text="Thời gian:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" alignment="TOP_LEFT" layoutX="75.0" layoutY="130.0" prefHeight="35.0" prefWidth="95.0">
+            <Label fx:id="thoiGianLabel"  layoutX="134.0" layoutY="122.0" prefHeight="35.0" prefWidth="830.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="173.0" prefHeight="35.0" prefWidth="126.0" text="Ten su kien: ">
+            <Label layoutX="36.0" layoutY="179.0" prefHeight="35.0" prefWidth="80.0" text="Thời kỳ:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenSuKienLabel" alignment="TOP_LEFT" layoutX="161.0" layoutY="173.0" prefHeight="35.0" prefWidth="519.0">
+            <Label fx:id="thoiKyLabel" layoutX="113.0" layoutY="179.0" prefHeight="35.0" prefWidth="859.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="217.0" prefHeight="35.0" prefWidth="104.0" text="Thoi gian: ">
+            <Label layoutX="36.0" layoutY="234.0" prefHeight="35.0" prefWidth="106.0" text="Lực lượng:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="thoiGianLabel" alignment="TOP_LEFT" layoutX="139.0" layoutY="217.0" prefHeight="35.0" prefWidth="519.0">
+            <Label fx:id="lucLuongLabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="276.0" prefHeight="52.0" prefWidth="969.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="266.0" prefHeight="35.0" prefWidth="80.0" text="Thoi ky: ">
+            <Label layoutX="36.0" layoutY="328.0" prefHeight="35.0" prefWidth="132.0" text="Đối phương:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="thoiKyLabel" alignment="TOP_LEFT" layoutX="115.0" layoutY="266.0" prefHeight="35.0" prefWidth="519.0">
+            <Label fx:id="doiPhuongLabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="363.0" prefHeight="67.0" prefWidth="971.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="310.0" prefHeight="35.0" prefWidth="106.0" text="Luc luong: ">
+            <Label layoutX="36.0" layoutY="559.0" prefHeight="35.0" prefWidth="72.0" text="Mô tả:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lucLuongLabel" alignment="TOP_LEFT" layoutX="134.0" layoutY="313.0" prefHeight="67.0" prefWidth="889.0" wrapText="true">
+            <Label fx:id="moTalabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="606.0" prefHeight="2002.0" prefWidth="976.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="394.0" prefHeight="35.0" prefWidth="132.0" text="Doi phuong: ">
+            <Label layoutX="36.0" layoutY="443.0" prefHeight="35.0" prefWidth="88.0" text="Kết quả:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="doiPhuongLabel" alignment="TOP_LEFT" layoutX="161.0" layoutY="394.0" prefHeight="67.0" prefWidth="862.0" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="29.0" layoutY="552.0" prefHeight="35.0" prefWidth="72.0" text="Mo ta: ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="moTalabel" alignment="TOP_LEFT" layoutX="98.0" layoutY="552.0" prefHeight="2000.0" prefWidth="919.0" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="29.0" layoutY="479.0" prefHeight="35.0" prefWidth="88.0" text="Ket qua: ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="ketQuaLabel" alignment="TOP_LEFT" layoutX="115.0" layoutY="479.0" prefHeight="55.0" prefWidth="909.0" wrapText="true">
+            <Label fx:id="ketQuaLabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="489.0" prefHeight="55.0" prefWidth="978.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

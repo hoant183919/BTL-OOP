@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.configs.ConfigResourceFXML;
 import views.datasummaryscene.DataSummarySceneController;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class SplashScene extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource(("/SplashScene.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource((ConfigResourceFXML.SPALSH_SCENE_PATH)));
         Scene splashScene = new Scene(root);
         primaryStage.setScene(splashScene);
         primaryStage.setTitle("Tra cuu lich su");

@@ -13,135 +13,115 @@
          <children>
             <ToolBar prefHeight="42.0" prefWidth="1029.0">
               <items>
-                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Back" />
+                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Trở lại" />
               </items>
             </ToolBar>
-            <Label layoutX="35.0" layoutY="85.0" prefHeight="35.0" prefWidth="75.0" text="Nguon: ">
+            <Label fx:id="tenLabel"  layoutX="96.0" layoutY="60.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenLabel" alignment="TOP_LEFT" layoutX="85.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
+            <Label layoutX="36.0" layoutY="60.0" prefHeight="35.0" prefWidth="50.0" text="Tên:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="135.0" prefHeight="35.0" prefWidth="40.0" text="ID:">
+            <Label layoutX="36.0" layoutY="415.0" prefHeight="35.0" prefWidth="75.0" text="Vai trò:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="185.0" prefHeight="35.0" prefWidth="50.0" text="Ten:">
+            <Label layoutX="36.0" layoutY="112.0" prefHeight="35.0" prefWidth="87.0" text="Tên húy:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="422.0" prefHeight="35.0" prefWidth="75.0" text="Vai tro:">
+            <Label fx:id="tenHuyLabel"  layoutX="124.0" layoutY="112.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="418.0" layoutY="185.0" prefHeight="35.0" prefWidth="75.0" text="Ten huy:">
+            <Label layoutX="36.0" layoutY="214.0" prefHeight="35.0" prefWidth="132.0" text="Tên chữ Hán:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" alignment="TOP_LEFT" layoutX="76.0" layoutY="135.0" prefHeight="35.0" prefWidth="108.0">
+            <Label fx:id="tenChuHanLabel" layoutX="159.0" layoutY="214.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenHuyLabel" alignment="TOP_LEFT" layoutX="505.0" layoutY="185.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
+            <Label layoutX="36.0" layoutY="261.0" prefHeight="35.0" prefWidth="135.0" text="Năm sinh mất:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="231.0" prefHeight="35.0" prefWidth="122.0" text="Ten chu Han: ">
+            <Label fx:id="namSinhMatLabel" layoutX="173.0" layoutY="261.0" prefHeight="35.0" prefWidth="633.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenChuHanLabel" alignment="TOP_LEFT" layoutX="157.0" layoutY="231.0" prefHeight="35.0" prefWidth="294.0" wrapText="true">
+            <Label layoutX="36.0" layoutY="316.0" prefHeight="35.0" prefWidth="110.0" text="Miếu hiệu:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="278.0" prefHeight="35.0" prefWidth="135.0" text="Nam sinh mat: ">
+            <Label fx:id="mieuHieuLabel" layoutX="138.0" layoutY="316.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="namSinhMatLabel" alignment="TOP_LEFT" layoutX="184.0" layoutY="278.0" prefHeight="35.0" prefWidth="633.0">
+            <Label layoutX="36.0" layoutY="165.0" prefHeight="35.0" prefWidth="102.0" text="Thụy hiệu:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="325.0" prefHeight="35.0" prefWidth="110.0" text="Mieu hieu: ">
+            <Label fx:id="thuyHieuLabel" layoutX="147.0" layoutY="165.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="mieuHieuLabel" alignment="TOP_LEFT" layoutX="138.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
+            <Label layoutX="36.0" layoutY="367.0" prefHeight="35.0" prefWidth="103.0" text="Niên hiệu:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="471.0" layoutY="325.0" prefHeight="35.0" prefWidth="102.0" text="Thuy hieu: ">
+            <Label fx:id="nienHieuLabel" layoutX="138.0" layoutY="367.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="thuyHieuLabel" alignment="TOP_LEFT" layoutX="573.0" layoutY="325.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="vaiTroLabel" layoutX="110.0" layoutY="415.0" prefHeight="35.0" prefWidth="294.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="374.0" prefHeight="35.0" prefWidth="103.0" text="Nien hieu: ">
+            <Label layoutX="36.0" layoutY="460.0" prefHeight="35.0" prefWidth="84.0" text="Thế thứ:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="nienHieuLabel" alignment="TOP_LEFT" layoutX="138.0" layoutY="374.0" prefHeight="35.0" prefWidth="294.0">
+            <Label fx:id="theThuLabel" layoutX="122.0" layoutY="460.0" prefHeight="35.0" prefWidth="391.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="vaiTroLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="422.0" prefHeight="35.0" prefWidth="294.0">
+            <Label layoutX="36.0" layoutY="556.0" prefHeight="35.0" prefWidth="69.0" text="Mô tả:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="469.0" prefHeight="35.0" prefWidth="84.0" text="The thu: ">
+            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="37.0" layoutY="591.0" prefHeight="2000.0" prefWidth="976.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="theThuLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="469.0" prefHeight="35.0" prefWidth="391.0">
+            <Label layoutX="36.0" layoutY="505.0" prefHeight="35.0" prefWidth="63.0" text="Trị vì: ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="35.0" layoutY="556.0" prefHeight="35.0" prefWidth="69.0" text="Mo ta: ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="110.0" layoutY="556.0" prefHeight="2000.0" prefWidth="906.0" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="35.0" layoutY="513.0" prefHeight="35.0" prefWidth="63.0" text="Tri vi: ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="triViLabel" alignment="TOP_LEFT" layoutX="98.0" layoutY="513.0" prefHeight="35.0" prefWidth="391.0">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="nguonLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="85.0" prefHeight="35.0" prefWidth="435.0" wrapText="true">
+            <Label fx:id="triViLabel" layoutX="99.0" layoutY="505.0" prefHeight="35.0" prefWidth="391.0">
                <font>
                   <Font size="20.0" />
                </font>

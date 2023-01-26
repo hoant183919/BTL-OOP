@@ -1,5 +1,6 @@
 package views.datasummaryscene;
 
+import dataprocessingcontroller.SummaryController;
 import entity.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,25 +55,25 @@ public class DataSummarySceneController implements Initializable {
 
     // Khai bao Historical Figure TableView
     @FXML
-    TableView<Dominator> historicalFigureTableView;
+    TableView<HistoricalFigure> historicalFigureTableView;
     @FXML
-    TableColumn<Dominator, String> tenHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> tenHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> mieuHieuHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> mieuHieuHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> thuyHieuHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> thuyHieuHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> nienHieuHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> nienHieuHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> tenHuyHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> tenHuyHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> tenChuHanHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> tenChuHanHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> namSinhMatHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> namSinhMatHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> vaiTroHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> vaiTroHistoricalFigureColumn;
     @FXML
-    TableColumn<Dominator, String> triViHistoricalFigureColumn;
+    TableColumn<HistoricalFigure, String> triViHistoricalFigureColumn;
 
     // Khai bao Historical Site TableView
     @FXML
@@ -88,57 +89,29 @@ public class DataSummarySceneController implements Initializable {
 
     // Khai bao Historic Event TableView
     @FXML
-    TableView<WarEvent> historicEventTableView;
+    TableView<HistoricEvent> historicEventTableView;
     @FXML
-    TableColumn<WarEvent, String> tenHistoricEventColumn;
+    TableColumn<HistoricEvent, String> tenHistoricEventColumn;
     @FXML
-    TableColumn<WarEvent, String> thoiGianHistoricEventColumn;
+    TableColumn<HistoricEvent, String> thoiGianHistoricEventColumn;
     @FXML
-    TableColumn<WarEvent, String> thoiKyHistoricEventColumn;
+    TableColumn<HistoricEvent, String> thoiKyHistoricEventColumn;
     @FXML
-    TableColumn<WarEvent, String> lucLuongHistoricEventColumn;
+    TableColumn<HistoricEvent, String> lucLuongHistoricEventColumn;
     @FXML
-    TableColumn<WarEvent, String> doiPhuongHistoricEventColumn;
+    TableColumn<HistoricEvent, String> doiPhuongHistoricEventColumn;
     @FXML
-    TableColumn<WarEvent, String> ketQuaHistoricEventColumn;
+    TableColumn<HistoricEvent, String> ketQuaHistoricEventColumn;
 
-    String[] historicalDynastyData = {
-            "src\\main\\java\\data\\reservedata\\wikipedia\\historicaldynasties.json",
-            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicaldynasties.json"
-    };
-    String[] culturalFestivalData = {
-            "src\\main\\java\\data\\reservedata\\wikipedia\\culturalfestivals.json",
-            "src\\main\\java\\data\\reservedata\\nguoikesu\\culturalfestivals.json"
-    };
-    String[] historicalFigureData = {
-            "src\\main\\java\\data\\reservedata\\wikipedia\\historicalfigures.json",
-            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicalfigures.json"
-    };
-    String[] historicalSiteData = {
-            "src\\main\\java\\data\\reservedata\\wikipedia\\historicalsites.json",
-            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicalsites.json"
-    };
-    String[] historicEventData = {
-            "src\\main\\java\\data\\reservedata\\wikipedia\\historicevents.json",
-            "src\\main\\java\\data\\reservedata\\nguoikesu\\historicevents.json"
-    };
-
-
-
-
-    DataSummary dataSummary = new DataSummary();
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        SummaryController summaryController = new SummaryController();
 
         // Set Historical Dynasty TableView
         tenHistoricalDynastyColumn.setCellValueFactory(new PropertyValueFactory<HistoricalDynasty, String>("ten"));
         kinhDoHistoricalDynastyColumn.setCellValueFactory(new PropertyValueFactory<HistoricalDynasty, String>("kinhDo"));
         moTaHistoricalDynastyColumn.setCellValueFactory(new PropertyValueFactory<HistoricalDynasty, String>("moTa"));
-        try {
-            historicalDynastyTableView.setItems(dataSummary.historicalDynastyDataSummary(historicalDynastyData));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        historicalDynastyTableView.setItems(summaryController.getAllHistoricalDynasty());
 
         // Set Cultural Festival TableView
         tenCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("ten"));
@@ -146,59 +119,37 @@ public class DataSummarySceneController implements Initializable {
         diaDiemCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("diaDiem"));
         thoiDiemToChucLanDauCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("thoiDiemToChucLanDau"));
         moTaCulturalFestivalColumn.setCellValueFactory(new PropertyValueFactory<CulturalFestival, String>("moTa"));
-
-
-        try {
-
-            culturalFestivalTableView.setItems(dataSummary.culturalFestivalDataSummary(culturalFestivalData));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        culturalFestivalTableView.setItems(summaryController.getAllCulturalFestival());
 
         // Set Historical Figure TableView
-        tenHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("ten"));
-        mieuHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("mieuHieu"));
-        thuyHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("thuyHieu"));
-        nienHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("nienHieu"));
-        tenHuyHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("tenHuy"));
-        tenChuHanHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("tenChuHan"));
-        namSinhMatHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("namSinhMat"));
-        vaiTroHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("vaiTro"));
-        triViHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<Dominator, String>("triVi"));
-        try {
-            historicalFigureTableView.setItems(dataSummary.historicalFigureDataSummary(historicalFigureData));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        tenHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("ten"));
+        mieuHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("mieuHieu"));
+        thuyHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("thuyHieu"));
+        nienHieuHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("nienHieu"));
+        tenHuyHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("tenHuy"));
+        tenChuHanHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("tenChuHan"));
+        namSinhMatHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("namSinhMat"));
+        vaiTroHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("vaiTro"));
+        triViHistoricalFigureColumn.setCellValueFactory(new PropertyValueFactory<HistoricalFigure, String>("triVi"));
+        historicalFigureTableView.setItems(summaryController.getAllHistoricalFigure());
+
 
         // Set Historical Site TableView
         tenHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("ten"));
         diaDiemHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("diaDiem"));
         namCNHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("namCN"));
         mieuTaHistoricalSiteColumn.setCellValueFactory(new PropertyValueFactory<HistoricalSite, String>("mieuTa"));
-        try {
-            historicalSiteTableView.setItems(dataSummary.historicalSiteDataSummary(historicalSiteData));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        historicalSiteTableView.setItems(summaryController.getAllHistoricalSite());
 
         // Set Historic Event TableView
-        tenHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("ten"));
-        thoiGianHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("thoiGian"));
-        thoiKyHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("thoiKy"));
-        lucLuongHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("lucLuong"));
-        doiPhuongHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("doiPhuong"));
-        ketQuaHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<WarEvent, String>("ketQua"));
-        try {
-            historicEventTableView.setItems(dataSummary.historicEventDataSummary(historicEventData));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        tenHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("ten"));
+        thoiGianHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("thoiGian"));
+        thoiKyHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("thoiKy"));
+        lucLuongHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("lucLuong"));
+        doiPhuongHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("doiPhuong"));
+        ketQuaHistoricEventColumn.setCellValueFactory(new PropertyValueFactory<HistoricEvent, String>("ketQua"));
+        historicEventTableView.setItems(summaryController.getAllHistoricEvent());
     }
-
-
-
-
 }
 
 

@@ -16,7 +16,6 @@ public class HistoricalDynastySceneController extends BaseSceneController {
     Label kinhDoLabel;
 
     public  void setHistoricalDynasty(HistoricalDynasty historicalDynasty) {
-        idLabel.setText(String.valueOf(historicalDynasty.getId()));
         tenTrieuDaiLabel.setText(historicalDynasty.getTen());
         kinhDoLabel.setText(historicalDynasty.getKinhDo());
         moTaLabel.setText(historicalDynasty.getMoTa());

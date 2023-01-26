@@ -17,7 +17,6 @@ public class HistoricalSiteSceneController extends BaseSceneController {
     Label ghiChuLabel;
 
     public void setHistoricalSite(HistoricalSite historicalSite) {
-        idLabel.setText(String.valueOf(historicalSite.getId()));
         tenLabel.setText(historicalSite.getTen());
         diaDiemLabel.setText(historicalSite.getDiaDiem());
         namCNLabel.setText(historicalSite.getNamCN());

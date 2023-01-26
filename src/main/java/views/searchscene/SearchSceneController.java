@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import utils.SearchType;
+import utils.configs.ConfigResourceFXML;
 
 import java.io.IOException;
 import java.util.List;
@@ -100,7 +101,7 @@ public class SearchSceneController {
 
         // Historical Dynasty Detail
         if (searchType == SearchType.HISTORICAL_DYNASTY) {
-            loader.setLocation(getClass().getResource("/searchscene/HistoricalDynastyScene.fxml"));
+            loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORICAL_DYNASTY_SCENE));
             Parent historicalDynastyScene = loader.load();
             Scene scene = new Scene(historicalDynastyScene);
             HistoricalDynastySceneController historicalDynastySceneController = loader.getController();
@@ -108,7 +109,7 @@ public class SearchSceneController {
             historicalDynastySceneController.setHistoricalDynasty(selected);
             stage.setScene(scene);
         } else if (searchType == SearchType.CULTURAL_FESTIVAL) {
-            loader.setLocation(getClass().getResource("/searchscene/CulturalFestivalScene.fxml"));
+            loader.setLocation(getClass().getResource(ConfigResourceFXML.CULTURAL_FESTIVAL_SCENE));
             Parent culturalFestivalScene = loader.load();
             Scene scene = new Scene(culturalFestivalScene);
             CulturalFestivalSceneController culturalFestivalSceneController = loader.getController();
@@ -116,7 +117,7 @@ public class SearchSceneController {
             culturalFestivalSceneController.setCulturalFestival(selected);
             stage.setScene(scene);
         } else if (searchType == SearchType.HISTORICAL_SITE) {
-            loader.setLocation(getClass().getResource("/searchscene/HistoricalSiteScene.fxml"));
+            loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORICAL_SITE_SCENE));
             Parent culturalFestivalScene = loader.load();
             Scene scene = new Scene(culturalFestivalScene);
             HistoricalSiteSceneController historicalSiteSceneController = loader.getController();
@@ -124,22 +125,31 @@ public class SearchSceneController {
             historicalSiteSceneController.setHistoricalSite(selected);
             stage.setScene(scene);
         } else if (searchType == SearchType.HISTORICAL_FIGURE) {
-            loader.setLocation(getClass().getResource("/searchscene/HistoricalFigureScene.fxml"));
+            loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORICAL_FIGURE_SCENE));
             Parent culturalFestivalScene = loader.load();
             Scene scene = new Scene(culturalFestivalScene);
             HistoricalFigureSceneController historicalFigureSceneController = loader.getController();
-            Dominator selected = (Dominator) listResult.getSelectionModel().getSelectedItem();
+            HistoricalFigure selected = (HistoricalFigure) listResult.getSelectionModel().getSelectedItem();
             historicalFigureSceneController.setHistoricalFigure(selected);
             stage.setScene(scene);
         } else if (searchType == SearchType.HISTORIC_EVENT) {
-            loader.setLocation(getClass().getResource("/searchscene/HistoricEventScene.fxml"));
+            loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORIC_EVENT_SCENE));
             Parent culturalFestivalScene = loader.load();
             Scene scene = new Scene(culturalFestivalScene);
             HistoricEventSceneController historicEventSceneController = loader.getController();
-            WarEvent selected = (WarEvent) listResult.getSelectionModel().getSelectedItem();
+            HistoricEvent selected = (HistoricEvent) listResult.getSelectionModel().getSelectedItem();
             historicEventSceneController.setHistoricEvent(selected);
             stage.setScene(scene);
         }
+    }
+
+    @FXML
+    public void backToSplashScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPALSH_SCENE_PATH));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
