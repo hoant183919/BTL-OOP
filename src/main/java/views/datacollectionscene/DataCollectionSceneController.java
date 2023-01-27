@@ -2,9 +2,12 @@ package views.datacollectionscene;
 
 import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionNguoiKeSuController;
 import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikipediaController;
+import javafx.concurrent.Task;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +18,8 @@ import utils.configs.ConfigResourceFXML;
 
 import java.io.IOException;
 
-public class DataCollectionSceneController {
+
+public class DataCollectionSceneController{
     private Stage stage;
     private Scene scene;
     private HistoricType historicType;
@@ -49,32 +53,36 @@ public class DataCollectionSceneController {
         }
         statusLabel.setText("Ready");
     }
+
     // Start Data Collecting
     @FXML
     public void startDataCollecting(ActionEvent event) {
-        Thread thread = new Thread() {
-            public void run() {
-                try {
-                    // với wikipedia
-                    if(historicType == HistoricType.WIKIPEDIA) {
-                        DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
-                        dataCollectionWikipediaController.collectData();
-                    }
-                    //với nguoikesu
-                    else if (historicType == HistoricType.NGUOI_KE_SU) {
-                        DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
-                        dataCollectionNguoiKeSuController.collectData();
-                    }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+        statusLabel.setText("Processing");
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+
+                if (historicType == HistoricType.WIKIPEDIA) {
+                    DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+                    dataCollectionWikipediaController.collectData();
                 }
+                else if (historicType == HistoricType.NGUOI_KE_SU) {
+                    DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
+                    dataCollectionNguoiKeSuController.collectData();
+                } else if (historicType == null) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Lưu ý");
+                    alert.setContentText("Hãy chọn nguồn dữ liệu");
+                    alert.show();
+                }
+                return null;
             }
         };
-        thread.start();
-        if(thread.isAlive()) {
-            statusLabel.setText("Processing");
-        } else statusLabel.setText("Completed");
+        task.setOnSucceeded(WorkerStateEvent -> {
+            statusLabel.setText("Completed");
+        });
+        new Thread(task).start();
 
-    }
+        }
 
 }
