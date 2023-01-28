@@ -4,9 +4,7 @@ import entity.HistoricalFigure;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HistoricalFigureSceneController extends BaseSceneController {
-    @FXML
-    Label tenLabel;
+public class HistoricalFigureSceneHandler extends BaseSceneHandler {
     @FXML
     Label tenHuyLabel;
     @FXML

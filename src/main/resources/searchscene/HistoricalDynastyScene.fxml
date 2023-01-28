@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.HistoricalDynastySceneController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.searchscene.HistoricalDynastySceneHandler">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3000.0" prefWidth="1026.0">
          <children>
-            <ToolBar prefHeight="42.0" prefWidth="1029.0">
-              <items>
-                <Button mnemonicParsing="false" onAction="#backToSearchScene" text="Trở lại" />
-              </items>
-            </ToolBar>
             <Label layoutX="36.0" layoutY="75.0" prefHeight="35.0" prefWidth="130.0" text="Tên triều đại:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="tenTrieuDaiLabel" layoutX="161.0" layoutY="75.0" prefHeight="35.0" prefWidth="851.0" wrapText="true">
+            <Label fx:id="tenLabel" layoutX="161.0" layoutY="75.0" prefHeight="35.0" prefWidth="851.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

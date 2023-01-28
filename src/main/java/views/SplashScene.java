@@ -6,9 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.configs.ConfigResourceFXML;
-import views.datasummaryscene.DataSummarySceneController;
-
-import java.io.IOException;
 
 public class SplashScene extends Application {
 
@@ -22,7 +19,7 @@ public class SplashScene extends Application {
         Parent root = FXMLLoader.load(getClass().getResource((ConfigResourceFXML.SPALSH_SCENE_PATH)));
         Scene splashScene = new Scene(root);
         primaryStage.setScene(splashScene);
-        primaryStage.setTitle("Tra cuu lich su");
+        primaryStage.setTitle("Tra cứu lịch sử Việt Nam");
         primaryStage.show();
     }
 }

@@ -4,9 +4,7 @@ import entity.HistoricEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HistoricEventSceneController extends BaseSceneController {
-    @FXML
-    Label tenSuKienLabel;
+public class HistoricEventSceneHandler extends BaseSceneHandler {
     @FXML
     Label thoiGianLabel;
     @FXML
@@ -20,7 +18,7 @@ public class HistoricEventSceneController extends BaseSceneController {
 
     public void setHistoricEvent(HistoricEvent historicEvent) {
         moTaLabel.setText(historicEvent.getMoTa());
-        tenSuKienLabel.setText(historicEvent.getTen());
+        tenLabel.setText(historicEvent.getTen());
 //        thoiGianLabel.setText(warEvent.getThoiGian());
 //        thoiKyLabel.setText(warEvent.getThoiKy());
 //        lucLuongLabel.setText(warEvent.getLucLuong());

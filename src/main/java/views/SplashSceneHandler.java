@@ -6,21 +6,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.SplitMenuButton;
 import javafx.stage.Stage;
 import utils.configs.ConfigResourceFXML;
 
 import java.io.IOException;
 
-public class SplashSceneController {
+public class SplashSceneHandler {
     private Stage stage;
     private Scene scene;
 
     @FXML
     SplitMenuButton searchButton;
-
-
+    
     // Switch to DataCollection Scene
     @FXML
     public void switchToDataCollectionScene(ActionEvent event) throws IOException {

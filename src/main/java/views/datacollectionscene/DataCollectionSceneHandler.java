@@ -19,7 +19,7 @@ import utils.configs.ConfigResourceFXML;
 import java.io.IOException;
 
 
-public class DataCollectionSceneController{
+public class DataCollectionSceneHandler {
     private Stage stage;
     private Scene scene;
     private HistoricType historicType;
@@ -30,6 +30,8 @@ public class DataCollectionSceneController{
     MenuItem nguoiKeSuSource;
     @FXML
     Label statusLabel = null;
+    @FXML
+    ProgressBar progressBar;
 
     // Switch to Splash Scene
     @FXML
@@ -38,7 +40,6 @@ public class DataCollectionSceneController{
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     // Set up Data Source
@@ -53,36 +54,46 @@ public class DataCollectionSceneController{
         }
         statusLabel.setText("Ready");
     }
+    Task<Void> task = new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+
+            if (historicType == HistoricType.WIKIPEDIA) {
+                DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+                dataCollectionWikipediaController.collectData();
+            }
+            else if (historicType == HistoricType.NGUOI_KE_SU) {
+                DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
+                dataCollectionNguoiKeSuController.collectData();
+            } else if (historicType == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lưu ý");
+                alert.setContentText("Hãy chọn nguồn dữ liệu");
+                alert.show();
+            }
+
+            return null;
+        }
+    };
+    Thread thread = new Thread(task);
 
     // Start Data Collecting
     @FXML
     public void startDataCollecting(ActionEvent event) {
-        statusLabel.setText("Processing");
-        Task<Void> task = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-
-                if (historicType == HistoricType.WIKIPEDIA) {
-                    DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
-                    dataCollectionWikipediaController.collectData();
-                }
-                else if (historicType == HistoricType.NGUOI_KE_SU) {
-                    DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
-                    dataCollectionNguoiKeSuController.collectData();
-                } else if (historicType == null) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Lưu ý");
-                    alert.setContentText("Hãy chọn nguồn dữ liệu");
-                    alert.show();
-                }
-                return null;
-            }
-        };
+        if (historicType == HistoricType.NGUOI_KE_SU) {
+            statusLabel.setText("Nguồn: Người kể sử");
+        } else if (historicType == HistoricType.WIKIPEDIA) {
+            statusLabel.setText("Nguồn: Wikipedia");
+        }
+        progressBar.setDisable(false);
+        progressBar.setOpacity(1);
+        thread.start();
+        progressBar.progressProperty().bind(task.progressProperty());
         task.setOnSucceeded(WorkerStateEvent -> {
             statusLabel.setText("Completed");
+            progressBar.setDisable(true);
+            progressBar.setOpacity(0);
         });
-        new Thread(task).start();
 
-        }
-
+    }
 }

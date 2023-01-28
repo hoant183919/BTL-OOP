@@ -4,9 +4,7 @@ import entity.HistoricalSite;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HistoricalSiteSceneController extends BaseSceneController {
-    @FXML
-    Label tenLabel;
+public class HistoricalSiteSceneHandler extends BaseSceneHandler {
     @FXML
     Label diaDiemLabel;
     @FXML

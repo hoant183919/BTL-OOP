@@ -3,13 +3,9 @@ package views.searchscene;
 import entity.CulturalFestival;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 
-
-public class CulturalFestivalSceneController extends BaseSceneController{
-    @FXML
-    Label tenLabel;
+public class CulturalFestivalSceneHandler extends BaseSceneHandler {
     @FXML
     Label thoiGianLabel;
     @FXML
