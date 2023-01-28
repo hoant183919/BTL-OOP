@@ -31,4 +31,9 @@ public class DataCollectionNghienCuuLichSuController implements IDataCollectionC
     public List<HistoricEvent> collectionDataHistoricEvent() {
         return null;
     }
+
+    @Override
+    public void collectData() throws IOException {
+
+    }
 }

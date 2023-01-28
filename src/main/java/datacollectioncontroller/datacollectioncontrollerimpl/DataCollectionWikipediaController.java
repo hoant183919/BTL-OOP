@@ -1,5 +1,7 @@
 package datacollectioncontroller.datacollectioncontrollerimpl;
 
+import data.datamanipulation.*;
+import data.datamanipulation.datamanipulation.*;
 import datacollectioncontroller.IDataCollectionController;
 import entity.*;
 import org.jsoup.nodes.Document;
@@ -7,9 +9,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.Utils;
 import utils.configs.ConfigHtml;
+import utils.configs.ConfigResourceData;
 
 import java.io.IOException;
 import java.util.*;
+
+import static utils.configs.ConfigResourceData.NAME_FILE;
 
 public class DataCollectionWikipediaController implements IDataCollectionController {
 
@@ -435,5 +440,44 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
             esTr = esTr.next();
         }
         return hashMap;
+    }
+
+    public void collectData() throws IOException {
+        try {
+            List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();
+            List<HistoricalDynasty> historicalDynasties = collectionDataHistoricalDynasty();
+            List<HistoricalFigure> historicalFigures = collectionDataHistoricalFigure();
+            List<HistoricalSite> historicalSites = collectionDataHistoricalSite();
+            List<HistoricEvent> historicEvents = collectionDataHistoricEvent();
+
+            getRelationship(culturalFestivals, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalDynasties, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalFigures, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicalSites, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+            getRelationship(historicEvents, culturalFestivals, historicalDynasties, historicalFigures, historicalSites, historicEvents);
+
+            if (culturalFestivals != null) {
+                IDataManipulationCulturalFestival dataManipulationCulturalFestival = new DataManipulationCulturalFestival();
+                dataManipulationCulturalFestival.insertDataCulturalFestivals(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[0], culturalFestivals);
+            }
+            if (historicalDynasties != null) {
+                IDataManipulationHistoricalDynasty dataManipulationHistoricalDynasty = new DataManipulationHistoricalDynasty();
+                dataManipulationHistoricalDynasty.insertDataHistoricalDynasties(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[1], historicalDynasties);
+            }
+            if (historicalFigures != null) {
+                IDataManipulationHistoricalFigure dataManipulationHistoricalFigure = new DataManipulationHistoricalFigure();
+                dataManipulationHistoricalFigure.insertDataHistoricalFigures(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[2], historicalFigures);
+            }
+            if (historicalSites != null) {
+                IDataManipulationHistoricalSite dataManipulationHistoricalSite = new DataManipulationHistoricalSite();
+                dataManipulationHistoricalSite.insertDataHistoricalSites(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[3], historicalSites);
+            }
+            if (historicEvents != null) {
+                IDataManipulationHistoricEvent dataManipulationHistoricEvent = new DataManipulationHistoricEvent();
+                dataManipulationHistoricEvent.insertDataHistoricEvents(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[4], historicEvents);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

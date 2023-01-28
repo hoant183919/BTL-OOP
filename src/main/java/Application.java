@@ -1,11 +1,4 @@
-import datacollectioncontroller.DataCollectionController;
-import dataprocessingcontroller.SearchController;
-import dataprocessingcontroller.searchcontrollerimpl.SearchHistoricalSiteController;
-import entity.HistoricalSite;
-import utils.Utils;
-
 import java.io.IOException;
-import java.util.List;
 
 public class Application {
 
