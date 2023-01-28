@@ -14,6 +14,8 @@ import utils.configs.ConfigResourceData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 import static utils.configs.ConfigResourceData.NAME_FILE;
 
@@ -25,72 +27,285 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
     @Override
     public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException {
         List<HistoricalDynasty> historicalDynasties = new ArrayList<>();
+        List<String> listDynasties = new ArrayList<>();
         int index = 1;
-        String url = ConfigHtml.NGUOIKESU_URL + "/dong-lich-su";
-        Document document = getDocument(url);
-        Element elementId = document.getElementById("hs-timeline-97");
-        Element elementUl = elementId.select("ul").get(1);
-        Elements elementsLi = elementUl.select("li");
-        while (elementsLi.iterator().hasNext()) {
-            Element elementLi = elementsLi.iterator().next();
-            String tenTrieuDai = elementLi.select("div").first().select("h3").first().text();
-            tenTrieuDai = tenTrieuDai.replace("&nbsp;", "");
-            String moTa = null;
-            Element elementdiv = elementLi.select("div").first();
-            Elements elementsP = elementdiv.select("p");
-            while (elementsP.iterator().hasNext()) {
-                Element elementP = elementsP.iterator().next();
-                moTa += elementP.text();
-                elementsP = elementsP.next();
+        int startWeb = 0;
+        while (startWeb <= 150) {
+            String url = ConfigHtml.NGUOIKESU_URL + "dong-lich-su";
+            if (startWeb != 0) {
+                url += "?start=" + String.valueOf(startWeb);
             }
-            System.out.println(tenTrieuDai);
-            System.out.println(moTa);
-            System.out.println("****************");
-            elementsLi = elementsLi.next();
+            Document document = getDocument(url);
+            Element elementId = document.getElementById("content");
+            Elements elementsDiv = elementId.select("div").get(1).select("div").get(2).select("div");
+            while (elementsDiv.iterator().hasNext()) {
+                try {
+                    Element elementDiv = elementsDiv.iterator().next();
+                    if (elementDiv.attr("class").equals("com-content-category-blog__item blog-item")) {
+                        Element elementDivChildren = elementDiv.select("div").first();
+                        String tenNhanVat = elementDivChildren.select("div").first().select("a").first().text();
+                        if (!tenNhanVat.contains("Kỷ") && !tenNhanVat.contains("Thuộc") && tenNhanVat.contains("-")) {
+                            String ten = elementDivChildren.select("dl").first().select("dd").first().text();
+                            if (!listDynasties.contains(ten)) {
+                                listDynasties.add(ten);
+                                HistoricalDynasty historicalDynasty = new HistoricalDynasty(index);
+                                String linkDescription = elementDivChildren.select("dl").first().select("dd").first().select("a").first().attr("href");
+                                String moTa = getDescriptionHistoricalDynasty(ConfigHtml.NGUOIKESU_URL + linkDescription.replaceFirst("/", ""));
+                                historicalDynasty.setTen(ten);
+                                historicalDynasty.setMoTa(moTa);
+
+                                try {
+                                    StringTokenizer stringTokenizer = new StringTokenizer(moTa, ".");
+                                    String firstSentence = stringTokenizer.nextToken();
+                                    String str = firstSentence.substring(firstSentence.indexOf("(") + 1, firstSentence.indexOf(")")).replaceAll(" ", "");
+                                    System.out.println(str);
+                                    StringTokenizer stringTokenizer1 = new StringTokenizer(str, ",");
+                                    while (stringTokenizer1.hasMoreTokens()) {
+                                        String time = stringTokenizer1.nextToken();
+                                        String regex = "(.)*(\\d)(.)*";
+                                        Pattern pattern = Pattern.compile(regex);
+                                        if (time.contains("-") && pattern.matcher(time).matches()) {
+                                            StringTokenizer stringTokenizerTime = new StringTokenizer(time, "-");
+                                            historicalDynasty.setThoiGianBatDau(stringTokenizerTime.nextToken());
+                                            historicalDynasty.setThoiGianKetThuc(stringTokenizerTime.nextToken());
+                                            System.out.println(historicalDynasty.getThoiGianBatDau());
+                                            System.out.println(historicalDynasty.getThoiGianKetThuc());
+                                            break;
+                                        }
+                                    }
+                                } catch (Exception e) {
+
+                                }
+
+                                try {
+                                    StringTokenizer stringTokenizer = new StringTokenizer(moTa, ".");
+                                    while (stringTokenizer.hasMoreTokens()) {
+                                        String sentence = stringTokenizer.nextToken();
+                                        if (sentence.contains("đô")) {
+                                            StringTokenizer stringTokenizer1 = new StringTokenizer(sentence, "đô");
+                                            stringTokenizer1.nextToken();
+                                            String str = stringTokenizer1.nextToken().trim();
+                                            String[] sAlphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "Ô", "P", "Q", "R", "S", "T", "U", "Ư", "V", "X", "Y"};
+                                            int k = 0;
+                                            String kinhDo = "";
+                                            while (k < sAlphabet.length) {
+                                                if (String.valueOf(str.charAt(0)).equals(sAlphabet[k])) {
+                                                    StringTokenizer stringTokenizer2 = new StringTokenizer(str, " ");
+                                                    kinhDo += stringTokenizer2.nextToken() + " ";
+                                                    kinhDo += stringTokenizer2.nextToken();
+                                                }
+                                                k++;
+                                            }
+                                            if (kinhDo.equals("")) {
+                                                int l = 0;
+                                                while (l < str.length()) {
+                                                    int p = 0;
+                                                    while (p < sAlphabet.length) {
+                                                        if (String.valueOf(str.charAt(l)).equals(sAlphabet[p])) {
+                                                            StringTokenizer stringTokenizer2 = new StringTokenizer(str, " ");
+                                                            kinhDo += stringTokenizer2.nextToken() + " ";
+                                                            kinhDo += stringTokenizer2.nextToken();
+                                                        }
+                                                        p++;
+                                                    }
+                                                    l++;
+                                                }
+                                            }
+                                            historicalDynasty.setKinhDo(kinhDo);
+                                            System.out.println(kinhDo);
+                                        }
+                                    }
+                                } catch (Exception e) {
+
+                                }
+                                historicalDynasties.add(historicalDynasty);
+                                index++;
+                                System.out.println("T: " + ten);
+                                System.out.println("MT: " + moTa);
+                                System.out.println("******************************");
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+
+                }
+                elementsDiv = elementsDiv.next();
+            }
+            startWeb += 6;
         }
         return historicalDynasties;
+    }
+
+    private String getDescriptionHistoricalDynasty(String url) throws IOException {
+        StringBuffer stringBuffer = new StringBuffer();
+        Document document = getDocument(url);
+
+        Element elementId = document.getElementById("content");
+        Element elementDiv = elementId.select("div").get(1).select("div").first();
+        Elements elementsP = elementDiv.select("p");
+        while (elementsP.iterator().hasNext()) {
+            Element elementP = elementsP.iterator().next();
+            stringBuffer.append(elementP.text());
+            elementsP = elementsP.next();
+        }
+        return stringBuffer.toString();
     }
 
     @Override
     public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int index = 1;
+        List<HistoricalFigure> nationalHeros = collectionDataNationalHero(index);
+        for (HistoricalFigure historicalFigure : nationalHeros) {
+            historicalFigures.add(historicalFigure);
+        }
+        List<HistoricalFigure> culturalCelebrities = collectionDataCulturalCelebrity(index);
+        for (HistoricalFigure historicalFigure : culturalCelebrities) {
+            historicalFigures.add(historicalFigure);
+        }
+        List<Dominator> dominators = collectionDataDominator(index);
+        for (Dominator dominator : dominators) {
+            historicalFigures.add(dominator);
+        }
+        return historicalFigures;
+    }
+
+    private List<HistoricalFigure> collectionDataNationalHero(int index) throws IOException {
+        List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int startWeb = 0;
-        while (startWeb < 1450) {
-            String url = ConfigHtml.NGUOIKESU_URL + "/nhan-vat";
+        while (startWeb <= 10) {
+            String url = ConfigHtml.NGUOIKESU_URL + "anh-hung-dan-toc?types[0]=1";
             if (startWeb != 0) {
-                url += "?start=" + String.valueOf(startWeb);
+                url += "&start=" + String.valueOf(startWeb);
             }
             Document document = getDocument(url);
-            Element elementId = document.getElementById("jm-maincontent");
-            Element elementDiv = elementId.select("div").first();
-            Elements elementsdiv = elementDiv.select("div");
-            while (elementsdiv.iterator().hasNext()) {
+            Element elementId = document.getElementById("content");
+            Element elementDiv = elementId.select("div").select("div").get(2).select("div").first();
+            Element elementUl = elementDiv.select("ul").first();
+            Elements elementsLi = elementUl.select("li");
+            while (elementsLi.iterator().hasNext()) {
                 try {
-                    Element elementdiv = elementsdiv.iterator().next();
-                    Element elementdiv1 = elementdiv.select("div").first();
-                    Element elementdiv2 = elementdiv1.select("div").first();
-                    String tenNhanVat = elementdiv2.select("div").first().select("h2").first().text();
-                    String moTa = null;
-                    Elements elementsP = elementdiv2.select("p");
+                    Element elementLi = elementsLi.iterator().next();
+                    Element elementH3 = elementLi.select("h3").first();
+                    Element elementSpan = elementLi.select("span").first();
+                    Element elementA = elementLi.select("a").first();
+                    String moTa = "";
+                    Elements elementsP = elementSpan.select("p");
                     while (elementsP.iterator().hasNext()) {
                         Element elementP = elementsP.iterator().next();
                         moTa += elementP.text();
                         elementsP = elementsP.next();
                     }
-                    if (moTa.contains("Việt Nam")) {
-                        System.out.println(tenNhanVat);
-                        System.out.println(moTa);
-                        System.out.println("****************");
+                    System.out.println(elementH3.text());
+                    System.out.println(elementA.attr("href"));
+                    System.out.println(moTa);
+                    System.out.println("*****************");
+                } catch (Exception e) {
+
+                }
+                elementsLi = elementsLi.next();
+            }
+            startWeb += 10;
+        }
+        return historicalFigures;
+    }
+
+    private List<HistoricalFigure> collectionDataCulturalCelebrity(int index) throws IOException {
+        List<HistoricalFigure> historicalFigures = new ArrayList<>();
+        int startWeb = 0;
+        while (startWeb <= 10) {
+            String url = ConfigHtml.NGUOIKESU_URL + "danh-nhan-van-hoa?types[0]=1";
+            if (startWeb != 0) {
+                url += "&start=" + String.valueOf(startWeb);
+            }
+            Document document = getDocument(url);
+            Element elementId = document.getElementById("content");
+            Element elementDiv = elementId.select("div").select("div").get(2).select("div").first();
+            Element elementUl = elementDiv.select("ul").first();
+            Elements elementsLi = elementUl.select("li");
+            while (elementsLi.iterator().hasNext()) {
+                try {
+                    Element elementLi = elementsLi.iterator().next();
+                    Element elementH3 = elementLi.select("h3").first();
+                    Element elementSpan = elementLi.select("span").first();
+                    Element elementA = elementLi.select("a").first();
+                    String moTa = "";
+                    Elements elementsP = elementSpan.select("p");
+                    while (elementsP.iterator().hasNext()) {
+                        Element elementP = elementsP.iterator().next();
+                        moTa += elementP.text();
+                        elementsP = elementsP.next();
+                    }
+                    System.out.println(elementH3.text());
+                    System.out.println(elementA.attr("href"));
+                    System.out.println(moTa);
+                    System.out.println("*****************");
+                } catch (Exception e) {
+
+                }
+                elementsLi = elementsLi.next();
+            }
+            startWeb += 10;
+        }
+        return historicalFigures;
+    }
+
+    public List<Dominator> collectionDataDominator(int index) throws IOException {
+        List<Dominator> dominators = new ArrayList<>();
+        System.out.println("start");
+        int startWeb = 0;
+        while (startWeb <= 150) {
+            String url = ConfigHtml.NGUOIKESU_URL + "dong-lich-su";
+            if (startWeb != 0) {
+                url += "?start=" + String.valueOf(startWeb);
+            }
+            Document document = getDocument(url);
+            Element elementId = document.getElementById("content");
+            Elements elementsDiv = elementId.select("div").get(1).select("div").get(2).select("div");
+            while (elementsDiv.iterator().hasNext()) {
+                try {
+                    Element elementDiv = elementsDiv.iterator().next();
+                    if (elementDiv.attr("class").equals("com-content-category-blog__item blog-item")) {
+                        Element elementDivChildren = elementDiv.select("div").first();
+                        String ten = elementDivChildren.select("div").first().select("a").first().text();
+                        if (!ten.contains("Kỷ") && !ten.contains("Thuộc") && ten.contains("-")) {
+                            String trieuDai = elementDivChildren.select("dl").first().select("dd").first().text();
+                            String moTa = "";
+                            Elements elementsP = elementDivChildren.select("p");
+                            while (elementsP.iterator().hasNext()) {
+                                Element elementP = elementsP.iterator().next();
+                                moTa += elementP.text();
+                                elementsP = elementsP.next();
+                            }
+                            Dominator dominator = new Dominator(index);
+                            List<String> relatedToHistoricalDynasties = new ArrayList<>();
+                            relatedToHistoricalDynasties.add(trieuDai);
+                            dominator.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
+                            dominator.setMoTa(moTa);
+                            StringTokenizer stringTokenizer = new StringTokenizer(ten, "-");
+                            if (stringTokenizer.countTokens() == 1) {
+                                dominator.setTen(stringTokenizer.nextToken());
+                            } else {
+                                dominator.setTen(stringTokenizer.nextToken().trim());
+                                dominator.setTenHuy(stringTokenizer.nextToken().trim());
+                            }
+                            System.out.println(dominator.getTen());
+                            dominators.add(dominator);
+                            index++;
+                            System.out.println("T: " + ten);
+                            System.out.println("TD: " + trieuDai);
+                            System.out.println("MT: " + moTa);
+                            System.out.println("******************************");
+                        }
                     }
                 } catch (Exception e) {
 
                 }
-                elementsdiv = elementsdiv.next();
+                elementsDiv = elementsDiv.next();
             }
-            startWeb += 5;
+            startWeb += 6;
         }
-        return historicalFigures;
+        return dominators;
     }
 
     @Override
@@ -98,31 +313,42 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         List<HistoricalSite> historicalSites = new ArrayList<>();
         int index = 1;
         int startWeb = 0;
-        while (startWeb < 30) {
-            String url = ConfigHtml.NGUOIKESU_URL + "/di-tich-lich-su";
+        while (startWeb <= 30) {
+            String url = ConfigHtml.NGUOIKESU_URL + "di-tich-lich-su?types[0]=1";
             if (startWeb != 0) {
-                url += "?start=" + String.valueOf(startWeb);
+                url += "&start=" + String.valueOf(startWeb);
             }
             Document document = getDocument(url);
-            Element elementId = document.getElementById("adminForm");
-            Element elementUl = elementId.select("ul").first();
+            Element elementId = document.getElementById("content");
+            Element elementDiv = elementId.select("div").select("div").get(2).select("div").first();
+            Element elementUl = elementDiv.select("ul").first();
             Elements elementsLi = elementUl.select("li");
             while (elementsLi.iterator().hasNext()) {
-                Element elementLi = elementsLi.iterator().next();
-                String tenDiTich = elementLi.select("h3").first().text();
-                System.out.println(elementLi.select("h3").first().select("a").first().attr("href"));
-                String moTa = null;
-                Element elementSpan = elementLi.select("span").first();
-                Elements elementsP = elementSpan.select("p");
-                while (elementsP.iterator().hasNext()) {
-                    Element elementP = elementsP.iterator().next();
-                    moTa += elementP.text();
-                    elementsP = elementsP.next();
-                }
-                if (moTa.contains("Việt Nam")) {
+                try {
+                    Element elementLi = elementsLi.iterator().next();
+                    Element elementH3 = elementLi.select("h3").first();
+                    Element elementSpan = elementLi.select("span").first();
+                    Element elementA = elementLi.select("a").first();
+                    String moTa = "";
+                    String tenDiTich = "";
+                    Elements elementsP = elementSpan.select("p");
+                    while (elementsP.iterator().hasNext()) {
+                        Element elementP = elementsP.iterator().next();
+                        moTa += elementP.text();
+                        elementsP = elementsP.next();
+                    }
+                    tenDiTich = elementH3.text();
                     System.out.println(tenDiTich);
+                    System.out.println(elementA.attr("href"));
                     System.out.println(moTa);
-                    System.out.println("****************");
+                    System.out.println("*****************");
+                    HistoricalSite historicalSite = new HistoricalSite(index);
+                    historicalSite.setTen(tenDiTich);
+                    historicalSite.setMoTa(moTa);
+                    historicalSites.add(historicalSite);
+                    index++;
+                } catch (Exception e) {
+
                 }
                 elementsLi = elementsLi.next();
             }
