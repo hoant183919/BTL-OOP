@@ -249,6 +249,7 @@ public class SearchSceneHandler implements Initializable {
             CulturalFestival selected = culturalFestivalTableView.getSelectionModel().getSelectedItem();
             culturalFestivalSceneController.setCulturalFestival(selected);
             stage.setScene(scene);
+            stage.show();
         } else if (searchType == SearchType.HISTORICAL_SITE) {
             loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORICAL_SITE_SCENE));
             Parent historicalSiteScene = loader.load();
@@ -257,6 +258,7 @@ public class SearchSceneHandler implements Initializable {
             HistoricalSite selected = historicalSiteTableView.getSelectionModel().getSelectedItem();
             historicalSiteSceneController.setHistoricalSite(selected);
             stage.setScene(scene);
+            stage.show();
         } else if (searchType == SearchType.HISTORICAL_FIGURE) {
             loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORICAL_FIGURE_SCENE));
             Parent historicalFigureScene = loader.load();
@@ -265,6 +267,7 @@ public class SearchSceneHandler implements Initializable {
             HistoricalFigure selected = historicalFigureTableView.getSelectionModel().getSelectedItem();
             historicalFigureSceneController.setHistoricalFigure(selected);
             stage.setScene(scene);
+            stage.show();
         } else if (searchType == SearchType.HISTORIC_EVENT) {
             loader.setLocation(getClass().getResource(ConfigResourceFXML.HISTORIC_EVENT_SCENE));
             Parent historicEventScene = loader.load();
@@ -273,6 +276,7 @@ public class SearchSceneHandler implements Initializable {
             HistoricEvent selected = historicEventTableView.getSelectionModel().getSelectedItem();
             historicEventSceneController.setHistoricEvent(selected);
             stage.setScene(scene);
+            stage.show();
         }
     }
     @FXML

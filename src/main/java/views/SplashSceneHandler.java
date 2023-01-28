@@ -16,9 +16,6 @@ public class SplashSceneHandler {
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    SplitMenuButton searchButton;
-    
     // Switch to DataCollection Scene
     @FXML
     public void switchToDataCollectionScene(ActionEvent event) throws IOException {
@@ -26,7 +23,6 @@ public class SplashSceneHandler {
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     // Switch to DataSummary Scene
@@ -36,7 +32,6 @@ public class SplashSceneHandler {
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     // Switch to Search Scene
@@ -46,7 +41,6 @@ public class SplashSceneHandler {
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
 }
