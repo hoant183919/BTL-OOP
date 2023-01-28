@@ -281,7 +281,7 @@ public class SearchSceneHandler implements Initializable {
     }
     @FXML
     public void backToSplashScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPALSH_SCENE_PATH));
+        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPLASH_SCENE_PATH));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);

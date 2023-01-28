@@ -1,7 +1,7 @@
 package utils.configs;
 
 public class ConfigResourceFXML {
-    public static final String SPALSH_SCENE_PATH = "/SplashScene.fxml";
+    public static final String SPLASH_SCENE_PATH = "/SplashScene.fxml";
     public static final String SEARCH_SCENE_PATH = "/searchscene/SearchScene.fxml";
 
     public static final String DATA_COLLECTION_SCENE = "/datacollectionscene/DataCollectionScene.fxml";

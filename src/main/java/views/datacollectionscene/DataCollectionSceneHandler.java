@@ -36,7 +36,7 @@ public class DataCollectionSceneHandler {
     // Switch to Splash Scene
     @FXML
     public void backToSplashScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPALSH_SCENE_PATH));
+        Parent root = FXMLLoader.load(getClass().getResource(ConfigResourceFXML.SPLASH_SCENE_PATH));
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
