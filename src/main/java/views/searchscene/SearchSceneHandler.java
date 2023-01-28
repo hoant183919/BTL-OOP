@@ -224,7 +224,7 @@ public class SearchSceneHandler implements Initializable {
         }
     }
 
-    // Hien thi chi tiet
+    // Show Detail
     @FXML
     public void detail(ActionEvent event ) throws IOException {
 
