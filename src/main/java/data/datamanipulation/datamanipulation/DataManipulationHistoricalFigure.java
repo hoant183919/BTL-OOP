@@ -42,6 +42,7 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
                 HistoricalFigure historicalFigure = new HistoricalFigure(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
                 historicalFigure.setMoTa((String) jsonObject.get("moTa"));
                 historicalFigure.setTen((String) jsonObject.get("ten"));
+
                 historicalFigures.add(historicalFigure);
                 k++;
             }

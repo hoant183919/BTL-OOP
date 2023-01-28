@@ -10,4 +10,5 @@ public class HistoricEvent extends HistoricObject {
 //    private String thoiGian;
 //    private String diaDiem;
 //    private String moTa;
+
 }
