@@ -1,8 +1,6 @@
 package datacollectioncontroller.datacollectioncontrollerimpl;
 
-import common.exception.DataCollectionException;
-import common.exception.HistoricalFigureDataCollectionException;
-import common.exception.HistoricalSiteDataCollectionException;
+import common.exception.*;
 import datamanipulation.*;
 import datamanipulation.datamanipulationimpl.*;
 import datacollectioncontroller.IDataCollectionController;
@@ -24,10 +22,26 @@ import java.util.regex.Pattern;
 import static utils.configs.ConfigResourceData.NAME_FILE;
 
 public class DataCollectionNguoiKeSuController implements IDataCollectionController {
-    public List<CulturalFestival> collectionDataCulturalFestival() {
+
+    /**
+     * Thu thập dữ liệu về các lễ hội Việt Nam
+     *
+     * @return Danh sách các lễ hội
+     * @throws IOException
+     * @throws CulturalFestivalDataCollectionException
+     */
+    @Override
+    public List<CulturalFestival> collectionDataCulturalFestival() throws IOException, CulturalFestivalDataCollectionException {
         return null;
     }
 
+    /**
+     * Thu thập dữ liệu về các triều đại lịch sử Việt Nam
+     *
+     * @return Danh sách các triều đại lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricalDynastyDataCollectionException
+     */
     @Override
     public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException {
         List<HistoricalDynasty> historicalDynasties = new ArrayList<>();
@@ -178,6 +192,12 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalDynasties;
     }
 
+    /**
+     * Lấy thông tin mô tả về triều đại lịch sử
+     * @param url - Đường dẫn đến trang mô tả đó
+     * @return Chuỗi mô tả
+     * @throws IOException
+     */
     private String getDescriptionHistoricalDynasty(String url) throws IOException {
         StringBuffer stringBuffer = new StringBuffer();
         Document document = getDocument(url);
@@ -193,6 +213,13 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return stringBuffer.toString();
     }
 
+    /**
+     * Thu thập dữ liệu về các nhân vật lịch sử Việt Nam
+     *
+     * @return Danh sách các nhân vât lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricalFigureDataCollectionException
+     */
     @Override
     public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
@@ -212,6 +239,13 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalFigures;
     }
 
+    /**
+     * Thu thập dữu liệu về các anh hùng dân tộc Việt Nam
+     * @param index - chỉ số bắt đầu của id
+     * @return Danh sách thông tin về các anh hùng dân tộc Việt Nam
+     * @throws IOException
+     * @throws HistoricalFigureDataCollectionException
+     */
     private List<HistoricalFigure> collectionDataNationalHero(int index) throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int startWeb = 0;
@@ -258,6 +292,13 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalFigures;
     }
 
+    /**
+     * Thu thập dữ liệu về các danh nhân văn hoá Việt Nam
+     * @param index - chỉ số bắt đầu của id
+     * @return Danh sách thông tin danh nhân văn hoá Việt Nam
+     * @throws IOException
+     * @throws HistoricalFigureDataCollectionException
+     */
     private List<HistoricalFigure> collectionDataCulturalCelebrity(int index) throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int startWeb = 0;
@@ -304,7 +345,13 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalFigures;
     }
 
-    public List<Dominator> collectionDataDominator(int index) throws IOException {
+    /**
+     * Thu thập dữ liệu về những người đứng đầu trong lịch sử Việt Nam
+     * @param index - chỉ số bắt đầu của id
+     * @return Danh sách thông tin những người đứng đầu trong lịch sử Việt Nam
+     * @throws IOException
+     */
+    private List<Dominator> collectionDataDominator(int index) throws IOException {
         List<Dominator> dominators = new ArrayList<>();
         System.out.println("start");
         int startWeb = 0;
@@ -368,6 +415,13 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return dominators;
     }
 
+    /**
+     * Thu thập dữ liệu về các  di tích của Việt Nam
+     *
+     * @return Danh sách các di tích của Việt Nam
+     * @throws IOException
+     * @throws HistoricalSiteDataCollectionException
+     */
     @Override
     public List<HistoricalSite> collectionDataHistoricalSite() throws IOException, HistoricalSiteDataCollectionException {
         List<HistoricalSite> historicalSites = new ArrayList<>();
@@ -418,11 +472,25 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalSites;
     }
 
+    /**
+     * Thu thập dữ liệu về các sự kiện lịch sử Việt Nam
+     *
+     * @return Danh sách các sự kiện lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricEventDataCollectionException
+     */
     @Override
     public List<HistoricEvent> collectionDataHistoricEvent() throws IOException {
         return null;
     }
 
+    /**
+     * Thu thập dữ liệu và lưu trữ dữ liệu
+     *
+     * @throws IOException
+     * @throws DataCollectionException
+     */
+    @Override
     public void collectData() throws DataCollectionException {
         try {
             List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();

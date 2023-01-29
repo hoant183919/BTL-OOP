@@ -20,6 +20,13 @@ import static utils.configs.ConfigResourceData.NAME_FILE;
 
 public class DataCollectionWikipediaController implements IDataCollectionController {
 
+    /**
+     * Thu thập dữ liệu về các lễ hội Việt Nam
+     *
+     * @return Danh sách các lễ hội
+     * @throws IOException
+     * @throws CulturalFestivalDataCollectionException
+     */
     @Override
     public List<CulturalFestival> collectionDataCulturalFestival() throws IOException, CulturalFestivalDataCollectionException {
         List<CulturalFestival> culturalFestivals = new ArrayList<>();
@@ -63,6 +70,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return culturalFestivals;
     }
 
+    /**
+     * Thu thập dữ liệu về các triều đại lịch sử Việt Nam
+     *
+     * @return Danh sách các triều đại lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricalDynastyDataCollectionException
+     */
     @Override
     public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException, HistoricalDynastyDataCollectionException {
         List<HistoricalDynasty> historicalDynasties = new ArrayList<>();
@@ -113,6 +127,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return historicalDynasties;
     }
 
+    /**
+     * Thu thập dữ liệu về các nhân vật lịch sử Việt Nam
+     *
+     * @return Danh sách các nhân vât lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricalFigureDataCollectionException
+     */
     @Override
     public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
@@ -201,6 +222,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return historicalFigures;
     }
 
+    /**
+     * Thu thập dữ liệu về các  di tích của Việt Nam
+     *
+     * @return Danh sách các di tích của Việt Nam
+     * @throws IOException
+     * @throws HistoricalSiteDataCollectionException
+     */
     @Override
     public List<HistoricalSite> collectionDataHistoricalSite() throws IOException, HistoricalSiteDataCollectionException {
         List<HistoricalSite> historicalSites = new ArrayList<>();
@@ -276,6 +304,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return historicalSites;
     }
 
+    /**
+     * Thu thập dữ liệu về các sự kiện lịch sử Việt Nam
+     *
+     * @return Danh sách các sự kiện lịch sử Việt Nam
+     * @throws IOException
+     * @throws HistoricEventDataCollectionException
+     */
     @Override
     public List<HistoricEvent> collectionDataHistoricEvent() throws IOException, HistoricEventDataCollectionException {
         List<HistoricEvent> historicEvents = new ArrayList<>();
@@ -366,6 +401,12 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return historicEvents;
     }
 
+    /**
+     * Lấy thông tin mô tả về một thực thể
+     * @param url - Đường dẫn đến thực thể đó
+     * @return Chuỗi mô tả về thực thể
+     * @throws IOException
+     */
     private String getDescription(String url) throws IOException {
         StringBuffer stringBuffer = new StringBuffer("");
         Document documentDescription = getDocument(url);
@@ -390,6 +431,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return stringBuffer.toString();
     }
 
+    /**
+     * Lấy thông tin về bảng dữ liệu
+     * @param eTable Element của bảng đó
+     * @param nColumn số lượng cột của hàng đó
+     * @param cLink chỉ số lấy thông tin mô tả của thực thể
+     * @return Thông tin dữ liệu của bảng mô tả trong map
+     */
     private Map<Integer, List<String>> getDataTable(Element eTable, int nColumn, int cLink) {
         Element eTbody = eTable.selectFirst("tbody");
         Elements esTr = eTbody.select("tr");
@@ -476,6 +524,13 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return hashMap;
     }
 
+    /**
+     * Thu thập dữ liệu và lưu trữ dữ liệu
+     *
+     * @throws IOException
+     * @throws DataCollectionException
+     */
+    @Override
     public void collectData() throws  DataCollectionException {
         try {
             List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();

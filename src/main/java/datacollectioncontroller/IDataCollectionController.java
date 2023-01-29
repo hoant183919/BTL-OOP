@@ -17,8 +17,8 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
     /**
      * Lấy document của trang web
      *
-     * @param url
-     * @return
+     * @param url - Đường dẫn đến trang cần thu thập document
+     * @return Document của trang web đó
      * @throws IOException
      */
     public default Document getDocument(String url) throws IOException {
@@ -28,7 +28,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
     /**
      * Tìm mối quan hệ giữa các model trong cùng 1 trang web
      *
-     * @param list
+     * @param list - danh sách các thực thể tìm mối quan hệ
      */
     public default void getRelationship(List<?> list, List<CulturalFestival> culturalFestivalsSearch, List<HistoricalDynasty> historicalDynastiesSearch, List<HistoricalFigure> historicalFiguresSearch, List<HistoricalSite> historicalSitesSearch, List<HistoricEvent> historicEventsSearch) throws IOException {
         if (list == null) return;
@@ -125,5 +125,10 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
         }
     }
 
+    /**
+     * Thu thập dữ liệu và lưu trữ dữ liệu
+     * @throws IOException
+     * @throws DataCollectionException
+     */
     public void collectData() throws IOException, DataCollectionException;
 }
