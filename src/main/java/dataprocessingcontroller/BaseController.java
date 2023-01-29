@@ -26,6 +26,9 @@ public class BaseController {
         list = DataWikipediaSingleton.getInstance().getCulturalFestivals();
         for (CulturalFestival culturalFestival : list) culturalFestivals.add(culturalFestival);
 
+        list = DataNguoiKeSuSingleton.getInstance().getCulturalFestivals();
+        for (CulturalFestival culturalFestival : list) culturalFestivals.add(culturalFestival);
+
         return culturalFestivals;
     }
 
@@ -38,7 +41,11 @@ public class BaseController {
 //            for (HistoricalDynasty historicalDynasty : list) historicalDynastys.add(historicalDynasty);
 //        }
         List<HistoricalDynasty> list = new ArrayList<>();
+
         list = DataWikipediaSingleton.getInstance().getHistoricalDynasties();
+        for (HistoricalDynasty historicalDynasty : list) historicalDynastys.add(historicalDynasty);
+
+        list = DataNguoiKeSuSingleton.getInstance().getHistoricalDynasties();
         for (HistoricalDynasty historicalDynasty : list) historicalDynastys.add(historicalDynasty);
 
         return historicalDynastys;
@@ -53,7 +60,11 @@ public class BaseController {
 //            for (HistoricalFigure historicalFigure : list) historicalFigures.add(historicalFigure);
 //        }
         List<HistoricalFigure> list = new ArrayList<>();
+
         list = DataWikipediaSingleton.getInstance().getHistoricalFigures();
+        for (HistoricalFigure historicalFigure : list) historicalFigures.add(historicalFigure);
+
+        list = DataNguoiKeSuSingleton.getInstance().getHistoricalFigures();
         for (HistoricalFigure historicalFigure : list) historicalFigures.add(historicalFigure);
 
         return historicalFigures;
@@ -68,7 +79,11 @@ public class BaseController {
 //            for (HistoricalSite historicalSite : list) historicalSites.add(historicalSite);
 //        }
         List<HistoricalSite> list = new ArrayList<>();
+
         list = DataWikipediaSingleton.getInstance().getHistoricalSites();
+        for (HistoricalSite historicalSite : list) historicalSites.add(historicalSite);
+
+        list = DataNguoiKeSuSingleton.getInstance().getHistoricalSites();
         for (HistoricalSite historicalSite : list) historicalSites.add(historicalSite);
 
         return historicalSites;
@@ -83,7 +98,11 @@ public class BaseController {
 //            for (HistoricEvent historicEvent : list) historicEvents.add(historicEvent);
 //        }
         List<HistoricEvent> list = new ArrayList<>();
+
         list = DataWikipediaSingleton.getInstance().getHistoricEvents();
+        for (HistoricEvent historicEvent : list) historicEvents.add(historicEvent);
+
+        list = DataNguoiKeSuSingleton.getInstance().getHistoricEvents();
         for (HistoricEvent historicEvent : list) historicEvents.add(historicEvent);
 
         return historicEvents;
