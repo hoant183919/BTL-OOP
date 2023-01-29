@@ -37,17 +37,18 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
             System.out.println(historicObject.getTen() + " --- ");
             if (historicObject.getMoTa() != null) {
                 int l = 0;
-
                 List<CulturalFestival> culturalFestivals = culturalFestivalsSearch;
                 List<String> relatedToCulturalFestivals = new ArrayList<>();
-                while (l < culturalFestivals.size()) {
-                    CulturalFestival culturalFestival = culturalFestivals.get(l);
-                    if (!historicObject.getTen().equals(culturalFestival.getTen())) {
-                        if (Utils.checkStringContainString(historicObject.getMoTa(), culturalFestival.getTen())) {
-                            relatedToCulturalFestivals.add(culturalFestival.getTen());
+                if (culturalFestivals != null) {
+                    while (l < culturalFestivals.size()) {
+                        CulturalFestival culturalFestival = culturalFestivals.get(l);
+                        if (!historicObject.getTen().equals(culturalFestival.getTen())) {
+                            if (Utils.checkStringContainString(historicObject.getMoTa(), culturalFestival.getTen())) {
+                                relatedToCulturalFestivals.add(culturalFestival.getTen());
+                            }
                         }
+                        l++;
                     }
-                    l++;
                 }
                 historicObject.setRelatedToCulturalFestivals(relatedToCulturalFestivals);
 
@@ -55,14 +56,16 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
 
                 List<HistoricalFigure> historicalFigures = historicalFiguresSearch;
                 List<String> relatedToHistoricalFigures = new ArrayList<>();
-                while (l < historicalFigures.size()) {
-                    HistoricalFigure historicalFigure = historicalFigures.get(l);
-                    if (!historicObject.getTen().equals(historicalFigure.getTen())) {
-                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalFigure.getTen())) {
-                            relatedToHistoricalFigures.add(historicalFigure.getTen());
+                if (historicalFigures != null) {
+                    while (l < historicalFigures.size()) {
+                        HistoricalFigure historicalFigure = historicalFigures.get(l);
+                        if (!historicObject.getTen().equals(historicalFigure.getTen())) {
+                            if (Utils.checkStringContainString(historicObject.getMoTa(), historicalFigure.getTen())) {
+                                relatedToHistoricalFigures.add(historicalFigure.getTen());
+                            }
                         }
+                        l++;
                     }
-                    l++;
                 }
                 historicObject.setRelatedToHistoricalFigures(relatedToHistoricalFigures);
 
@@ -70,14 +73,16 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
 
                 List<HistoricalDynasty> historicalDynasties = historicalDynastiesSearch;
                 List<String> relatedToHistoricalDynasties = new ArrayList<>();
-                while (l < historicalDynasties.size()) {
-                    HistoricalDynasty historicalDynasty = historicalDynasties.get(l);
-                    if (!historicObject.getTen().equals(historicalDynasty.getTen())) {
-                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalDynasty.getTen())) {
-                            relatedToHistoricalDynasties.add(historicalDynasty.getTen());
+                if (historicalDynasties != null) {
+                    while (l < historicalDynasties.size()) {
+                        HistoricalDynasty historicalDynasty = historicalDynasties.get(l);
+                        if (!historicObject.getTen().equals(historicalDynasty.getTen())) {
+                            if (Utils.checkStringContainString(historicObject.getMoTa(), historicalDynasty.getTen())) {
+                                relatedToHistoricalDynasties.add(historicalDynasty.getTen());
+                            }
                         }
+                        l++;
                     }
-                    l++;
                 }
                 historicObject.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
 
@@ -85,14 +90,16 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
 
                 List<HistoricalSite> historicalSites = historicalSitesSearch;
                 List<String> relatedToHistoricalSites = new ArrayList<>();
-                while (l < historicalSites.size()) {
-                    HistoricalSite historicalSite = historicalSites.get(l);
-                    if (!historicObject.getTen().equals(historicalSite.getTen())) {
-                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicalSite.getTen())) {
-                            relatedToHistoricalSites.add(historicalSite.getTen());
+                if (historicalSites != null) {
+                    while (l < historicalSites.size()) {
+                        HistoricalSite historicalSite = historicalSites.get(l);
+                        if (!historicObject.getTen().equals(historicalSite.getTen())) {
+                            if (Utils.checkStringContainString(historicObject.getMoTa(), historicalSite.getTen())) {
+                                relatedToHistoricalSites.add(historicalSite.getTen());
+                            }
                         }
+                        l++;
                     }
-                    l++;
                 }
                 historicObject.setRelatedToHistoricalSites(relatedToHistoricalSites);
 
@@ -100,14 +107,16 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
 
                 List<HistoricEvent> historicEvents = historicEventsSearch;
                 List<String> relatedToHistoricEvents = new ArrayList<>();
-                while (l < historicEvents.size()) {
-                    HistoricEvent historicEvent = historicEvents.get(l);
-                    if (!historicObject.getTen().equals(historicEvent.getTen())) {
-                        if (Utils.checkStringContainString(historicObject.getMoTa(), historicEvent.getTen())) {
-                            relatedToHistoricEvents.add(historicEvent.getTen());
+                if (historicEvents != null) {
+                    while (l < historicEvents.size()) {
+                        HistoricEvent historicEvent = historicEvents.get(l);
+                        if (!historicObject.getTen().equals(historicEvent.getTen())) {
+                            if (Utils.checkStringContainString(historicObject.getMoTa(), historicEvent.getTen())) {
+                                relatedToHistoricEvents.add(historicEvent.getTen());
+                            }
                         }
+                        l++;
                     }
-                    l++;
                 }
                 historicObject.setRelatedToHistoricEvents(relatedToHistoricEvents);
             }

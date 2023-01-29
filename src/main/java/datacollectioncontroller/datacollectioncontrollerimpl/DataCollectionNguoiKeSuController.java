@@ -79,40 +79,77 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
 
                                 try {
                                     StringTokenizer stringTokenizer = new StringTokenizer(moTa, ".");
+                                    System.out.println("count token : " + stringTokenizer.countTokens());
                                     while (stringTokenizer.hasMoreTokens()) {
                                         String sentence = stringTokenizer.nextToken();
                                         if (sentence.contains("đô")) {
-                                            StringTokenizer stringTokenizer1 = new StringTokenizer(sentence, "đô");
-                                            stringTokenizer1.nextToken();
-                                            String str = stringTokenizer1.nextToken().trim();
-                                            String[] sAlphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "Ô", "P", "Q", "R", "S", "T", "U", "Ư", "V", "X", "Y"};
-                                            int k = 0;
-                                            String kinhDo = "";
-                                            while (k < sAlphabet.length) {
-                                                if (String.valueOf(str.charAt(0)).equals(sAlphabet[k])) {
-                                                    StringTokenizer stringTokenizer2 = new StringTokenizer(str, " ");
-                                                    kinhDo += stringTokenizer2.nextToken() + " ";
-                                                    kinhDo += stringTokenizer2.nextToken();
-                                                }
-                                                k++;
-                                            }
-                                            if (kinhDo.equals("")) {
-                                                int l = 0;
-                                                while (l < str.length()) {
-                                                    int p = 0;
-                                                    while (p < sAlphabet.length) {
-                                                        if (String.valueOf(str.charAt(l)).equals(sAlphabet[p])) {
-                                                            StringTokenizer stringTokenizer2 = new StringTokenizer(str, " ");
-                                                            kinhDo += stringTokenizer2.nextToken() + " ";
-                                                            kinhDo += stringTokenizer2.nextToken();
+                                            System.out.println(sentence);
+                                            String[] strings = sentence.split("đô");
+                                            String checkToken = strings[0];
+                                            if (checkToken.contains("đóng") || checkToken.contains("kinh")) {
+                                                String str = strings[1].trim();
+                                                String[] sAlphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "Ô", "P", "Q", "R", "S", "T", "U", "Ư", "V", "X", "Y"};
+                                                int k = 0;
+                                                String kinhDo = "";
+                                                while (k < sAlphabet.length) {
+                                                    if (String.valueOf(str.charAt(0)).equals(sAlphabet[k])) {
+                                                        String[] strings1 = str.split(" ");
+                                                        int t = 1;
+                                                        String checkString = strings1[1];
+                                                        while (t < checkString.length()) {
+                                                            int d = 0;
+                                                            while (d < sAlphabet.length) {
+                                                                if (String.valueOf(checkString.charAt(t)).equals(sAlphabet[d])) {
+                                                                    checkString = checkString.substring(0, t);
+                                                                    t = checkString.length();
+                                                                    break;
+                                                                }
+                                                                d++;
+                                                            }
+                                                            t++;
                                                         }
-                                                        p++;
+                                                        kinhDo += strings1[0] + " " + checkString;
+                                                        break;
                                                     }
-                                                    l++;
+                                                    k++;
+                                                }
+                                                if (kinhDo.equals("")) {
+                                                    String[] strings1 = str.split(" ");
+                                                    char c = strings1[1].charAt(0);
+                                                    boolean b = false;
+                                                    int l = 0;
+                                                    while (l < sAlphabet.length) {
+                                                        if (String.valueOf(c).equals(sAlphabet[l])) {
+                                                            b = true;
+                                                            break;
+                                                        }
+                                                        l++;
+                                                    }
+                                                    System.out.println(b);
+                                                    if (b) {
+                                                        int t = 1;
+                                                        String checkString = strings1[2];
+                                                        while (t < checkString.length()) {
+                                                            int d = 0;
+                                                            while (d < sAlphabet.length) {
+                                                                if (String.valueOf(checkString.charAt(t)).equals(sAlphabet[d])) {
+                                                                    checkString = checkString.substring(0, t);
+                                                                    t = checkString.length();
+                                                                    break;
+                                                                }
+                                                                d++;
+                                                            }
+                                                            t++;
+                                                        }
+                                                        kinhDo += strings1[1] + " " + checkString;
+                                                    }
+                                                }
+                                                if (!kinhDo.equals("")) {
+                                                    System.out.println(kinhDo);
+                                                    historicalDynasty.setKinhDo(kinhDo);
+                                                    break;
                                                 }
                                             }
-                                            historicalDynasty.setKinhDo(kinhDo);
-                                            System.out.println(kinhDo);
                                         }
                                     }
                                 } catch (Exception e) {
