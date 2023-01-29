@@ -12,7 +12,7 @@ public abstract class HistoricObject extends BaseEntity{
 
     private String ten;
     private String moTa;
-    private String kieu;
+    private String nguonDuLieu;
     private List<String> relatedToCulturalFestivals;
     private List<String> relatedToHistoricalDynasties;
     private List<String> relatedToHistoricalFigures;
@@ -35,12 +35,12 @@ public abstract class HistoricObject extends BaseEntity{
         this.moTa = moTa;
     }
 
-    public String getKieu() {
-        return kieu;
+    public String getNguonDuLieu() {
+        return nguonDuLieu;
     }
 
-    public void setKieu(String kieu) {
-        this.kieu = kieu;
+    public void setNguonDuLieu(String nguonDuLieu) {
+        this.nguonDuLieu = nguonDuLieu;
     }
 
     public List<String> getRelatedToCulturalFestivals() {

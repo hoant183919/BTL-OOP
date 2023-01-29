@@ -8,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.Utils;
+import utils.configs.ConfigDataType;
 import utils.configs.ConfigHtml;
 import utils.configs.ConfigResourceData;
 
@@ -47,11 +48,11 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
             CulturalFestival culturalFestival = new CulturalFestival(index);
             try {
                 culturalFestival.setTen(Utils.removeComments(list.get(2)));
-                culturalFestival.setKieu("cultural-festival");
                 culturalFestival.setThoiGian(Utils.removeComments(list.get(0)));
                 culturalFestival.setDiaDiem(Utils.removeComments(list.get(1)));
                 culturalFestival.setThoiDiemToChucLanDau(Utils.removeComments(list.get(3)));
                 culturalFestival.setGhiChu(Utils.removeComments(list.get(4)));
+                culturalFestival.setNguonDuLieu(ConfigHtml.WIKIPEDIA_URL);
                 String linkCulturalFestival = list.get(5);
                 if (linkCulturalFestival.contains("/wiki/")) {
                     culturalFestival.setMoTa(Utils.removeComments(getDescription(ConfigHtml.WIKIPEDIA_URL + linkCulturalFestival)));
@@ -81,6 +82,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
 
             try {
                 historicalDynasty.setTen(elementsTd.first().text());
+                historicalDynasty.setNguonDuLieu(ConfigHtml.WIKIPEDIA_URL);
                 System.out.println(elementsTd.first().text());
                 String linkHistoricalDynasty = elementsTd.first().select("a").first().attr("href");
                 if (linkHistoricalDynasty.contains("/wiki/")) {
@@ -156,7 +158,8 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                     dominator.setTenHuy(Utils.removeComments(list.get(5)));
                     dominator.setTheThu(Utils.removeComments(list.get(6)));
                     dominator.setTriVi(Utils.removeComments(list.get(7)));
-                    dominator.setKieu("dominator");
+                    dominator.setNguonDuLieu(ConfigHtml.WIKIPEDIA_URL);
+                    dominator.setKieu(ConfigDataType.DATA_TYPE_DOMINATOR);
                     dominator.setVaiTro(typeDominator);
                     try {
                         String linkDominator = list.get(8);
@@ -256,7 +259,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                     historicalSite.setLoaiDiTich(Utils.removeComments(list.get(2)));
                     historicalSite.setNamCN(Utils.removeComments(list.get(3)));
                     historicalSite.setMieuTa(Utils.removeComments(list.get(4)));
-                    historicalSite.setKieu("historical-site");
+                    historicalSite.setNguonDuLieu(ConfigHtml.WIKIPEDIA_URL);
                     try {
                         String linkHistoricalSite = list.get(5);
                         if (linkHistoricalSite.contains("/wiki/")) {
@@ -330,24 +333,30 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                     listMap = getDataTable(eTable, 4, 1);
 
                     for (int i = 0; i < listMap.size(); i++) {
-                        List<String> list = listMap.get(i);
-                        WarEvent warEvent = new WarEvent(index);
-                        warEvent.setTen(Utils.removeComments(list.get(0).substring(0, list.get(0).charAt('('))));
-                        warEvent.setThoiKy(thoiKy);
-                        warEvent.setKieu("war-event");
-                        warEvent.setThoiGian(Utils.removeComments(list.get(0).substring(list.get(0).charAt('(') + 1, list.get(0).charAt(')') - 1)));
-                        warEvent.setLucLuong(Utils.removeComments(list.get(1)));
-                        warEvent.setDoiPhuong(Utils.removeComments(list.get(2)));
-                        warEvent.setKetQua(Utils.removeComments(list.get(3)));
                         try {
-                            String linkWarEvent = list.get(4);
-                            if (linkWarEvent.contains("/wiki/")) {
-                                warEvent.setMoTa(Utils.removeComments(getDescription(ConfigHtml.WIKIPEDIA_URL + linkWarEvent)));
+                            List<String> list = listMap.get(i);
+                            WarEvent warEvent = new WarEvent(index);
+                            System.out.println(list.get(0));
+                            warEvent.setTen(Utils.removeComments(list.get(0).substring(0, list.get(0).indexOf('('))));
+                            warEvent.setThoiKy(thoiKy);
+                            warEvent.setKieu(ConfigDataType.DATA_TYPE_WAR_EVENT);
+                            warEvent.setThoiGian(Utils.removeComments(list.get(0).substring(list.get(0).indexOf('(') + 1, list.get(0).indexOf(')') - 1)));
+                            warEvent.setLucLuong(Utils.removeComments(list.get(1)));
+                            warEvent.setDoiPhuong(Utils.removeComments(list.get(2)));
+                            warEvent.setKetQua(Utils.removeComments(list.get(3)));
+                            warEvent.setNguonDuLieu(ConfigHtml.WIKIPEDIA_URL);
+                            try {
+                                String linkWarEvent = list.get(4);
+                                if (linkWarEvent.contains("/wiki/")) {
+                                    warEvent.setMoTa(Utils.removeComments(getDescription(ConfigHtml.WIKIPEDIA_URL + linkWarEvent)));
+                                }
+                            } catch (Exception e) {
                             }
-                        } catch (Exception e) {
+                            historicEvents.add(warEvent);
+                            index++;
+                        } catch (Exception e){
+
                         }
-                        historicEvents.add(warEvent);
-                        index++;
                     }
                 }
             }
@@ -406,30 +415,55 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
             for (int i = 0; i < nColumn; i++) {
                 if (number[i] == 0) {
                     try {
-                        String rowspan = esTd.get(i).attr("rowspan");
-                        number[i] = Integer.parseInt(rowspan);
+                        System.out.println("****************" + i + " " + index);
+                        int numRowspan = i;
+                        for (int j = i - 1; j >= 0; j--) {
+                            try {
+                                String rowspan = esTd.get(j).attr("rowspan");
+                                number[i] = Integer.parseInt(rowspan) - 1;
+                            } catch (Exception e) {
+                                if (number[j] != 0) {
+                                    System.out.println("row --");
+                                    numRowspan--;
+                                }
+                            }
+                        }
+                        System.out.println(numRowspan);
+                        System.out.println("estd text " + esTd.get(numRowspan).text());
+                        String rowspan = esTd.get(numRowspan).attr("rowspan");
+                        number[i] = Integer.parseInt(rowspan) - 1;
+                        System.out.println("********************" + i + " " + number[i]);
                     } catch (Exception e) {
                     }
-                    System.out.print(esTd.get(k).text());
-                    list.add(esTd.get(k).text());
+//                    System.out.print("esTd text " + esTd.get(k).text() + " i " + i + " - " + number[i]);
+                    try {
+                        list.add(esTd.get(k).text());
+                    } catch (Exception e){
+                        list.add("");
+                    }
                     k++;
                 } else {
+                    System.out.println("number " + i + " " + number[i]);
                     if (i < cLink - 1) {
                         num++;
                     }
                     number[i]--;
-                    System.out.print(hashMap.get(index - 1).get(i));
+                    System.out.println(hashMap);
+                    System.out.println(index);
+                    System.out.println(i);
+                    System.out.print("hash map " + hashMap.get(index - 1).get(i));
                     list.add(hashMap.get(index - 1).get(i));
                 }
 
-                if (k >= esTd.size() || i == nColumn - 1) {
-                    System.out.println(cLink + " " + num);
+                if (i == nColumn - 1) {
+//                    System.out.println(cLink + " " + num);
                     try {
                         list.add(esTd.get(cLink - 1 - num).selectFirst("a").attr("href"));
-                        System.out.print(esTd.get(cLink - 1 - num).selectFirst("a").attr("href"));
+//                        System.out.print(esTd.get(cLink - 1 - num).selectFirst("a").attr("href"));
                     } catch (Exception e) {
 
                     }
+                    System.out.println(hashMap);
                     break;
                 }
                 System.out.println();

@@ -47,6 +47,32 @@ public class DataManipulationHistoricalSite implements IDataManipulationHistoric
                 historicalSite.setLoaiDiTich((String) jsonObject.get("loaiDiTich"));
                 historicalSite.setMieuTa((String) jsonObject.get("mieuTa"));
                 historicalSite.setGhiChu((String) jsonObject.get("ghiChu"));
+                historicalSite.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                try {
+                    historicalSite.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                } catch (Exception e){
+
+                }
+                try {
+                    historicalSite.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                } catch (Exception e){
+
+                }
+                try {
+                    historicalSite.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                } catch (Exception e){
+
+                }
+                try {
+                    historicalSite.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                } catch (Exception e){
+
+                }
+                try {
+                    historicalSite.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                } catch (Exception e){
+
+                }
                 historicalSites.add(historicalSite);
                 k++;
             }

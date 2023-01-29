@@ -2,8 +2,10 @@ package datamanipulation.datamanipulationimpl;
 
 import datamanipulation.IDataManipulationHistoricEvent;
 import entity.HistoricEvent;
+import entity.WarEvent;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+import utils.configs.ConfigDataType;
 import utils.configs.ConfigResourceData;
 
 import java.io.FileReader;
@@ -16,7 +18,7 @@ public class DataManipulationHistoricEvent implements IDataManipulationHistoricE
     @Override
     public void insertDataHistoricEvents(String url, List<HistoricEvent> historicEvents) {
         JSONArray jsonArrayHistoricEvents = new JSONArray();
-        for (HistoricEvent historicEvent : historicEvents){
+        for (HistoricEvent historicEvent : historicEvents) {
             jsonArrayHistoricEvents.add(historicEvent.toJSONObject());
         }
         try {
@@ -42,7 +44,50 @@ public class DataManipulationHistoricEvent implements IDataManipulationHistoricE
                 HistoricEvent historicEvent = new HistoricEvent(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
                 historicEvent.setMoTa((String) jsonObject.get("moTa"));
                 historicEvent.setTen((String) jsonObject.get("ten"));
-                historicEvents.add(historicEvent);
+                historicEvent.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                historicEvent.setKieu((String) jsonObject.get("kieu"));
+                try {
+                    historicEvent.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicEvent.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicEvent.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicEvent.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicEvent.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                } catch (Exception e) {
+
+                }
+                String kieu = "";
+                try {
+                    kieu = (String) jsonObject.get("kieu");
+                    if (!kieu.equals(ConfigDataType.DATA_TYPE_WAR_EVENT)) {
+                        historicEvents.add(historicEvent);
+                    } else {
+                        WarEvent warEvent = (WarEvent) historicEvent;
+                        warEvent.setThoiGian((String) jsonObject.get("thoiGian"));
+                        warEvent.setThoiKy((String) jsonObject.get("thoiKy"));
+                        warEvent.setLucLuong((String) jsonObject.get("lucLuong"));
+                        warEvent.setDoiPhuong((String) jsonObject.get("doiPhuong"));
+                        warEvent.setKetQua((String) jsonObject.get("ketQua"));
+                        historicEvents.add(warEvent);
+                    }
+                } catch (Exception e){
+                    historicEvents.add(historicEvent);
+                }
                 k++;
             }
         } catch (Exception e) {

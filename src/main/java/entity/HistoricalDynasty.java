@@ -52,6 +52,7 @@ public class HistoricalDynasty extends HistoricObject{
         jsonObject.put("ten", getTen());
         jsonObject.put("kinhDo", getKinhDo());
         jsonObject.put("moTa", getMoTa());
+        jsonObject.put("nguonDuLieu", getNguonDuLieu());
         jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
         jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
         jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());

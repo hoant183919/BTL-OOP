@@ -47,6 +47,32 @@ public class DataManipulationCulturalFestival implements IDataManipulationCultur
                     culturalFestival.setDiaDiem((String) jsonObject.get("diaDiem"));
                     culturalFestival.setThoiGian((String) jsonObject.get("thoiGian"));
                     culturalFestival.setGhiChu((String) jsonObject.get("ghiChu"));
+                    culturalFestival.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                    try {
+                        culturalFestival.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        culturalFestival.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        culturalFestival.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        culturalFestival.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        culturalFestival.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                    } catch (Exception e){
+
+                    }
                     culturalFestivals.add(culturalFestival);
                 } catch (Exception e){
                     e.printStackTrace();

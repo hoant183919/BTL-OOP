@@ -64,6 +64,7 @@ public class HistoricalSite extends HistoricObject{
         jsonObject.put("ghiChu", getGhiChu());
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("mieuTa", getMieuTa());
+        jsonObject.put("nguonDuLieu", getNguonDuLieu());
         jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
         jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
         jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());

@@ -104,6 +104,8 @@ public class Dominator extends HistoricalFigure{
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("tenChuHan", getTenChuHan());
         jsonObject.put("namSinhMat", getNamSinhMat());
+        jsonObject.put("nguonDuLieu", getNguonDuLieu());
+        jsonObject.put("kieu", getKieu());
         jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
         jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
         jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());

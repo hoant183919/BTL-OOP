@@ -48,6 +48,32 @@ public class DataManipulationHistoricalDynasty implements IDataManipulationHisto
                     historicalDynasty.setThoiKy((String) jsonObject.get("thoiKy"));
                     historicalDynasty.setThoiGianBatDau((String) jsonObject.get("thoiGianBatDau"));
                     historicalDynasty.setThoiGianKetThuc((String) jsonObject.get("thoiGianKetThuc"));
+                    historicalDynasty.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                    try {
+                        historicalDynasty.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        historicalDynasty.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        historicalDynasty.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        historicalDynasty.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                    } catch (Exception e){
+
+                    }
+                    try {
+                        historicalDynasty.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                    } catch (Exception e){
+
+                    }
                     historicalDynasties.add(historicalDynasty);
                 } catch (Exception e) {
                     e.printStackTrace();

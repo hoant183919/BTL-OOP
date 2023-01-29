@@ -1,9 +1,11 @@
 package datamanipulation.datamanipulationimpl;
 
 import datamanipulation.IDataManipulationHistoricalFigure;
+import entity.Dominator;
 import entity.HistoricalFigure;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+import utils.configs.ConfigDataType;
 import utils.configs.ConfigResourceData;
 
 import java.io.FileReader;
@@ -42,8 +44,55 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
                 HistoricalFigure historicalFigure = new HistoricalFigure(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
                 historicalFigure.setMoTa((String) jsonObject.get("moTa"));
                 historicalFigure.setTen((String) jsonObject.get("ten"));
+                historicalFigure.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                historicalFigure.setKieu((String) jsonObject.get("kieu"));
+                try {
+                    historicalFigure.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                } catch (Exception e) {
 
-                historicalFigures.add(historicalFigure);
+                }
+                try {
+                    historicalFigure.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicalFigure.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicalFigure.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                } catch (Exception e) {
+
+                }
+                try {
+                    historicalFigure.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                } catch (Exception e) {
+
+                }
+                String kieu = "";
+                try {
+                    kieu = (String) jsonObject.get("kieu");
+                    if (!kieu.equals(ConfigDataType.DATA_TYPE_DOMINATOR)) {
+                        historicalFigures.add(historicalFigure);
+                    } else {
+                        Dominator dominator = (Dominator) historicalFigure;
+                        dominator.setKieu(kieu);
+                        dominator.setVaiTro((String) jsonObject.get("vaiTro"));
+                        dominator.setMieuHieu((String) jsonObject.get("mieuHieu"));
+                        dominator.setThuyHieu((String) jsonObject.get("thuyHieu"));
+                        dominator.setNienHieu((String) jsonObject.get("nienHieu"));
+                        dominator.setTenHuy((String) jsonObject.get("tenHuy"));
+                        dominator.setTheThu((String) jsonObject.get("theThu"));
+                        dominator.setTriVi((String) jsonObject.get("triVi"));
+                        dominator.setTenChuHan((String) jsonObject.get("tenChuHan"));
+                        dominator.setNamSinhMat((String) jsonObject.get("namSinhMat"));
+                        historicalFigures.add(dominator);
+                    }
+                } catch (Exception e) {
+                    historicalFigures.add(historicalFigure);
+                }
                 k++;
             }
         } catch (Exception e) {

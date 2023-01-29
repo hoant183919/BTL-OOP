@@ -55,6 +55,7 @@ public class CulturalFestival extends HistoricObject{
         jsonObject.put("thoiDiemToChucLanDau", getThoiDiemToChucLanDau());
         jsonObject.put("moTa", getMoTa());
         jsonObject.put("ghiChu", getGhiChu());
+        jsonObject.put("nguonDuLieu", getNguonDuLieu());
         jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
         jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
         jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());

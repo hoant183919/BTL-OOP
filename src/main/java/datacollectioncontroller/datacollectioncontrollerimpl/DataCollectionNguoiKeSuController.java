@@ -8,6 +8,7 @@ import entity.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.configs.ConfigDataType;
 import utils.configs.ConfigHtml;
 import utils.configs.ConfigResourceData;
 
@@ -53,6 +54,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                                 String moTa = getDescriptionHistoricalDynasty(ConfigHtml.NGUOIKESU_URL + linkDescription.replaceFirst("/", ""));
                                 historicalDynasty.setTen(ten);
                                 historicalDynasty.setMoTa(moTa);
+                                historicalDynasty.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
 
                                 try {
                                     StringTokenizer stringTokenizer = new StringTokenizer(moTa, ".");
@@ -315,10 +317,12 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                                 elementsP = elementsP.next();
                             }
                             Dominator dominator = new Dominator(index);
-                            List<String> relatedToHistoricalDynasties = new ArrayList<>();
-                            relatedToHistoricalDynasties.add(trieuDai);
-                            dominator.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
+//                            List<String> relatedToHistoricalDynasties = new ArrayList<>();
+//                            relatedToHistoricalDynasties.add(trieuDai);
+//                            dominator.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
                             dominator.setMoTa(moTa);
+                            dominator.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
+                            dominator.setKieu(ConfigDataType.DATA_TYPE_DOMINATOR);
                             StringTokenizer stringTokenizer = new StringTokenizer(ten, "-");
                             if (stringTokenizer.countTokens() == 1) {
                                 dominator.setTen(stringTokenizer.nextToken());
@@ -382,6 +386,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                     HistoricalSite historicalSite = new HistoricalSite(index);
                     historicalSite.setTen(tenDiTich);
                     historicalSite.setMoTa(moTa);
+                    historicalSite.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
                     historicalSites.add(historicalSite);
                     index++;
                 } catch (Exception e) {
