@@ -1,5 +1,6 @@
 package datacollectioncontroller;
 
+import common.exception.HistoricalFigureDataCollectionException;
 import entity.HistoricalFigure;
 
 import java.io.IOException;
@@ -7,5 +8,5 @@ import java.util.List;
 
 public interface IDataCollectionHistoricalFigureController {
 
-    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException;
+    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException;
 }

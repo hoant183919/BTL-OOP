@@ -1,5 +1,6 @@
 package datacollectioncontroller.datacollectioncontrollerimpl;
 
+import common.exception.*;
 import datamanipulation.*;
 import datamanipulation.datamanipulationimpl.*;
 import datacollectioncontroller.IDataCollectionController;
@@ -19,12 +20,8 @@ import static utils.configs.ConfigResourceData.NAME_FILE;
 
 public class DataCollectionWikipediaController implements IDataCollectionController {
 
-    private static final String idSpanHaNoi = "Th.E1.BB.A7_.C4.91.C3.B4_H.C3.A0_N.E1.BB.99i";
-    private static final String idSpanNinhBinh = "Ninh_B.C3.ACnh";
-    private List<String> exceptionHistoricEvents;
-
     @Override
-    public List<CulturalFestival> collectionDataCulturalFestival() throws IOException {
+    public List<CulturalFestival> collectionDataCulturalFestival() throws IOException, CulturalFestivalDataCollectionException {
         List<CulturalFestival> culturalFestivals = new ArrayList<>();
         int index = 1;
 
@@ -59,15 +56,15 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                 }
                 culturalFestivals.add(culturalFestival);
                 index++;
-            } catch (IndexOutOfBoundsException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                throw new CulturalFestivalDataCollectionException();
             }
         }
         return culturalFestivals;
     }
 
     @Override
-    public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException {
+    public List<HistoricalDynasty> collectionDataHistoricalDynasty() throws IOException, HistoricalDynastyDataCollectionException {
         List<HistoricalDynasty> historicalDynasties = new ArrayList<>();
         int index = 1;
 
@@ -108,8 +105,8 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                 historicalDynasties.add(historicalDynasty);
 
                 index++;
-            } catch (IndexOutOfBoundsException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                throw new HistoricalDynastyDataCollectionException();
             }
             elementsTr = elementsTr.next();
         }
@@ -117,7 +114,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
     }
 
     @Override
-    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException {
+    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int index = 1;
 
@@ -191,12 +188,11 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                             dominator.setMoTa(description);
                         }
                     } catch (Exception e) {
-                        e.printStackTrace();
                     }
                     historicalFigures.add(dominator);
                     index++;
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    throw new HistoricalFigureDataCollectionException();
                 }
             }
 
@@ -206,8 +202,10 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
     }
 
     @Override
-    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException {
+    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException, HistoricalSiteDataCollectionException {
         List<HistoricalSite> historicalSites = new ArrayList<>();
+
+        String idSpanHaNoi = "Th.E1.BB.A7_.C4.91.C3.B4_H.C3.A0_N.E1.BB.99i";
         int index = 1;
         Document document = getDocument(ConfigHtml.WIKIPEDIA_URL + "/wiki/Danh_sách_Di_tích_quốc_gia_Việt_Nam");
         System.out.println(document.title());
@@ -266,12 +264,11 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                             historicalSite.setMoTa(Utils.removeComments(getDescription(ConfigHtml.WIKIPEDIA_URL + linkHistoricalSite)));
                         }
                     } catch (Exception e) {
-
                     }
                     historicalSites.add(historicalSite);
                     index++;
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    throw new HistoricalSiteDataCollectionException();
                 }
             }
             esH3 = esH3.next();
@@ -280,8 +277,11 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
     }
 
     @Override
-    public List<HistoricEvent> collectionDataHistoricEvent() throws IOException {
+    public List<HistoricEvent> collectionDataHistoricEvent() throws IOException, HistoricEventDataCollectionException {
         List<HistoricEvent> historicEvents = new ArrayList<>();
+
+        List<String> exceptionHistoricEvents;
+
         exceptionHistoricEvents = new ArrayList<>();
         exceptionHistoricEvents.add("Việt Nam Dân chủ Cộng hòa");
         exceptionHistoricEvents.add("Thời kỳ thống nhất");
@@ -354,8 +354,8 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                             }
                             historicEvents.add(warEvent);
                             index++;
-                        } catch (Exception e){
-
+                        } catch (Exception e) {
+                            throw new HistoricEventDataCollectionException();
                         }
                     }
                 }
@@ -438,7 +438,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
 //                    System.out.print("esTd text " + esTd.get(k).text() + " i " + i + " - " + number[i]);
                     try {
                         list.add(esTd.get(k).text());
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         list.add("");
                     }
                     k++;
@@ -476,7 +476,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
         return hashMap;
     }
 
-    public void collectData() throws IOException {
+    public void collectData() throws  DataCollectionException {
         try {
             List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();
             List<HistoricalDynasty> historicalDynasties = collectionDataHistoricalDynasty();
@@ -511,7 +511,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                 dataManipulationHistoricEvent.insertDataHistoricEvents(ConfigResourceData.RESERVE_DATA_WIKIPEDIA_PATH + NAME_FILE[4], historicEvents);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new DataCollectionException("Collection Data error !!!!");
         }
     }
 }

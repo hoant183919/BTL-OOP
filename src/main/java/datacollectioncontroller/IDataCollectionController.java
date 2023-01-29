@@ -1,5 +1,6 @@
 package datacollectioncontroller;
 
+import common.exception.DataCollectionException;
 import entity.*;
 import org.jsoup.nodes.Document;
 import utils.Utils;
@@ -124,5 +125,5 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
         }
     }
 
-    public void collectData() throws IOException;
+    public void collectData() throws IOException, DataCollectionException;
 }

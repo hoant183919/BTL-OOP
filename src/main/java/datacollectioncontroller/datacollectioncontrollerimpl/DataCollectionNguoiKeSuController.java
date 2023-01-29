@@ -1,5 +1,8 @@
 package datacollectioncontroller.datacollectioncontrollerimpl;
 
+import common.exception.DataCollectionException;
+import common.exception.HistoricalFigureDataCollectionException;
+import common.exception.HistoricalSiteDataCollectionException;
 import datamanipulation.*;
 import datamanipulation.datamanipulationimpl.*;
 import datacollectioncontroller.IDataCollectionController;
@@ -191,7 +194,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
     }
 
     @Override
-    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException {
+    public List<HistoricalFigure> collectionDataHistoricalFigure() throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int index = 1;
         List<HistoricalFigure> nationalHeros = collectionDataNationalHero(index);
@@ -209,7 +212,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalFigures;
     }
 
-    private List<HistoricalFigure> collectionDataNationalHero(int index) throws IOException {
+    private List<HistoricalFigure> collectionDataNationalHero(int index) throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int startWeb = 0;
         while (startWeb <= 10) {
@@ -235,12 +238,18 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                         moTa += elementP.text();
                         elementsP = elementsP.next();
                     }
+                    HistoricalFigure historicalFigure = new HistoricalFigure(index);
+                    historicalFigure.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
+                    historicalFigure.setTen(elementH3.text());
+                    historicalFigure.setMoTa(moTa);
+                    historicalFigures.add(historicalFigure);
+                    index++;
                     System.out.println(elementH3.text());
                     System.out.println(elementA.attr("href"));
                     System.out.println(moTa);
                     System.out.println("*****************");
                 } catch (Exception e) {
-
+                    throw new HistoricalFigureDataCollectionException();
                 }
                 elementsLi = elementsLi.next();
             }
@@ -249,7 +258,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return historicalFigures;
     }
 
-    private List<HistoricalFigure> collectionDataCulturalCelebrity(int index) throws IOException {
+    private List<HistoricalFigure> collectionDataCulturalCelebrity(int index) throws IOException, HistoricalFigureDataCollectionException {
         List<HistoricalFigure> historicalFigures = new ArrayList<>();
         int startWeb = 0;
         while (startWeb <= 10) {
@@ -275,12 +284,18 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                         moTa += elementP.text();
                         elementsP = elementsP.next();
                     }
+                    HistoricalFigure historicalFigure = new HistoricalFigure(index);
+                    historicalFigure.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
+                    historicalFigure.setTen(elementH3.text());
+                    historicalFigure.setMoTa(moTa);
+                    historicalFigures.add(historicalFigure);
+                    index++;
                     System.out.println(elementH3.text());
                     System.out.println(elementA.attr("href"));
                     System.out.println(moTa);
                     System.out.println("*****************");
                 } catch (Exception e) {
-
+                    throw new HistoricalFigureDataCollectionException();
                 }
                 elementsLi = elementsLi.next();
             }
@@ -308,35 +323,39 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                         Element elementDivChildren = elementDiv.select("div").first();
                         String ten = elementDivChildren.select("div").first().select("a").first().text();
                         if (!ten.contains("Kỷ") && !ten.contains("Thuộc") && ten.contains("-")) {
-                            String trieuDai = elementDivChildren.select("dl").first().select("dd").first().text();
-                            String moTa = "";
-                            Elements elementsP = elementDivChildren.select("p");
-                            while (elementsP.iterator().hasNext()) {
-                                Element elementP = elementsP.iterator().next();
-                                moTa += elementP.text();
-                                elementsP = elementsP.next();
-                            }
-                            Dominator dominator = new Dominator(index);
+                            try {
+                                String trieuDai = elementDivChildren.select("dl").first().select("dd").first().text();
+                                String moTa = "";
+                                Elements elementsP = elementDivChildren.select("p");
+                                while (elementsP.iterator().hasNext()) {
+                                    Element elementP = elementsP.iterator().next();
+                                    moTa += elementP.text();
+                                    elementsP = elementsP.next();
+                                }
+                                Dominator dominator = new Dominator(index);
 //                            List<String> relatedToHistoricalDynasties = new ArrayList<>();
 //                            relatedToHistoricalDynasties.add(trieuDai);
 //                            dominator.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
-                            dominator.setMoTa(moTa);
-                            dominator.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
-                            dominator.setKieu(ConfigDataType.DATA_TYPE_DOMINATOR);
-                            StringTokenizer stringTokenizer = new StringTokenizer(ten, "-");
-                            if (stringTokenizer.countTokens() == 1) {
-                                dominator.setTen(stringTokenizer.nextToken());
-                            } else {
-                                dominator.setTen(stringTokenizer.nextToken().trim());
-                                dominator.setTenHuy(stringTokenizer.nextToken().trim());
+                                dominator.setMoTa(moTa);
+                                dominator.setNguonDuLieu(ConfigHtml.NGUOIKESU_URL);
+                                dominator.setKieu(ConfigDataType.DATA_TYPE_DOMINATOR);
+                                StringTokenizer stringTokenizer = new StringTokenizer(ten, "-");
+                                if (stringTokenizer.countTokens() == 1) {
+                                    dominator.setTen(stringTokenizer.nextToken());
+                                } else {
+                                    dominator.setTen(stringTokenizer.nextToken().trim());
+                                    dominator.setTenHuy(stringTokenizer.nextToken().trim());
+                                }
+                                System.out.println(dominator.getTen());
+                                dominators.add(dominator);
+                                index++;
+                                System.out.println("T: " + ten);
+                                System.out.println("TD: " + trieuDai);
+                                System.out.println("MT: " + moTa);
+                                System.out.println("******************************");
+                            } catch (Exception e) {
+                                throw new HistoricalFigureDataCollectionException();
                             }
-                            System.out.println(dominator.getTen());
-                            dominators.add(dominator);
-                            index++;
-                            System.out.println("T: " + ten);
-                            System.out.println("TD: " + trieuDai);
-                            System.out.println("MT: " + moTa);
-                            System.out.println("******************************");
                         }
                     }
                 } catch (Exception e) {
@@ -350,7 +369,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
     }
 
     @Override
-    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException {
+    public List<HistoricalSite> collectionDataHistoricalSite() throws IOException, HistoricalSiteDataCollectionException {
         List<HistoricalSite> historicalSites = new ArrayList<>();
         int index = 1;
         int startWeb = 0;
@@ -390,7 +409,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                     historicalSites.add(historicalSite);
                     index++;
                 } catch (Exception e) {
-
+                    throw new HistoricalSiteDataCollectionException();
                 }
                 elementsLi = elementsLi.next();
             }
@@ -404,7 +423,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         return null;
     }
 
-    public void collectData() throws IOException {
+    public void collectData() throws DataCollectionException {
         try {
             List<CulturalFestival> culturalFestivals = collectionDataCulturalFestival();
             List<HistoricalDynasty> historicalDynasties = collectionDataHistoricalDynasty();
@@ -439,7 +458,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
                 dataManipulationHistoricEvent.insertDataHistoricEvents(ConfigResourceData.RESERVE_DATA_NGUOIKESU_PATH + NAME_FILE[4], historicEvents);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new DataCollectionException("Collection Data error !!!!");
         }
     }
 }
