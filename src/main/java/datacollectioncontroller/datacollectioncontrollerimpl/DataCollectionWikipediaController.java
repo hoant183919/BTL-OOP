@@ -1,7 +1,7 @@
 package datacollectioncontroller.datacollectioncontrollerimpl;
 
-import data.datamanipulation.*;
-import data.datamanipulation.datamanipulation.*;
+import datamanipulation.*;
+import datamanipulation.datamanipulationimpl.*;
 import datacollectioncontroller.IDataCollectionController;
 import entity.*;
 import org.jsoup.nodes.Document;

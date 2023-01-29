@@ -1,6 +1,6 @@
-package data.datamanipulation.datamanipulation;
+package datamanipulation.datamanipulationimpl;
 
-import data.datamanipulation.IDataManipulationHistoricalDynasty;
+import datamanipulation.IDataManipulationHistoricalDynasty;
 import entity.HistoricalDynasty;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;

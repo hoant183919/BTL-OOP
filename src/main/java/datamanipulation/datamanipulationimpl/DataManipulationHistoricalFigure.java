@@ -1,6 +1,6 @@
-package data.datamanipulation.datamanipulation;
+package datamanipulation.datamanipulationimpl;
 
-import data.datamanipulation.IDataManipulationHistoricalFigure;
+import datamanipulation.IDataManipulationHistoricalFigure;
 import entity.HistoricalFigure;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;

@@ -1,4 +1,4 @@
-package data.datamanipulation;
+package datamanipulation;
 
 
 import entity.HistoricalDynasty;

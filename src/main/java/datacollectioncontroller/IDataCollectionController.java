@@ -1,11 +1,8 @@
 package datacollectioncontroller;
 
-import data.datamanipulation.*;
-import data.datamanipulation.datamanipulation.*;
 import entity.*;
 import org.jsoup.nodes.Document;
 import utils.Utils;
-import utils.configs.ConfigResourceData;
 import utils.configs.SSLHelper;
 
 import java.io.IOException;
@@ -13,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javafx.css.StyleOrigin.USER_AGENT;
-import static utils.configs.ConfigResourceData.NAME_FILE;
 
 public interface IDataCollectionController extends IDataCollectionCulturalFestivalController, IDataCollectionHistoricalDynastyController, IDataCollectionHistoricalFigureController, IDataCollectionHistoricalSiteController, IDataCollectionHistoricEventController {
 
@@ -34,6 +30,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
      * @param list
      */
     public default void getRelationship(List<?> list, List<CulturalFestival> culturalFestivalsSearch, List<HistoricalDynasty> historicalDynastiesSearch, List<HistoricalFigure> historicalFiguresSearch, List<HistoricalSite> historicalSitesSearch, List<HistoricEvent> historicEventsSearch) throws IOException {
+        if (list == null) return;
         int k = 0;
         while (k < list.size()) {
             HistoricObject historicObject = (HistoricObject) list.get(k);

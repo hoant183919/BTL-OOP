@@ -1,7 +1,7 @@
 package dataprocessingcontroller;
 
-import data.datamanipulation.*;
-import data.datamanipulation.datamanipulation.*;
+import datamanipulation.*;
+import datamanipulation.datamanipulationimpl.*;
 import entity.*;
 import utils.configs.ConfigResourceData;
 

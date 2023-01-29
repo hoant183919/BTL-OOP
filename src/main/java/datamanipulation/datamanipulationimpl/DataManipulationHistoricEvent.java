@@ -1,6 +1,6 @@
-package data.datamanipulation.datamanipulation;
+package datamanipulation.datamanipulationimpl;
 
-import data.datamanipulation.IDataManipulationHistoricEvent;
+import datamanipulation.IDataManipulationHistoricEvent;
 import entity.HistoricEvent;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
