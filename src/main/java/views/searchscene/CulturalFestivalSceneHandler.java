@@ -22,6 +22,13 @@ public class CulturalFestivalSceneHandler extends BaseSceneHandler {
         thoiDiemToChucLanDauLabel.setText(culturalFestival.getThoiDiemToChucLanDau());
         ghiChuLabel.setText(culturalFestival.getGhiChu());
         moTaLabel.setText(culturalFestival.getMoTa());
+        nguonLabel.setText(culturalFestival.getNguonDuLieu());
+        festivalRelationLabel.setText(culturalFestival.getRelatedToCulturalFestivals().toString());
+        figureRelationLabel.setText(culturalFestival.getRelatedToHistoricalFigures().toString());
+        siteRelationLabel.setText(culturalFestival.getRelatedToHistoricalSites().toString());
+        eventRelationLabel.setText(culturalFestival.getRelatedToHistoricEvents().toString());
+        dynastyRelationLabel.setText(culturalFestival.getRelatedToHistoricalDynasties().toString());
+
     }
 
 }

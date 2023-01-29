@@ -8,6 +8,18 @@ public class BaseSceneHandler {
     Label moTaLabel;
     @FXML
     Label tenLabel;
+    @FXML
+    Label nguonLabel;
+    @FXML
+    Label figureRelationLabel;
+    @FXML
+    Label siteRelationLabel;
+    @FXML
+    Label festivalRelationLabel;
+    @FXML
+    Label dynastyRelationLabel;
+    @FXML
+    Label eventRelationLabel;
 
 }
 

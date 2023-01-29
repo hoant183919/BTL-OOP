@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.datasummaryscene.DataSummarySceneHandler">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709" prefWidth="1630.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.datasummaryscene.DataSummarySceneHandler">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2500" prefWidth="945.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2500" prefWidth="1600.0">
          <children>
             <ToolBar layoutX="-1.0" prefHeight="56.0" prefWidth="929.0">
               <items>
@@ -28,13 +28,18 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <TableView fx:id="culturalFestivalTableView" layoutX="16.0" layoutY="555.0">
+            <TableView fx:id="culturalFestivalTableView" layoutX="16.0" layoutY="555.0" prefHeight="400.0" prefWidth="1567.0">
                <columns>
-                  <TableColumn fx:id="tenCulturalFestivalColumn" prefWidth="143.0" text="Tên" />
-                  <TableColumn fx:id="thoiGianCulturalFestivalColumn" minWidth="0.0" prefWidth="166.0" text="Thời gian" />
-                  <TableColumn fx:id="diaDiemCulturalFestivalColumn" prefWidth="242.0" text="Địa điểm" />
-                  <TableColumn fx:id="thoiDiemToChucLanDauCulturalFestivalColumn" prefWidth="163.0" text="Thời điểm tổ chức lần đầu" />
-                  <TableColumn fx:id="moTaCulturalFestivalColumn" prefWidth="168.0" text="Mô tả" />
+                  <TableColumn fx:id="tenCulturalFestivalColumn" prefWidth="107.0" text="Tên" />
+                  <TableColumn fx:id="thoiGianCulturalFestivalColumn" minWidth="0.0" prefWidth="163.0" text="Thời gian" />
+                  <TableColumn fx:id="diaDiemCulturalFestivalColumn" prefWidth="128.0" text="Địa điểm" />
+                  <TableColumn fx:id="thoiDiemToChucLanDauCulturalFestivalColumn" prefWidth="175.0" text="Thời điểm tổ chức lần đầu" />
+                  <TableColumn fx:id="culturalRelationCulturalFestivalColumn" prefWidth="126.0" text="Lễ hội liên quan" />
+                  <TableColumn fx:id="figureRelationCulturalFestivalColumn" prefWidth="134.0" text="Nhân vật liên quan" />
+                  <TableColumn fx:id="dynastyRelationCulturalFestivalColumn" minWidth="0.0" prefWidth="158.0" text="Triều đại liên quan" />
+                  <TableColumn fx:id="eventRelationCulturalFestivalColumn" prefWidth="132.0" text="Sự kiện liên quan" />
+                  <TableColumn fx:id="siteRelationCulturalFestivalColumn" minWidth="0.0" prefWidth="163.0" text="Di tích liên quan" />
+                  <TableColumn fx:id="moTaCulturalFestivalColumn" prefWidth="280.0" text="Mô tả" />
                </columns>
             </TableView>
             <Label layoutX="14.0" layoutY="960.0" prefHeight="36.0" prefWidth="229.0" text="Tổng hợp nhân vật lịch sử">
@@ -44,15 +49,20 @@
             </Label>
             <TableView fx:id="historicalFigureTableView" layoutX="15.0" layoutY="1005.0">
                <columns>
-                  <TableColumn fx:id="tenHistoricalFigureColumn" prefWidth="124.0" text="Tên" />
-                  <TableColumn fx:id="mieuHieuHistoricalFigureColumn" minWidth="0.0" prefWidth="97.0" text="Miêu hiệu" />
-                  <TableColumn fx:id="thuyHieuHistoricalFigureColumn" prefWidth="112.0" text="Thụy hiệu" />
-                  <TableColumn fx:id="nienHieuHistoricalFigureColumn" prefWidth="101.0" text="Niên hiệu" />
-                  <TableColumn fx:id="tenHuyHistoricalFigureColumn" minWidth="0.0" prefWidth="101.0" text="Tên húy" />
-                   <TableColumn fx:id="tenChuHanHistoricalFigureColumn" minWidth="0.0" prefWidth="87.0" text="Tên chữ Hán" />
-                   <TableColumn fx:id="namSinhMatHistoricalFigureColumn" prefWidth="136.0" text="Năm sinh mất" />
-                   <TableColumn fx:id="vaiTroHistoricalFigureColumn" text="Vai trò" />
-                   <TableColumn fx:id="triViHistoricalFigureColumn" prefWidth="60" text="Trị vì" />
+                  <TableColumn fx:id="tenHistoricalFigureColumn" prefWidth="95.0" text="Tên" />
+                  <TableColumn fx:id="mieuHieuHistoricalFigureColumn" minWidth="0.0" prefWidth="103.0" text="Miêu hiệu" />
+                  <TableColumn fx:id="thuyHieuHistoricalFigureColumn" prefWidth="115.0" text="Thụy hiệu" />
+                  <TableColumn fx:id="nienHieuHistoricalFigureColumn" prefWidth="94.0" text="Niên hiệu" />
+                  <TableColumn fx:id="tenHuyHistoricalFigureColumn" minWidth="0.0" prefWidth="95.0" text="Tên húy" />
+                   <TableColumn fx:id="tenChuHanHistoricalFigureColumn" minWidth="0.0" prefWidth="106.0" text="Tên chữ Hán" />
+                   <TableColumn fx:id="namSinhMatHistoricalFigureColumn" prefWidth="120.0" text="Năm sinh mất" />
+                   <TableColumn fx:id="vaiTroHistoricalFigureColumn" prefWidth="94.0" text="Vai trò" />
+                   <TableColumn fx:id="triViHistoricalFigureColumn" prefWidth="67.0" text="Trị vì" />
+                  <TableColumn fx:id="culturalRelationHistoricalFigureColumn" prefWidth="118.0" text="Lễ hội liên quan" />
+                  <TableColumn fx:id="figureRelationHistoricalFigureColumn" prefWidth="132.0" text="Nhân vật liên quan" />
+                  <TableColumn fx:id="dynastyRelationHistoricalFigureColumn" minWidth="0.0" prefWidth="145.0" text="Triều đại liên quan" />
+                  <TableColumn fx:id="eventRelationHistoricalFigureColumn" minWidth="0.0" prefWidth="144.0" text="Sự kiện liên quan" />
+                  <TableColumn fx:id="siteRelationHistoricalFigureColumn" minWidth="0.0" prefWidth="152.0" text="Di tích liên quan" />
                </columns>
             </TableView>
             <Label layoutX="14.0" layoutY="1444.0" prefHeight="36.0" prefWidth="229.0" text="Tổng hợp di tích lịch sử">
@@ -64,8 +74,13 @@
                <columns>
                   <TableColumn fx:id="tenHistoricalSiteColumn" prefWidth="235.0" text="Tên" />
                   <TableColumn fx:id="diaDiemHistoricalSiteColumn" prefWidth="198.0" text="Địa điểm" />
-                  <TableColumn fx:id="namCNHistoricalSiteColumn" prefWidth="245.0" text="Năm công nhận" />
-                   <TableColumn fx:id="mieuTaHistoricalSiteColumn" prefWidth="225.0" text="Miêu tả" />
+                  <TableColumn fx:id="namCNHistoricalSiteColumn" prefWidth="221.0" text="Năm công nhận" />
+                   <TableColumn fx:id="mieuTaHistoricalSiteColumn" prefWidth="196.0" text="Miêu tả" />
+                  <TableColumn fx:id="culturalRelationHistoricalSiteColumn" prefWidth="147.0" text="Lễ hội liên quan" />
+                  <TableColumn fx:id="figureRelationHistoricalSiteColumn" prefWidth="156.0" text="Nhân vật liên quan" />
+                  <TableColumn fx:id="dynastyRelationHistoricalSiteColumn" minWidth="0.0" prefWidth="145.0" text="Triều đại liên quan" />
+                  <TableColumn fx:id="eventRelationHistoricalSiteColumn" minWidth="0.0" prefWidth="144.0" text="Sự kiện liên quan" />
+                  <TableColumn fx:id="siteRelationHistoricalSiteColumn" minWidth="0.0" prefWidth="142.0" text="Di tích liên quan" />
                </columns>
             </TableView>
             <Label layoutX="14.0" layoutY="1920.0" prefHeight="36.0" prefWidth="229.0" text="Tổng hợp sự kiện lịch sử">
@@ -81,13 +96,23 @@
                   <TableColumn fx:id="lucLuongHistoricEventColumn" prefWidth="161.0" text="Lực lượng" />
                   <TableColumn fx:id="doiPhuongHistoricEventColumn" prefWidth="172.0" text="Đối phương" />
                    <TableColumn fx:id="ketQuaHistoricEventColumn" prefWidth="155.0" text="Kết quả" />
+                  <TableColumn fx:id="culturalRelationHistoricEventColumn" prefWidth="118.0" text="Lễ hội liên quan" />
+                  <TableColumn fx:id="figureRelationHistoricEventColumn" prefWidth="132.0" text="Nhân vật liên quan" />
+                  <TableColumn fx:id="dynastyRelationHistoricEventColumn" minWidth="0.0" prefWidth="145.0" text="Triều đại liên quan" />
+                  <TableColumn fx:id="eventRelationHistoricEventColumn" minWidth="0.0" prefWidth="144.0" text="Sự kiện liên quan" />
+                  <TableColumn fx:id="siteRelationHistoricEventColumn" minWidth="0.0" prefWidth="139.0" text="Di tích liên quan" />
                </columns>
             </TableView>
-            <TableView fx:id="historicalDynastyTableView" layoutX="14.0" layoutY="132.0" prefHeight="373.0" prefWidth="892.0">
+            <TableView fx:id="historicalDynastyTableView" layoutX="14.0" layoutY="132.0" prefHeight="377.0" prefWidth="1583.0">
               <columns>
                 <TableColumn fx:id="tenHistoricalDynastyColumn" prefWidth="117.0" text="Tên" />
-                <TableColumn fx:id="kinhDoHistoricalDynastyColumn" prefWidth="327.0" text="Kinh đô" />
-                  <TableColumn fx:id="moTaHistoricalDynastyColumn" prefWidth="446.0" text="Mô tả" />
+                <TableColumn fx:id="kinhDoHistoricalDynastyColumn" prefWidth="306.0" text="Kinh đô" />
+                  <TableColumn fx:id="culturalRelationHistoricalDynastyColumn" prefWidth="163.0" text="Lễ hội liên quan" />
+                  <TableColumn fx:id="figureRelationHistoricalDynastyColumn" prefWidth="171.0" text="Nhân vật liên quan" />
+                  <TableColumn fx:id="dynastyRelationHistoricalDynastyColumn" minWidth="0.0" prefWidth="145.0" text="Triều đại liên quan" />
+                  <TableColumn fx:id="eventRelationHistoricalDynastyColumn" minWidth="0.0" prefWidth="144.0" text="Sự kiện liên quan" />
+                  <TableColumn fx:id="siteRelationHistoricalDynastyColumn" minWidth="0.0" prefWidth="168.0" text="Di tích liên quan" />
+                  <TableColumn fx:id="moTaHistoricalDynastyColumn" prefWidth="367.0" text="Mô tả" />
               </columns>
             </TableView>
          </children></AnchorPane>
