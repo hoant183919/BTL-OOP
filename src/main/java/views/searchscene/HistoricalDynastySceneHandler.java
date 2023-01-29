@@ -13,6 +13,12 @@ public class HistoricalDynastySceneHandler extends BaseSceneHandler {
         tenLabel.setText(historicalDynasty.getTen());
         kinhDoLabel.setText(historicalDynasty.getKinhDo());
         moTaLabel.setText(historicalDynasty.getMoTa());
+        nguonLabel.setText(historicalDynasty.getNguonDuLieu());
+        festivalRelationLabel.setText(historicalDynasty.getRelatedToCulturalFestivals().toString());
+        figureRelationLabel.setText(historicalDynasty.getRelatedToHistoricalFigures().toString());
+        siteRelationLabel.setText(historicalDynasty.getRelatedToHistoricalSites().toString());
+        eventRelationLabel.setText(historicalDynasty.getRelatedToHistoricEvents().toString());
+        dynastyRelationLabel.setText(historicalDynasty.getRelatedToHistoricalDynasties().toString());
     }
 
 

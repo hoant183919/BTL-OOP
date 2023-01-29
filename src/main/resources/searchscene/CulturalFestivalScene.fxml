@@ -29,7 +29,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="468.0" prefHeight="30.0" prefWidth="64.0" text="Mô tả:">
+            <Label layoutX="31.0" layoutY="665.0" prefHeight="30.0" prefWidth="64.0" text="Mô tả:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -59,12 +59,72 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="508.0" prefHeight="1999.0" prefWidth="974.0" wrapText="true">
+            <Label fx:id="moTaLabel" alignment="TOP_LEFT" layoutX="36.0" layoutY="716.0" prefHeight="1999.0" prefWidth="974.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="ghiChuLabel" layoutX="116.0" layoutY="335.0" prefHeight="90.0" prefWidth="895.0" wrapText="true">
+            <Label fx:id="ghiChuLabel" layoutX="116.0" layoutY="334.0" prefHeight="36.0" prefWidth="895.0" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="21.0" prefHeight="36.0" prefWidth="86.0" text="Nguồn: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="nguonLabel" layoutX="116.0" layoutY="21.0" prefHeight="37.0" prefWidth="460.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="387.0" prefHeight="38.0" prefWidth="176.0" text="Nhân vật liên quan:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="442.0" prefHeight="38.0" prefWidth="176.0" text="Sự kiện liên quan:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="500.0" prefHeight="38.0" prefWidth="176.0" text="Triều đại liên quan:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="554.0" prefHeight="38.0" prefWidth="176.0" text="Di tích liên quan:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="612.0" prefHeight="38.0" prefWidth="176.0" text="Lễ hội liên quan: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="figureRelationLabel" layoutX="226.0" layoutY="387.0" prefHeight="38.0" prefWidth="766.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="eventRelationLabel" layoutX="210.0" layoutY="442.0" prefHeight="38.0" prefWidth="789.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="dynastyRelationLabel" layoutX="210.0" layoutY="500.0" prefHeight="38.0" prefWidth="792.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="siteRelationLabel" layoutX="190.0" layoutY="554.0" prefHeight="38.0" prefWidth="804.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="festivalRelationLabel" layoutX="190.0" layoutY="612.0" prefHeight="38.0" prefWidth="807.0">
                <font>
                   <Font size="20.0" />
                </font>

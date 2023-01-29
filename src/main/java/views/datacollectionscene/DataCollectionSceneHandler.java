@@ -32,6 +32,8 @@ public class DataCollectionSceneHandler {
     Label statusLabel = null;
     @FXML
     ProgressBar progressBar;
+    @FXML
+    Button cancelButton;
 
     // Switch to Splash Scene
     @FXML
@@ -54,46 +56,72 @@ public class DataCollectionSceneHandler {
         }
         statusLabel.setText("Ready");
     }
-    Task<Void> task = new Task<Void>() {
+    Task<Void> wikipediaTask = new Task<Void>() {
         @Override
         protected Void call() throws Exception {
-
-            if (historicType == HistoricType.WIKIPEDIA) {
-                DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
-                dataCollectionWikipediaController.collectData();
-            }
-            else if (historicType == HistoricType.NGUOI_KE_SU) {
-                DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
-                dataCollectionNguoiKeSuController.collectData();
-            } else if (historicType == null) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Lưu ý");
-                alert.setContentText("Hãy chọn nguồn dữ liệu");
-                alert.show();
-            }
-
+            DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+            dataCollectionWikipediaController.collectData();
             return null;
         }
     };
-    Thread thread = new Thread(task);
+    Task<Void> nguoiKeSuTask = new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+            DataCollectionNguoiKeSuController dataCollectionNguoiKeSuController = new DataCollectionNguoiKeSuController();
+            dataCollectionNguoiKeSuController.collectData();
+            return null;
+        }
+    };
+    Thread nguoiKeSuThread = new Thread(nguoiKeSuTask);
+    Thread wikipediaThread = new Thread(wikipediaTask);
 
     // Start Data Collecting
     @FXML
     public void startDataCollecting(ActionEvent event) {
-        if (historicType == HistoricType.NGUOI_KE_SU) {
-            statusLabel.setText("Nguồn: Người kể sử");
-        } else if (historicType == HistoricType.WIKIPEDIA) {
-            statusLabel.setText("Nguồn: Wikipedia");
-        }
         progressBar.setDisable(false);
         progressBar.setOpacity(1);
-        thread.start();
-        progressBar.progressProperty().bind(task.progressProperty());
-        task.setOnSucceeded(WorkerStateEvent -> {
-            statusLabel.setText("Completed");
-            progressBar.setDisable(true);
-            progressBar.setOpacity(0);
-        });
+        cancelButton.setDisable(false);
+        cancelButton.setOpacity(1);
+        if (historicType == HistoricType.NGUOI_KE_SU) {
+            nguoiKeSuThread.start();
+            statusLabel.setText("Nguồn: Người kể sử");
+            progressBar.progressProperty().bind(nguoiKeSuTask.progressProperty());
+            nguoiKeSuTask.setOnSucceeded(WorkerStateEvent -> {
+                statusLabel.setText("Completed");
+                progressBar.progressProperty().unbind();
+                progressBar.setDisable(true);
+                progressBar.setOpacity(0);
+            });
+        } else if (historicType == HistoricType.WIKIPEDIA) {
+            statusLabel.setText("Nguồn: Wikipedia");
+            wikipediaThread.start();
+            progressBar.progressProperty().bind(wikipediaTask.progressProperty());
+            wikipediaTask.setOnSucceeded(WorkerStateEvent -> {
+                statusLabel.setText("Completed");
+                progressBar.progressProperty().unbind();
+                progressBar.setDisable(true);
+                progressBar.setOpacity(0);
+            });
+        } else if (historicType == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lưu ý");
+            alert.setContentText("Hãy chọn nguồn dữ liệu");
+            alert.show();
+        }
+        cancelButton.setDisable(false);
+        cancelButton.setOpacity(1);
+    }
+    @FXML
+    public void cancelDataCollecting(ActionEvent event) {
+        if(wikipediaTask.isRunning()) {
+            wikipediaTask.cancel();
+        } else if (nguoiKeSuTask.isRunning()) {
+            nguoiKeSuTask.cancel();
+        }
+        statusLabel.setText("Đã hủy thu thập");
+        progressBar.progressProperty().unbind();
+        progressBar.setDisable(true);
+        progressBar.setOpacity(0);
 
     }
 }

@@ -27,6 +27,12 @@ public class HistoricalFigureSceneHandler extends BaseSceneHandler {
 public void setHistoricalFigure(HistoricalFigure historicalFigure) {
     moTaLabel.setText(historicalFigure.getMoTa());
     tenLabel.setText(historicalFigure.getTen());
+    nguonLabel.setText(historicalFigure.getNguonDuLieu());
+    festivalRelationLabel.setText(historicalFigure.getRelatedToCulturalFestivals().toString());
+    figureRelationLabel.setText(historicalFigure.getRelatedToHistoricalFigures().toString());
+    siteRelationLabel.setText(historicalFigure.getRelatedToHistoricalSites().toString());
+    eventRelationLabel.setText(historicalFigure.getRelatedToHistoricEvents().toString());
+    dynastyRelationLabel.setText(historicalFigure.getRelatedToHistoricalDynasties().toString());
 //    tenHuyLabel.setText(dominator.getTenHuy());
 //    tenChuHanLabel.setText(dominator.getTenChuHan());
 //    namSinhMatLabel.setText(dominator.getNamSinhMat());

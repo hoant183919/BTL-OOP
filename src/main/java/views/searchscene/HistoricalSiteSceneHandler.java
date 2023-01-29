@@ -21,5 +21,11 @@ public class HistoricalSiteSceneHandler extends BaseSceneHandler {
         mieuTaLabel.setText(historicalSite.getMieuTa());
         ghiChuLabel.setText(historicalSite.getGhiChu());
         moTaLabel.setText(historicalSite.getMoTa());
+        nguonLabel.setText(historicalSite.getNguonDuLieu());
+        festivalRelationLabel.setText(historicalSite.getRelatedToCulturalFestivals().toString());
+        figureRelationLabel.setText(historicalSite.getRelatedToHistoricalFigures().toString());
+        siteRelationLabel.setText(historicalSite.getRelatedToHistoricalSites().toString());
+        eventRelationLabel.setText(historicalSite.getRelatedToHistoricEvents().toString());
+        dynastyRelationLabel.setText(historicalSite.getRelatedToHistoricalDynasties().toString());
     }
 }
