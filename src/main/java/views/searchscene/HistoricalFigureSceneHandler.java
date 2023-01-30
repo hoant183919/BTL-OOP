@@ -1,5 +1,6 @@
 package views.searchscene;
 
+import entity.Dominator;
 import entity.HistoricalFigure;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,14 +26,15 @@ public class HistoricalFigureSceneHandler extends BaseSceneHandler {
     Label triViLabel;
 
 public void setHistoricalFigure(HistoricalFigure historicalFigure) {
+
     moTaLabel.setText(historicalFigure.getMoTa());
     tenLabel.setText(historicalFigure.getTen());
     nguonLabel.setText(historicalFigure.getNguonDuLieu());
-    festivalRelationLabel.setText(historicalFigure.getRelatedToCulturalFestivals().toString());
-    figureRelationLabel.setText(historicalFigure.getRelatedToHistoricalFigures().toString());
-    siteRelationLabel.setText(historicalFigure.getRelatedToHistoricalSites().toString());
-    eventRelationLabel.setText(historicalFigure.getRelatedToHistoricEvents().toString());
-    dynastyRelationLabel.setText(historicalFigure.getRelatedToHistoricalDynasties().toString());
+    festivalRelationLabel.setText(historicalFigure.getRelatedToCulturalFestivals());
+    figureRelationLabel.setText(historicalFigure.getRelatedToHistoricalFigures());
+    siteRelationLabel.setText(historicalFigure.getRelatedToHistoricalSites());
+    eventRelationLabel.setText(historicalFigure.getRelatedToHistoricEvents());
+    dynastyRelationLabel.setText(historicalFigure.getRelatedToHistoricalDynasties());
 //    tenHuyLabel.setText(dominator.getTenHuy());
 //    tenChuHanLabel.setText(dominator.getTenChuHan());
 //    namSinhMatLabel.setText(dominator.getNamSinhMat());
@@ -42,6 +44,26 @@ public void setHistoricalFigure(HistoricalFigure historicalFigure) {
 //    vaiTroLabel.setText(dominator.getVaiTro());
 //    theThuLabel.setText(dominator.getTheThu());
 //    triViLabel.setText(dominator.getTriVi());
+
+    setLabel(festivalRelationLabel);
+    setLabel(figureRelationLabel);
+    setLabel(siteRelationLabel);
+    setLabel(eventRelationLabel);
+    setLabel(dynastyRelationLabel);
+    setLabel(tenLabel);
+    setLabel(moTaLabel);
+    setLabel(nguonLabel);
+    setLabel(tenHuyLabel);
+    setLabel(tenChuHanLabel);
+    setLabel(namSinhMatLabel);
+    setLabel(mieuHieuLabel);
+    setLabel(thuyHieuLabel);
+    setLabel(nienHieuLabel);
+    setLabel(vaiTroLabel);
+    setLabel(theThuLabel);
+    setLabel(triViLabel);
+
+
 }
 
 

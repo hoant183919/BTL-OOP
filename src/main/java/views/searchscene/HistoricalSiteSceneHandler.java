@@ -22,10 +22,23 @@ public class HistoricalSiteSceneHandler extends BaseSceneHandler {
         ghiChuLabel.setText(historicalSite.getGhiChu());
         moTaLabel.setText(historicalSite.getMoTa());
         nguonLabel.setText(historicalSite.getNguonDuLieu());
-        festivalRelationLabel.setText(historicalSite.getRelatedToCulturalFestivals().toString());
-        figureRelationLabel.setText(historicalSite.getRelatedToHistoricalFigures().toString());
-        siteRelationLabel.setText(historicalSite.getRelatedToHistoricalSites().toString());
-        eventRelationLabel.setText(historicalSite.getRelatedToHistoricEvents().toString());
-        dynastyRelationLabel.setText(historicalSite.getRelatedToHistoricalDynasties().toString());
+        festivalRelationLabel.setText(historicalSite.getRelatedToCulturalFestivals());
+        figureRelationLabel.setText(historicalSite.getRelatedToHistoricalFigures());
+        siteRelationLabel.setText(historicalSite.getRelatedToHistoricalSites());
+        eventRelationLabel.setText(historicalSite.getRelatedToHistoricEvents());
+        dynastyRelationLabel.setText(historicalSite.getRelatedToHistoricalDynasties());
+
+        setLabel(festivalRelationLabel);
+        setLabel(figureRelationLabel);
+        setLabel(siteRelationLabel);
+        setLabel(eventRelationLabel);
+        setLabel(dynastyRelationLabel);
+        setLabel(tenLabel);
+        setLabel(diaDiemLabel);
+        setLabel(namCNLabel);
+        setLabel(mieuTaLabel);
+        setLabel(ghiChuLabel);
+        setLabel(moTaLabel);
+        setLabel(nguonLabel);
     }
 }

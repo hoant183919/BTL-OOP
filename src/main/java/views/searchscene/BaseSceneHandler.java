@@ -20,6 +20,11 @@ public class BaseSceneHandler {
     Label dynastyRelationLabel;
     @FXML
     Label eventRelationLabel;
+    public void setLabel(Label label) {
+        if(label.getText() == "") {
+            label.setText("Không có");
+        }
+    }
 
 }
 

@@ -13,11 +13,11 @@ public abstract class HistoricObject extends BaseEntity{
     private String ten;
     private String moTa;
     private String nguonDuLieu;
-    private List<String> relatedToCulturalFestivals;
-    private List<String> relatedToHistoricalDynasties;
-    private List<String> relatedToHistoricalFigures;
-    private List<String> relatedToHistoricalSites;
-    private List<String> relatedToHistoricEvents;
+    private String relatedToCulturalFestivals;
+    private String relatedToHistoricalDynasties;
+    private String relatedToHistoricalFigures;
+    private String relatedToHistoricalSites;
+    private String relatedToHistoricEvents;
 
     public String getTen() {
         return ten;
@@ -43,43 +43,43 @@ public abstract class HistoricObject extends BaseEntity{
         this.nguonDuLieu = nguonDuLieu;
     }
 
-    public List<String> getRelatedToCulturalFestivals() {
+    public String getRelatedToCulturalFestivals() {
         return relatedToCulturalFestivals;
     }
 
-    public void setRelatedToCulturalFestivals(List<String> relatedToCulturalFestivals) {
+    public void setRelatedToCulturalFestivals(String relatedToCulturalFestivals) {
         this.relatedToCulturalFestivals = relatedToCulturalFestivals;
     }
 
-    public List<String> getRelatedToHistoricalDynasties() {
+    public String getRelatedToHistoricalDynasties() {
         return relatedToHistoricalDynasties;
     }
 
-    public void setRelatedToHistoricalDynasties(List<String> relatedToHistoricalDynasties) {
+    public void setRelatedToHistoricalDynasties(String relatedToHistoricalDynasties) {
         this.relatedToHistoricalDynasties = relatedToHistoricalDynasties;
     }
 
-    public List<String> getRelatedToHistoricalFigures() {
+    public String getRelatedToHistoricalFigures() {
         return relatedToHistoricalFigures;
     }
 
-    public void setRelatedToHistoricalFigures(List<String> relatedToHistoricalFigures) {
+    public void setRelatedToHistoricalFigures(String relatedToHistoricalFigures) {
         this.relatedToHistoricalFigures = relatedToHistoricalFigures;
     }
 
-    public List<String> getRelatedToHistoricalSites() {
+    public String getRelatedToHistoricalSites() {
         return relatedToHistoricalSites;
     }
 
-    public void setRelatedToHistoricalSites(List<String> relatedToHistoricalSites) {
+    public void setRelatedToHistoricalSites(String relatedToHistoricalSites) {
         this.relatedToHistoricalSites = relatedToHistoricalSites;
     }
 
-    public List<String> getRelatedToHistoricEvents() {
+    public String getRelatedToHistoricEvents() {
         return relatedToHistoricEvents;
     }
 
-    public void setRelatedToHistoricEvents(List<String> relatedToHistoricEvents) {
+    public void setRelatedToHistoricEvents(String relatedToHistoricEvents) {
         this.relatedToHistoricEvents = relatedToHistoricEvents;
     }
 

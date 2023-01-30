@@ -14,11 +14,22 @@ public class HistoricalDynastySceneHandler extends BaseSceneHandler {
         kinhDoLabel.setText(historicalDynasty.getKinhDo());
         moTaLabel.setText(historicalDynasty.getMoTa());
         nguonLabel.setText(historicalDynasty.getNguonDuLieu());
-        festivalRelationLabel.setText(historicalDynasty.getRelatedToCulturalFestivals().toString());
-        figureRelationLabel.setText(historicalDynasty.getRelatedToHistoricalFigures().toString());
-        siteRelationLabel.setText(historicalDynasty.getRelatedToHistoricalSites().toString());
-        eventRelationLabel.setText(historicalDynasty.getRelatedToHistoricEvents().toString());
-        dynastyRelationLabel.setText(historicalDynasty.getRelatedToHistoricalDynasties().toString());
+        festivalRelationLabel.setText(historicalDynasty.getRelatedToCulturalFestivals());
+        figureRelationLabel.setText(historicalDynasty.getRelatedToHistoricalFigures());
+        siteRelationLabel.setText(historicalDynasty.getRelatedToHistoricalSites());
+        eventRelationLabel.setText(historicalDynasty.getRelatedToHistoricEvents());
+        dynastyRelationLabel.setText(historicalDynasty.getRelatedToHistoricalDynasties());
+
+        setLabel(festivalRelationLabel);
+        setLabel(figureRelationLabel);
+        setLabel(siteRelationLabel);
+        setLabel(eventRelationLabel);
+        setLabel(dynastyRelationLabel);
+        setLabel(tenLabel);
+        setLabel(kinhDoLabel);
+        setLabel(moTaLabel);
+        setLabel(nguonLabel);
+
     }
 
 

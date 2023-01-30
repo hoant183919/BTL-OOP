@@ -47,27 +47,27 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
                 historicalFigure.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
                 historicalFigure.setKieu((String) jsonObject.get("kieu"));
                 try {
-                    historicalFigure.setRelatedToCulturalFestivals((List<String>) jsonObject.get("leHoiLienQuan"));
+                    historicalFigure.setRelatedToCulturalFestivals(String.join(", ", (List<String>) jsonObject.get("leHoiLienQuan")));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalDynasties((List<String>) jsonObject.get("trieuDaiLienQuan"));
+                    historicalFigure.setRelatedToHistoricalDynasties(String.join(", ", (List<String>) jsonObject.get("trieuDaiLienQuan")));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalFigures((List<String>) jsonObject.get("nhanVatLienQuan"));
+                    historicalFigure.setRelatedToHistoricalFigures(String.join(", ", (List<String>) jsonObject.get("nhanVatLienQuan")));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricEvents((List<String>) jsonObject.get("suKienLienQuan"));
+                    historicalFigure.setRelatedToHistoricEvents(String.join(", ", (List<String>) jsonObject.get("suKienLienQuan")));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalSites((List<String>) jsonObject.get("diTichLienQuan"));
+                    historicalFigure.setRelatedToHistoricalSites(String.join(", ", (List<String>) jsonObject.get("diTichLienQuan")));
                 } catch (Exception e) {
 
                 }

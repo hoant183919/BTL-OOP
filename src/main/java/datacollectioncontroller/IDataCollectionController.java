@@ -51,7 +51,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
                         l++;
                     }
                 }
-                historicObject.setRelatedToCulturalFestivals(relatedToCulturalFestivals);
+                historicObject.setRelatedToCulturalFestivals(String.join(", ", relatedToCulturalFestivals));
 
                 l = 0;
 
@@ -68,7 +68,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
                         l++;
                     }
                 }
-                historicObject.setRelatedToHistoricalFigures(relatedToHistoricalFigures);
+                historicObject.setRelatedToHistoricalFigures(String.join(", ", relatedToHistoricalFigures));
 
                 l = 0;
 
@@ -85,7 +85,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
                         l++;
                     }
                 }
-                historicObject.setRelatedToHistoricalDynasties(relatedToHistoricalDynasties);
+                historicObject.setRelatedToHistoricalDynasties(String.join(", ", relatedToHistoricalDynasties));
 
                 l = 0;
 
@@ -102,7 +102,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
                         l++;
                     }
                 }
-                historicObject.setRelatedToHistoricalSites(relatedToHistoricalSites);
+                historicObject.setRelatedToHistoricalSites(String.join(", ", relatedToHistoricalSites));
 
                 l = 0;
 
@@ -119,7 +119,7 @@ public interface IDataCollectionController extends IDataCollectionCulturalFestiv
                         l++;
                     }
                 }
-                historicObject.setRelatedToHistoricEvents(relatedToHistoricEvents);
+                historicObject.setRelatedToHistoricEvents(String.join(", ", relatedToHistoricEvents));
             }
             k++;
         }

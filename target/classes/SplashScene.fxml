@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.SplashSceneHandler">
-   <children>
-      <Button layoutX="193.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToDataCollectionScene" prefHeight="43.0" prefWidth="214.0" text="Thu thập dữ liệu" />
-      <Button layoutX="193.0" layoutY="143.0" mnemonicParsing="false" onAction="#switchToDataSummaryScene" prefHeight="43.0" prefWidth="214.0" text="Tổng hợp dữ liệu" />
-      <Button layoutX="193.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToSearchScene" prefHeight="43.0" prefWidth="214.0" text="Tìm kiếm dữ liệu" />
-   </children>
+  <children>
+    <Button layoutX="372.0" layoutY="153.0" mnemonicParsing="false" onAction="#switchToDataCollectionScene" prefHeight="43.0" prefWidth="214.0" text="Thu thập dữ liệu" />
+    <Button layoutX="372.0" layoutY="230.0" mnemonicParsing="false" onAction="#switchToDataSummaryScene" prefHeight="43.0" prefWidth="214.0" text="Tổng hợp dữ liệu" />
+    <Button layoutX="372.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchToSearchScene" prefHeight="43.0" prefWidth="214.0" text="Tìm kiếm dữ liệu" />
+    <ImageView fitHeight="196.0" fitWidth="348.79815117604653" layoutX="14.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../../../../../pasted%20image%200.png" />
+      </image>
+    </ImageView>
+      <Label alignment="CENTER" layoutX="193.0" layoutY="55.0" prefHeight="27.0" prefWidth="214.0" text="Lịch sử Việt Nam">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+  </children>
 </AnchorPane>

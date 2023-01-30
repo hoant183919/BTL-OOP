@@ -2,10 +2,14 @@ package views.searchscene;
 
 import entity.CulturalFestival;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CulturalFestivalSceneHandler extends BaseSceneHandler {
+
+public class CulturalFestivalSceneHandler extends BaseSceneHandler{
     @FXML
     Label thoiGianLabel;
     @FXML
@@ -23,12 +27,23 @@ public class CulturalFestivalSceneHandler extends BaseSceneHandler {
         ghiChuLabel.setText(culturalFestival.getGhiChu());
         moTaLabel.setText(culturalFestival.getMoTa());
         nguonLabel.setText(culturalFestival.getNguonDuLieu());
-        festivalRelationLabel.setText(culturalFestival.getRelatedToCulturalFestivals().toString());
-        figureRelationLabel.setText(culturalFestival.getRelatedToHistoricalFigures().toString());
-        siteRelationLabel.setText(culturalFestival.getRelatedToHistoricalSites().toString());
-        eventRelationLabel.setText(culturalFestival.getRelatedToHistoricEvents().toString());
-        dynastyRelationLabel.setText(culturalFestival.getRelatedToHistoricalDynasties().toString());
+        festivalRelationLabel.setText(culturalFestival.getRelatedToCulturalFestivals());
+        figureRelationLabel.setText(culturalFestival.getRelatedToHistoricalFigures());
+        siteRelationLabel.setText(culturalFestival.getRelatedToHistoricalSites());
+        eventRelationLabel.setText(culturalFestival.getRelatedToHistoricEvents());
+        dynastyRelationLabel.setText(culturalFestival.getRelatedToHistoricalDynasties());
+        setLabel(tenLabel);
+        setLabel(thoiGianLabel);
+        setLabel(diaDiemLabel);
+        setLabel(thoiDiemToChucLanDauLabel);
+        setLabel(ghiChuLabel);
+        setLabel(moTaLabel);
+        setLabel(nguonLabel);
+        setLabel(festivalRelationLabel);
+        setLabel(figureRelationLabel);
+        setLabel(siteRelationLabel);
+        setLabel(eventRelationLabel);
+        setLabel(dynastyRelationLabel);
 
     }
-
 }
