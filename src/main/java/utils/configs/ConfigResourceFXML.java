@@ -11,5 +11,6 @@ public class ConfigResourceFXML {
     public static final String HISTORICAL_SITE_SCENE = "/searchscene/HistoricalSiteScene.fxml";
     public static final String HISTORICAL_FIGURE_SCENE = "/searchscene/HistoricalFigureScene.fxml";
     public static final String HISTORIC_EVENT_SCENE = "/searchscene/HistoricEventScene.fxml";
+    public static final String IMAGE = "image0.png";
 
 }

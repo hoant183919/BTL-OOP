@@ -21,7 +21,7 @@ public class BaseSceneHandler {
     @FXML
     Label eventRelationLabel;
     public void setLabel(Label label) {
-        if(label.getText() == "") {
+        if(label.getText() == "" || label.getText() == null) {
             label.setText("Không có");
         }
     }

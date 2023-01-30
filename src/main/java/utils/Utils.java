@@ -1,18 +1,8 @@
 package utils;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import utils.configs.ConfigHtml;
-import utils.configs.SSLHelper;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import static javafx.css.StyleOrigin.USER_AGENT;
 
 public class Utils {
 

@@ -4,7 +4,7 @@ import common.exception.DataCollectionException;
 import entity.*;
 import org.jsoup.nodes.Document;
 import utils.Utils;
-import utils.configs.SSLHelper;
+import utils.SSLHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;

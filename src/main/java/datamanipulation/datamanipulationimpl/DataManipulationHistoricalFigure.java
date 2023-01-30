@@ -41,45 +41,34 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
             int k = 0;
             while (k < jsonArray.size()) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(k);
-                HistoricalFigure historicalFigure = new HistoricalFigure(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
-                historicalFigure.setMoTa((String) jsonObject.get("moTa"));
-                historicalFigure.setTen((String) jsonObject.get("ten"));
-                historicalFigure.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
-                historicalFigure.setKieu((String) jsonObject.get("kieu"));
-                historicalFigure.setVaiTro((String) jsonObject.get("vaiTro"));
-                historicalFigure.setMieuHieu((String) jsonObject.get("mieuHieu"));
-                historicalFigure.setThuyHieu((String) jsonObject.get("thuyHieu"));
-                historicalFigure.setNienHieu((String) jsonObject.get("nienHieu"));
-                historicalFigure.setTenHuy((String) jsonObject.get("tenHuy"));
-                historicalFigure.setTheThu((String) jsonObject.get("theThu"));
-                historicalFigure.setTriVi((String) jsonObject.get("triVi"));
-                historicalFigure.setTenChuHan((String) jsonObject.get("tenChuHan"));
-                historicalFigure.setNamSinhMat((String) jsonObject.get("namSinhMat"));
                 try {
+                    HistoricalFigure historicalFigure = new HistoricalFigure(Integer.parseInt(String.valueOf(jsonObject.get("id"))));
+                    historicalFigure.setMoTa((String) jsonObject.get("moTa"));
+                    historicalFigure.setTen((String) jsonObject.get("ten"));
+                    historicalFigure.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
+                    historicalFigure.setKieu((String) jsonObject.get("kieu"));
+                    historicalFigure.setVaiTro((String) jsonObject.get("vaiTro"));
+                    historicalFigure.setMieuHieu((String) jsonObject.get("mieuHieu"));
+                    historicalFigure.setThuyHieu((String) jsonObject.get("thuyHieu"));
+                    historicalFigure.setNienHieu((String) jsonObject.get("nienHieu"));
+                    historicalFigure.setTenHuy((String) jsonObject.get("tenHuy"));
+                    historicalFigure.setTheThu((String) jsonObject.get("theThu"));
+                    historicalFigure.setTriVi((String) jsonObject.get("triVi"));
+                    historicalFigure.setTenChuHan((String) jsonObject.get("tenChuHan"));
+                    historicalFigure.setNamSinhMat((String) jsonObject.get("namSinhMat"));
                     historicalFigure.setRelatedToCulturalFestivals((String) jsonObject.get("leHoiLienQuan"));
-                } catch (Exception e) {
-
-                }
-                try {
                     historicalFigure.setRelatedToHistoricalDynasties((String) jsonObject.get("trieuDaiLienQuan"));
-                } catch (Exception e) {
-
-                }
-                try {
                     historicalFigure.setRelatedToHistoricalFigures((String) jsonObject.get("nhanVatLienQuan"));
-                } catch (Exception e) {
-
-                }
-                try {
                     historicalFigure.setRelatedToHistoricEvents((String) jsonObject.get("suKienLienQuan"));
-                } catch (Exception e) {
-
-                }
-                try {
                     historicalFigure.setRelatedToHistoricalSites((String) jsonObject.get("diTichLienQuan"));
+                    historicalFigures.add(historicalFigure);
                 } catch (Exception e) {
 
                 }
+                k++;
+
+
+
 //                String kieu = "";
 //                try {
 //                    kieu = (String) jsonObject.get("kieu");
@@ -102,8 +91,7 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
 //                } catch (Exception e) {
 //                    historicalFigures.add(historicalFigure);
 //                }
-                historicalFigures.add(historicalFigure);
-                k++;
+
             }
         } catch (Exception e) {
             e.printStackTrace();

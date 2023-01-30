@@ -375,7 +375,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                             warEvent.setTen(Utils.removeComments(list.get(0).substring(0, list.get(0).indexOf('('))));
                             warEvent.setThoiKy(thoiKy);
                             warEvent.setKieu(ConfigDataType.DATA_TYPE_WAR_EVENT);
-                            warEvent.setThoiGian(Utils.removeComments(list.get(0).substring(list.get(0).indexOf('(') + 1, list.get(0).indexOf(')') - 1)));
+                            warEvent.setThoiGian(Utils.removeComments(list.get(0).substring(list.get(0).indexOf('(') + 1, list.get(0).indexOf(')') )));
                             warEvent.setLucLuong(Utils.removeComments(list.get(1)));
                             warEvent.setDoiPhuong(Utils.removeComments(list.get(2)));
                             warEvent.setKetQua(Utils.removeComments(list.get(3)));

@@ -1,4 +1,4 @@
-package utils.configs;
+package utils;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
