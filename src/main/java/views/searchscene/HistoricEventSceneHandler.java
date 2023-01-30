@@ -26,12 +26,11 @@ public class HistoricEventSceneHandler extends BaseSceneHandler {
         siteRelationLabel.setText(historicEvent.getRelatedToHistoricalSites());
         eventRelationLabel.setText(historicEvent.getRelatedToHistoricEvents());
         dynastyRelationLabel.setText(historicEvent.getRelatedToHistoricalDynasties());
-//        thoiGianLabel.setText(warEvent.getThoiGian());
-//        thoiKyLabel.setText(warEvent.getThoiKy());
-//        lucLuongLabel.setText(warEvent.getLucLuong());
-//        doiPhuongLabel.setText(warEvent.getDoiPhuong());
-//        ketQuaLabel.setText(warEvent.getKetQua());
-
+        thoiGianLabel.setText(historicEvent.getThoiGian());
+        thoiKyLabel.setText(historicEvent.getThoiKy());
+        lucLuongLabel.setText(historicEvent.getLucLuong());
+        doiPhuongLabel.setText(historicEvent.getDoiPhuong());
+        ketQuaLabel.setText(historicEvent.getKetQua());
         setLabel(festivalRelationLabel);
         setLabel(figureRelationLabel);
         setLabel(siteRelationLabel);

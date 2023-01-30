@@ -49,8 +49,8 @@ public class SearchController extends BaseController implements ISearchControlle
     }
 
     public double getSimilarityKeyWordInString(String keyWord, String str) {
-        keyWord = Utils.removeSign4VietnameseString(Utils.removepunctuation(keyWord.trim()));
-        str = Utils.removeSign4VietnameseString(Utils.removepunctuation(str.trim()));
+        keyWord = Utils.removeSign4VietnameseString(Utils.removepunctuation(keyWord.trim())).toLowerCase();
+        str = Utils.removeSign4VietnameseString(Utils.removepunctuation(str.trim())).toLowerCase();
 
         StringTokenizer stringTokenizerKeyWord = new StringTokenizer(keyWord, " ");
         StringTokenizer stringTokenizer = new StringTokenizer(str, " ");

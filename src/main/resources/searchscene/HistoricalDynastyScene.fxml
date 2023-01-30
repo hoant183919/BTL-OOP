@@ -94,7 +94,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="figureRelationLabel" alignment="TOP_LEFT" layoutX="230.0" layoutY="403.0" prefHeight="97.0" prefWidth="776.0">
+            <Label fx:id="figureRelationLabel" alignment="TOP_LEFT" layoutX="230.0" layoutY="403.0" prefHeight="97.0" prefWidth="776.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>

@@ -390,7 +390,7 @@ public class DataCollectionWikipediaController implements IDataCollectionControl
                             historicEvents.add(warEvent);
                             index++;
                         } catch (Exception e) {
-                            throw new HistoricEventDataCollectionException();
+                            //throw new HistoricEventDataCollectionException();
                         }
                     }
                 }

@@ -50,27 +50,27 @@ public class DataManipulationHistoricalDynasty implements IDataManipulationHisto
                     historicalDynasty.setThoiGianKetThuc((String) jsonObject.get("thoiGianKetThuc"));
                     historicalDynasty.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
                     try {
-                        historicalDynasty.setRelatedToCulturalFestivals(String.join(", ", (List<String>) jsonObject.get("leHoiLienQuan")));
+                        historicalDynasty.setRelatedToCulturalFestivals((String) jsonObject.get("leHoiLienQuan"));
                     } catch (Exception e){
 
                     }
                     try {
-                        historicalDynasty.setRelatedToHistoricalDynasties(String.join(", ", (List<String>) jsonObject.get("trieuDaiLienQuan")));
+                        historicalDynasty.setRelatedToHistoricalDynasties((String) jsonObject.get("trieuDaiLienQuan"));
                     } catch (Exception e){
 
                     }
                     try {
-                        historicalDynasty.setRelatedToHistoricalFigures(String.join(", ", (List<String>) jsonObject.get("nhanVatLienQuan")));
+                        historicalDynasty.setRelatedToHistoricalFigures((String) jsonObject.get("nhanVatLienQuan"));
                     } catch (Exception e){
 
                     }
                     try {
-                        historicalDynasty.setRelatedToHistoricEvents(String.join(", ", (List<String>) jsonObject.get("suKienLienQuan")));
+                        historicalDynasty.setRelatedToHistoricEvents((String) jsonObject.get("suKienLienQuan"));
                     } catch (Exception e){
 
                     }
                     try {
-                        historicalDynasty.setRelatedToHistoricalSites(String.join(", ", (List<String>) jsonObject.get("diTichLienQuan")));
+                        historicalDynasty.setRelatedToHistoricalSites((String) jsonObject.get("diTichLienQuan"));
                     } catch (Exception e){
 
                     }

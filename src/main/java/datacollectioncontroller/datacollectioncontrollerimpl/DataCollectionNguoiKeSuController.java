@@ -355,7 +355,7 @@ public class DataCollectionNguoiKeSuController implements IDataCollectionControl
         List<Dominator> dominators = new ArrayList<>();
         System.out.println("start");
         int startWeb = 0;
-        while (startWeb <= 150) {
+        while (startWeb < 150) {
             String url = ConfigHtml.NGUOIKESU_URL + "dong-lich-su";
             if (startWeb != 0) {
                 url += "?start=" + String.valueOf(startWeb);

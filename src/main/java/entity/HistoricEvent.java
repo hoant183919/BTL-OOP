@@ -1,5 +1,7 @@
 package entity;
 
+import org.json.simple.JSONObject;
+
 import java.awt.*;
 
 public class HistoricEvent extends HistoricObject {
@@ -15,5 +17,71 @@ public class HistoricEvent extends HistoricObject {
 
     public void setKieu(String kieu) {
         this.kieu = kieu;
+    }
+    private String thoiGian; // time
+    private String thoiKy; // period
+    private String lucLuong; // force
+    private String doiPhuong; // competitor
+    private String ketQua; // result
+
+    public String getThoiGian() {
+        return thoiGian;
+    }
+
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
+    }
+
+    public String getThoiKy() {
+        return thoiKy;
+    }
+
+    public void setThoiKy(String thoiKy) {
+        this.thoiKy = thoiKy;
+    }
+
+    public String getLucLuong() {
+        return lucLuong;
+    }
+
+    public void setLucLuong(String lucLuong) {
+        this.lucLuong = lucLuong;
+    }
+
+    public String getDoiPhuong() {
+        return doiPhuong;
+    }
+
+    public void setDoiPhuong(String doiPhuong) {
+        this.doiPhuong = doiPhuong;
+    }
+
+    public String getKetQua() {
+        return ketQua;
+    }
+
+    public void setKetQua(String ketQua) {
+        this.ketQua = ketQua;
+    }
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", getId());
+        jsonObject.put("ten", getTen());
+        jsonObject.put("thoiGian", getThoiGian());
+        jsonObject.put("thoiKy", getThoiKy());
+        jsonObject.put("lucLuong", getLucLuong());
+        jsonObject.put("doiPhuong", getDoiPhuong());
+        jsonObject.put("moTa", getMoTa());
+        jsonObject.put("ketQua", getKetQua());
+        jsonObject.put("nguonDuLieu", getNguonDuLieu());
+        jsonObject.put("kieu", getKieu());
+        jsonObject.put("leHoiLienQuan", getRelatedToCulturalFestivals());
+        jsonObject.put("trieuDaiLienQuan", getRelatedToHistoricalDynasties());
+        jsonObject.put("nhanVatLienQuan", getRelatedToHistoricalFigures());
+        jsonObject.put("diTichLienQuan", getRelatedToHistoricalSites());
+        jsonObject.put("suKienLienQuan", getRelatedToHistoricEvents());
+        return jsonObject;
     }
 }

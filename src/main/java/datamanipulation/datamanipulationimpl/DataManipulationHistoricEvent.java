@@ -46,48 +46,54 @@ public class DataManipulationHistoricEvent implements IDataManipulationHistoricE
                 historicEvent.setTen((String) jsonObject.get("ten"));
                 historicEvent.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
                 historicEvent.setKieu((String) jsonObject.get("kieu"));
+                historicEvent.setThoiGian((String) jsonObject.get("thoiGian"));
+                historicEvent.setThoiKy((String) jsonObject.get("thoiKy"));
+                historicEvent.setLucLuong((String) jsonObject.get("lucLuong"));
+                historicEvent.setDoiPhuong((String) jsonObject.get("doiPhuong"));
+                historicEvent.setKetQua((String) jsonObject.get("ketQua"));
                 try {
-                    historicEvent.setRelatedToCulturalFestivals(String.join(", ", (List<String>) jsonObject.get("leHoiLienQuan")));
+                    historicEvent.setRelatedToCulturalFestivals((String) jsonObject.get("leHoiLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicEvent.setRelatedToHistoricalDynasties(String.join(", ", (List<String>) jsonObject.get("trieuDaiLienQuan")));
+                    historicEvent.setRelatedToHistoricalDynasties((String) jsonObject.get("trieuDaiLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicEvent.setRelatedToHistoricalFigures(String.join(", ", (List<String>) jsonObject.get("nhanVatLienQuan")));
+                    historicEvent.setRelatedToHistoricalFigures((String) jsonObject.get("nhanVatLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicEvent.setRelatedToHistoricEvents(String.join(", ", (List<String>) jsonObject.get("suKienLienQuan")));
+                    historicEvent.setRelatedToHistoricEvents((String) jsonObject.get("suKienLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicEvent.setRelatedToHistoricalSites(String.join(", ", (List<String>) jsonObject.get("diTichLienQuan")));
+                    historicEvent.setRelatedToHistoricalSites((String) jsonObject.get("diTichLienQuan"));
                 } catch (Exception e) {
 
                 }
-                String kieu = "";
-                try {
-                    kieu = (String) jsonObject.get("kieu");
-                    if (!kieu.equals(ConfigDataType.DATA_TYPE_WAR_EVENT)) {
-                        historicEvents.add(historicEvent);
-                    } else {
-                        WarEvent warEvent = (WarEvent) historicEvent;
-                        warEvent.setThoiGian((String) jsonObject.get("thoiGian"));
-                        warEvent.setThoiKy((String) jsonObject.get("thoiKy"));
-                        warEvent.setLucLuong((String) jsonObject.get("lucLuong"));
-                        warEvent.setDoiPhuong((String) jsonObject.get("doiPhuong"));
-                        warEvent.setKetQua((String) jsonObject.get("ketQua"));
-                        historicEvents.add(warEvent);
-                    }
-                } catch (Exception e){
-                    historicEvents.add(historicEvent);
-                }
+//                String kieu = "";
+//                try {
+//                    kieu = (String) jsonObject.get("kieu");
+//                    if (!kieu.equals(ConfigDataType.DATA_TYPE_WAR_EVENT)) {
+//                        historicEvents.add(historicEvent);
+//                    } else {
+//                        WarEvent warEvent = (WarEvent) historicEvent;
+//                        warEvent.setThoiGian((String) jsonObject.get("thoiGian"));
+//                        warEvent.setThoiKy((String) jsonObject.get("thoiKy"));
+//                        warEvent.setLucLuong((String) jsonObject.get("lucLuong"));
+//                        warEvent.setDoiPhuong((String) jsonObject.get("doiPhuong"));
+//                        warEvent.setKetQua((String) jsonObject.get("ketQua"));
+//                        historicEvents.add(warEvent);
+//                    }
+//                } catch (Exception e){
+//                    historicEvents.add(historicEvent);
+//                }
+                historicEvents.add(historicEvent);
                 k++;
             }
         } catch (Exception e) {

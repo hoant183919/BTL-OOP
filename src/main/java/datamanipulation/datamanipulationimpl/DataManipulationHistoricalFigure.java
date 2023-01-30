@@ -46,53 +46,63 @@ public class DataManipulationHistoricalFigure implements IDataManipulationHistor
                 historicalFigure.setTen((String) jsonObject.get("ten"));
                 historicalFigure.setNguonDuLieu((String) jsonObject.get("nguonDuLieu"));
                 historicalFigure.setKieu((String) jsonObject.get("kieu"));
+                historicalFigure.setVaiTro((String) jsonObject.get("vaiTro"));
+                historicalFigure.setMieuHieu((String) jsonObject.get("mieuHieu"));
+                historicalFigure.setThuyHieu((String) jsonObject.get("thuyHieu"));
+                historicalFigure.setNienHieu((String) jsonObject.get("nienHieu"));
+                historicalFigure.setTenHuy((String) jsonObject.get("tenHuy"));
+                historicalFigure.setTheThu((String) jsonObject.get("theThu"));
+                historicalFigure.setTriVi((String) jsonObject.get("triVi"));
+                historicalFigure.setTenChuHan((String) jsonObject.get("tenChuHan"));
+                historicalFigure.setNamSinhMat((String) jsonObject.get("namSinhMat"));
                 try {
-                    historicalFigure.setRelatedToCulturalFestivals(String.join(", ", (List<String>) jsonObject.get("leHoiLienQuan")));
+                    historicalFigure.setRelatedToCulturalFestivals((String) jsonObject.get("leHoiLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalDynasties(String.join(", ", (List<String>) jsonObject.get("trieuDaiLienQuan")));
+                    historicalFigure.setRelatedToHistoricalDynasties((String) jsonObject.get("trieuDaiLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalFigures(String.join(", ", (List<String>) jsonObject.get("nhanVatLienQuan")));
+                    historicalFigure.setRelatedToHistoricalFigures((String) jsonObject.get("nhanVatLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricEvents(String.join(", ", (List<String>) jsonObject.get("suKienLienQuan")));
+                    historicalFigure.setRelatedToHistoricEvents((String) jsonObject.get("suKienLienQuan"));
                 } catch (Exception e) {
 
                 }
                 try {
-                    historicalFigure.setRelatedToHistoricalSites(String.join(", ", (List<String>) jsonObject.get("diTichLienQuan")));
+                    historicalFigure.setRelatedToHistoricalSites((String) jsonObject.get("diTichLienQuan"));
                 } catch (Exception e) {
 
                 }
-                String kieu = "";
-                try {
-                    kieu = (String) jsonObject.get("kieu");
-                    if (!kieu.equals(ConfigDataType.DATA_TYPE_DOMINATOR)) {
-                        historicalFigures.add(historicalFigure);
-                    } else {
-                        Dominator dominator = (Dominator) historicalFigure;
-                        dominator.setKieu(kieu);
-                        dominator.setVaiTro((String) jsonObject.get("vaiTro"));
-                        dominator.setMieuHieu((String) jsonObject.get("mieuHieu"));
-                        dominator.setThuyHieu((String) jsonObject.get("thuyHieu"));
-                        dominator.setNienHieu((String) jsonObject.get("nienHieu"));
-                        dominator.setTenHuy((String) jsonObject.get("tenHuy"));
-                        dominator.setTheThu((String) jsonObject.get("theThu"));
-                        dominator.setTriVi((String) jsonObject.get("triVi"));
-                        dominator.setTenChuHan((String) jsonObject.get("tenChuHan"));
-                        dominator.setNamSinhMat((String) jsonObject.get("namSinhMat"));
-                        historicalFigures.add(dominator);
-                    }
-                } catch (Exception e) {
-                    historicalFigures.add(historicalFigure);
-                }
+//                String kieu = "";
+//                try {
+//                    kieu = (String) jsonObject.get("kieu");
+//                    if (!kieu.equals(ConfigDataType.DATA_TYPE_DOMINATOR)) {
+//                        historicalFigures.add(historicalFigure);
+//                    } else {
+//                        Dominator dominator = (Dominator) historicalFigure;
+//                        dominator.setKieu(kieu);
+//                        dominator.setVaiTro((String) jsonObject.get("vaiTro"));
+//                        dominator.setMieuHieu((String) jsonObject.get("mieuHieu"));
+//                        dominator.setThuyHieu((String) jsonObject.get("thuyHieu"));
+//                        dominator.setNienHieu((String) jsonObject.get("nienHieu"));
+//                        dominator.setTenHuy((String) jsonObject.get("tenHuy"));
+//                        dominator.setTheThu((String) jsonObject.get("theThu"));
+//                        dominator.setTriVi((String) jsonObject.get("triVi"));
+//                        dominator.setTenChuHan((String) jsonObject.get("tenChuHan"));
+//                        dominator.setNamSinhMat((String) jsonObject.get("namSinhMat"));
+//                        historicalFigures.add(dominator);
+//                    }
+//                } catch (Exception e) {
+//                    historicalFigures.add(historicalFigure);
+//                }
+                historicalFigures.add(historicalFigure);
                 k++;
             }
         } catch (Exception e) {

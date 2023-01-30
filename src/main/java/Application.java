@@ -1,4 +1,6 @@
+import common.exception.HistoricEventDataCollectionException;
 import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionNguoiKeSuController;
+import datacollectioncontroller.datacollectioncontrollerimpl.DataCollectionWikipediaController;
 import datamanipulation.datamanipulationimpl.DataManipulationHistoricalFigure;
 import dataprocessingcontroller.BaseController;
 import dataprocessingcontroller.SummaryController;
@@ -22,7 +24,10 @@ import java.util.StringTokenizer;
 
 public class Application extends SplashScene {
 
-    public static void main(String[] args) throws IOException {
-        launch(args);
+    public static void main(String[] args) throws IOException, HistoricEventDataCollectionException {
+//        launch(args);
+        DataCollectionWikipediaController dataCollectionWikipediaController = new DataCollectionWikipediaController();
+        dataCollectionWikipediaController.collectionDataHistoricEvent();
+
     }
 }
